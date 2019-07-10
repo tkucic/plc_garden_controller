@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Symbolconfiguration xmlns="http://www.3s-software.com/schemas/Symbolconfiguration.xsd">
+  <Header>
+    <Version>3.5.11.0</Version>
+    <SymbolConfigObject version="3.5.12.0" runtimeid="3.5.12.0" libversion="3.5.11.0" compiler="3.5.12.0" lmm="3.5.12.0" profile="CODESYS V3.5 SP12+" settings="LayoutCalculator=OptimizedClientSideLayoutCalculator" />
+    <ProjectInfo name="02. GardenWatering" devicename="SoftPLC" appname="Application" />
+  </Header>
+  <TypeList>
+    <TypeSimple name="T_BOOL" size="1" swapsize="0" typeclass="Bool" iecname="BOOL" />
+    <TypeSimple name="T_REAL" size="4" swapsize="4" typeclass="Real" iecname="REAL" />
+  </TypeList>
+  <NodeList>
+    <Node name="Application">
+      <Node name="xgv02">
+        <Node name="HMICoorXCmd" type="T_REAL" access="ReadWrite" />
+        <Node name="HMICoorYCmd" type="T_REAL" access="ReadWrite" />
+        <Node name="HMIDown" type="T_BOOL" access="ReadWrite" />
+        <Node name="HMIDownLeft" type="T_BOOL" access="ReadWrite" />
+        <Node name="HMIDownRight" type="T_BOOL" access="ReadWrite" />
+        <Node name="HMILeft" type="T_BOOL" access="ReadWrite" />
+        <Node name="HMIOpenWater" type="T_BOOL" access="ReadWrite" />
+        <Node name="HMIRight" type="T_BOOL" access="ReadWrite" />
+        <Node name="HMIUp" type="T_BOOL" access="ReadWrite" />
+        <Node name="HMIUpLeft" type="T_BOOL" access="ReadWrite" />
+        <Node name="HMIUpRight" type="T_BOOL" access="ReadWrite" />
+        <Node name="HorizontalLeft" type="T_BOOL" access="ReadWrite" />
+        <Node name="HorizontalRight" type="T_BOOL" access="ReadWrite" />
+        <Node name="HorizontalS1" type="T_BOOL" access="ReadWrite" />
+        <Node name="HorizontalS2" type="T_BOOL" access="ReadWrite" />
+        <Node name="OpenWaterValve" type="T_BOOL" access="ReadWrite" />
+        <Node name="PositionX" type="T_REAL" access="ReadWrite" />
+        <Node name="PositionY" type="T_REAL" access="ReadWrite" />
+        <Node name="Remote" type="T_BOOL" access="ReadWrite" />
+        <Node name="Reset" type="T_BOOL" access="ReadWrite" />
+        <Node name="VerticalDown" type="T_BOOL" access="ReadWrite" />
+        <Node name="VerticalS1" type="T_BOOL" access="ReadWrite" />
+        <Node name="VerticalS2" type="T_BOOL" access="ReadWrite" />
+        <Node name="VerticalUp" type="T_BOOL" access="ReadWrite" />
+      </Node>
+    </Node>
+  </NodeList>
+</Symbolconfiguration>

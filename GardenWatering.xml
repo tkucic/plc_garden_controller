@@ -1,0 +1,1546 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://www.plcopen.org/xml/tc6_0200">
+  <fileHeader companyName="" productName="CODESYS" productVersion="CODESYS V3.5 SP14 Patch 1" creationDateTime="2019-07-15T20:33:55.3489661" />
+  <contentHeader name="Garden Watering" version="1.0" modificationDateTime="2019-07-15T20:33:55.2060528" organization="TK Automation" author="Toni Kucic">
+    <coordinateInfo>
+      <fbd>
+        <scaling x="1" y="1" />
+      </fbd>
+      <ld>
+        <scaling x="1" y="1" />
+      </ld>
+      <sfc>
+        <scaling x="1" y="1" />
+      </sfc>
+    </coordinateInfo>
+    <addData>
+      <data name="http://www.3s-software.com/plcopenxml/projectinformation" handleUnknown="implementation">
+        <ProjectInformation>
+          <property name="Author" type="string">Toni Kucic</property>
+          <property name="Company" type="string">TK Automation</property>
+          <property name="Project" type="string">GardenWatering</property>
+          <property name="Title" type="string">Garden Watering</property>
+          <property name="Version" type="version">1.0</property>
+        </ProjectInformation>
+      </data>
+    </addData>
+  </contentHeader>
+  <types>
+    <dataTypes />
+    <pous />
+  </types>
+  <instances>
+    <configurations>
+      <configuration name="SoftPLC">
+        <resource name="Application">
+          <task name="VISU_TASK" interval="PT0.05S" priority="31">
+            <pouInstance name="VisuElems.Visu_Prg" typeName="">
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml" />
+              </documentation>
+            </pouInstance>
+            <addData>
+              <data name="http://www.3s-software.com/plcopenxml/tasksettings" handleUnknown="implementation">
+                <TaskSettings KindOfTask="Cyclic" Interval="50" IntervalUnit="ms" WithinSPSTimeSlicing="true">
+                  <Watchdog Enabled="false" TimeUnit="ms" />
+                </TaskSettings>
+              </data>
+            </addData>
+          </task>
+          <task name="xsim02" interval="PT0.02S" priority="2">
+            <pouInstance name="xsim02" typeName="">
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml" />
+              </documentation>
+            </pouInstance>
+            <addData>
+              <data name="http://www.3s-software.com/plcopenxml/tasksettings" handleUnknown="implementation">
+                <TaskSettings KindOfTask="Cyclic" Interval="t#20ms" WithinSPSTimeSlicing="true">
+                  <Watchdog Enabled="false" TimeUnit="ms" Sensitivity="1" />
+                </TaskSettings>
+              </data>
+            </addData>
+          </task>
+          <task name="xc02_Task" interval="PT0.02S" priority="1">
+            <pouInstance name="xc02_GardenWatering" typeName="">
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml" />
+              </documentation>
+            </pouInstance>
+            <pouInstance name="xc02_GardenWatering_Encoder" typeName="">
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml" />
+              </documentation>
+            </pouInstance>
+            <addData>
+              <data name="http://www.3s-software.com/plcopenxml/tasksettings" handleUnknown="implementation">
+                <TaskSettings KindOfTask="Cyclic" Interval="t#20ms" WithinSPSTimeSlicing="true">
+                  <Watchdog Enabled="false" TimeUnit="ms" Sensitivity="1" />
+                </TaskSettings>
+              </data>
+            </addData>
+          </task>
+          <globalVars name="xgv02">
+            <variable name="HorizontalS1">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">Configuration
+Inputs</xhtml>
+              </documentation>
+            </variable>
+            <variable name="HorizontalS2">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="VerticalS1">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="VerticalS2">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="PositionX">
+              <type>
+                <REAL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">Data from encoder</xhtml>
+              </documentation>
+            </variable>
+            <variable name="PositionY">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="HMIUp">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> HMI </xhtml>
+              </documentation>
+            </variable>
+            <variable name="HMIDown">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="HMIRight">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="HMILeft">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="HMIUpRight">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="HMIUpLeft">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="HMIDownRight">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="HMIDownLeft">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="HMICoorXCmd">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="HMICoorYCmd">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="HMIOpenWater">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="Remote">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="Reset">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="HorizontalRight">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">Outputs</xhtml>
+              </documentation>
+            </variable>
+            <variable name="HorizontalLeft">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="VerticalUp">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="VerticalDown">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="OpenWaterValve">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <addData>
+              <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+                <Attributes>
+                  <Attribute Name="qualified_only" Value="" />
+                </Attributes>
+              </data>
+            </addData>
+          </globalVars>
+          <addData>
+            <data name="http://www.3s-software.com/plcopenxml/pou" handleUnknown="implementation">
+              <pou name="xc02_GardenWatering" pouType="program">
+                <interface>
+                  <localVars>
+                    <variable name="vFlowersXY">
+                      <type>
+                        <array>
+                          <dimension lower="0" upper="59" />
+                          <dimension lower="0" upper="1" />
+                          <baseType>
+                            <INT />
+                          </baseType>
+                        </array>
+                      </type>
+                      <initialValue>
+                        <arrayValue>
+                          <value>
+                            <simpleValue value="276" />
+                          </value>
+                          <value>
+                            <simpleValue value="253" />
+                          </value>
+                          <value>
+                            <simpleValue value="381" />
+                          </value>
+                          <value>
+                            <simpleValue value="253" />
+                          </value>
+                          <value>
+                            <simpleValue value="486" />
+                          </value>
+                          <value>
+                            <simpleValue value="253" />
+                          </value>
+                          <value>
+                            <simpleValue value="591" />
+                          </value>
+                          <value>
+                            <simpleValue value="253" />
+                          </value>
+                          <value>
+                            <simpleValue value="696" />
+                          </value>
+                          <value>
+                            <simpleValue value="253" />
+                          </value>
+                          <value>
+                            <simpleValue value="801" />
+                          </value>
+                          <value>
+                            <simpleValue value="253" />
+                          </value>
+                          <value>
+                            <simpleValue value="906" />
+                          </value>
+                          <value>
+                            <simpleValue value="253" />
+                          </value>
+                          <value>
+                            <simpleValue value="1011" />
+                          </value>
+                          <value>
+                            <simpleValue value="253" />
+                          </value>
+                          <value>
+                            <simpleValue value="1116" />
+                          </value>
+                          <value>
+                            <simpleValue value="253" />
+                          </value>
+                          <value>
+                            <simpleValue value="1221" />
+                          </value>
+                          <value>
+                            <simpleValue value="253" />
+                          </value>
+                          <value>
+                            <simpleValue value="276" />
+                          </value>
+                          <value>
+                            <simpleValue value="354" />
+                          </value>
+                          <value>
+                            <simpleValue value="381" />
+                          </value>
+                          <value>
+                            <simpleValue value="354" />
+                          </value>
+                          <value>
+                            <simpleValue value="486" />
+                          </value>
+                          <value>
+                            <simpleValue value="354" />
+                          </value>
+                          <value>
+                            <simpleValue value="591" />
+                          </value>
+                          <value>
+                            <simpleValue value="354" />
+                          </value>
+                          <value>
+                            <simpleValue value="696" />
+                          </value>
+                          <value>
+                            <simpleValue value="354" />
+                          </value>
+                          <value>
+                            <simpleValue value="801" />
+                          </value>
+                          <value>
+                            <simpleValue value="354" />
+                          </value>
+                          <value>
+                            <simpleValue value="906" />
+                          </value>
+                          <value>
+                            <simpleValue value="354" />
+                          </value>
+                          <value>
+                            <simpleValue value="1011" />
+                          </value>
+                          <value>
+                            <simpleValue value="354" />
+                          </value>
+                          <value>
+                            <simpleValue value="1116" />
+                          </value>
+                          <value>
+                            <simpleValue value="354" />
+                          </value>
+                          <value>
+                            <simpleValue value="1221" />
+                          </value>
+                          <value>
+                            <simpleValue value="354" />
+                          </value>
+                          <value>
+                            <simpleValue value="276" />
+                          </value>
+                          <value>
+                            <simpleValue value="455" />
+                          </value>
+                          <value>
+                            <simpleValue value="381" />
+                          </value>
+                          <value>
+                            <simpleValue value="455" />
+                          </value>
+                          <value>
+                            <simpleValue value="486" />
+                          </value>
+                          <value>
+                            <simpleValue value="455" />
+                          </value>
+                          <value>
+                            <simpleValue value="591" />
+                          </value>
+                          <value>
+                            <simpleValue value="455" />
+                          </value>
+                          <value>
+                            <simpleValue value="696" />
+                          </value>
+                          <value>
+                            <simpleValue value="455" />
+                          </value>
+                          <value>
+                            <simpleValue value="801" />
+                          </value>
+                          <value>
+                            <simpleValue value="455" />
+                          </value>
+                          <value>
+                            <simpleValue value="906" />
+                          </value>
+                          <value>
+                            <simpleValue value="455" />
+                          </value>
+                          <value>
+                            <simpleValue value="1011" />
+                          </value>
+                          <value>
+                            <simpleValue value="455" />
+                          </value>
+                          <value>
+                            <simpleValue value="1116" />
+                          </value>
+                          <value>
+                            <simpleValue value="455" />
+                          </value>
+                          <value>
+                            <simpleValue value="1221" />
+                          </value>
+                          <value>
+                            <simpleValue value="455" />
+                          </value>
+                          <value>
+                            <simpleValue value="276" />
+                          </value>
+                          <value>
+                            <simpleValue value="556" />
+                          </value>
+                          <value>
+                            <simpleValue value="381" />
+                          </value>
+                          <value>
+                            <simpleValue value="556" />
+                          </value>
+                          <value>
+                            <simpleValue value="486" />
+                          </value>
+                          <value>
+                            <simpleValue value="556" />
+                          </value>
+                          <value>
+                            <simpleValue value="591" />
+                          </value>
+                          <value>
+                            <simpleValue value="556" />
+                          </value>
+                          <value>
+                            <simpleValue value="696" />
+                          </value>
+                          <value>
+                            <simpleValue value="556" />
+                          </value>
+                          <value>
+                            <simpleValue value="801" />
+                          </value>
+                          <value>
+                            <simpleValue value="556" />
+                          </value>
+                          <value>
+                            <simpleValue value="906" />
+                          </value>
+                          <value>
+                            <simpleValue value="556" />
+                          </value>
+                          <value>
+                            <simpleValue value="1011" />
+                          </value>
+                          <value>
+                            <simpleValue value="556" />
+                          </value>
+                          <value>
+                            <simpleValue value="1116" />
+                          </value>
+                          <value>
+                            <simpleValue value="556" />
+                          </value>
+                          <value>
+                            <simpleValue value="1221" />
+                          </value>
+                          <value>
+                            <simpleValue value="556" />
+                          </value>
+                          <value>
+                            <simpleValue value="276" />
+                          </value>
+                          <value>
+                            <simpleValue value="667" />
+                          </value>
+                          <value>
+                            <simpleValue value="381" />
+                          </value>
+                          <value>
+                            <simpleValue value="667" />
+                          </value>
+                          <value>
+                            <simpleValue value="486" />
+                          </value>
+                          <value>
+                            <simpleValue value="667" />
+                          </value>
+                          <value>
+                            <simpleValue value="591" />
+                          </value>
+                          <value>
+                            <simpleValue value="667" />
+                          </value>
+                          <value>
+                            <simpleValue value="696" />
+                          </value>
+                          <value>
+                            <simpleValue value="667" />
+                          </value>
+                          <value>
+                            <simpleValue value="801" />
+                          </value>
+                          <value>
+                            <simpleValue value="667" />
+                          </value>
+                          <value>
+                            <simpleValue value="906" />
+                          </value>
+                          <value>
+                            <simpleValue value="667" />
+                          </value>
+                          <value>
+                            <simpleValue value="1011" />
+                          </value>
+                          <value>
+                            <simpleValue value="667" />
+                          </value>
+                          <value>
+                            <simpleValue value="1116" />
+                          </value>
+                          <value>
+                            <simpleValue value="667" />
+                          </value>
+                          <value>
+                            <simpleValue value="1221" />
+                          </value>
+                          <value>
+                            <simpleValue value="667" />
+                          </value>
+                          <value>
+                            <simpleValue value="276" />
+                          </value>
+                          <value>
+                            <simpleValue value="768" />
+                          </value>
+                          <value>
+                            <simpleValue value="381" />
+                          </value>
+                          <value>
+                            <simpleValue value="768" />
+                          </value>
+                          <value>
+                            <simpleValue value="486" />
+                          </value>
+                          <value>
+                            <simpleValue value="768" />
+                          </value>
+                          <value>
+                            <simpleValue value="591" />
+                          </value>
+                          <value>
+                            <simpleValue value="768" />
+                          </value>
+                          <value>
+                            <simpleValue value="696" />
+                          </value>
+                          <value>
+                            <simpleValue value="768" />
+                          </value>
+                          <value>
+                            <simpleValue value="801" />
+                          </value>
+                          <value>
+                            <simpleValue value="768" />
+                          </value>
+                          <value>
+                            <simpleValue value="906" />
+                          </value>
+                          <value>
+                            <simpleValue value="768" />
+                          </value>
+                          <value>
+                            <simpleValue value="1011" />
+                          </value>
+                          <value>
+                            <simpleValue value="768" />
+                          </value>
+                          <value>
+                            <simpleValue value="1116" />
+                          </value>
+                          <value>
+                            <simpleValue value="768" />
+                          </value>
+                          <value>
+                            <simpleValue value="1221" />
+                          </value>
+                          <value>
+                            <simpleValue value="768" />
+                          </value>
+                        </arrayValue>
+                      </initialValue>
+                    </variable>
+                    <variable name="vManual">
+                      <type>
+                        <BOOL />
+                      </type>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml"> Coordinates of flowers in format Flower0 -x,y </xhtml>
+                      </documentation>
+                    </variable>
+                    <variable name="vXCMD">
+                      <type>
+                        <REAL />
+                      </type>
+                    </variable>
+                    <variable name="vYCMD">
+                      <type>
+                        <REAL />
+                      </type>
+                    </variable>
+                    <variable name="i">
+                      <type>
+                        <INT />
+                      </type>
+                    </variable>
+                    <variable name="Watering">
+                      <type>
+                        <derived name="TON" />
+                      </type>
+                    </variable>
+                    <variable name="ActuatorOverFlower">
+                      <type>
+                        <derived name="CollisionDetection" />
+                      </type>
+                    </variable>
+                  </localVars>
+                </interface>
+                <body>
+                  <ST>
+                    <xhtml xmlns="http://www.w3.org/1999/xhtml">(* Control from the graphics *)
+IF NOT xgv02.Remote THEN
+	xgv02.HorizontalLeft := xgv02.HMIDownLeft OR xgv02.HMILeft OR xgv02.HMIUpLeft;
+	xgv02.HorizontalRight := xgv02.HMIDownRight OR xgv02.HMIRight OR xgv02.HMIUpRight;
+	xgv02.VerticalUp := xgv02.HMIUpLeft OR xgv02.HMIUp OR xgv02.HMIUpRight;
+	xgv02.VerticalDown := xgv02.HMIDownLeft OR xgv02.HMIDown OR xgv02.HMIDownRight;
+	xgv02.OpenWaterValve := xgv02.HMIOpenWater;
+END_IF;
+
+(* Coordinate control *)
+IF xgv02.Remote AND vManual THEN
+	vXCMD := xgv02.HMICoorXCmd;
+	vYCMD := xgv02.HMICoorYCmd;
+ELSE
+	xgv02.HMICoorXCmd := xgv02.PositionX;
+	xgv02.HMICoorYCmd := xgv02.PositionY;
+END_IF
+
+(* Full automatic algorithm *)
+IF xgv02.Remote AND NOT vManual THEN
+	vXCMD := vFlowersXY[i,0]+ 30;
+	vYCMD := vFlowersXY[i,1]+ 30;
+	
+	ActuatorOverFlower(
+		xcor1:= xgv02.PositionX, 
+		ycor1:= xgv02.PositionY, 
+		height1:= 10, 
+		width1:= 10, 
+		xcor2:= vFlowersXY[i,0], 
+		ycor2:= vFlowersXY[i,1], 
+		height2:= 70, 
+		width2:= 70);
+		
+	IF 	ActuatorOverFlower.isCollision THEN
+		Watering(IN:=TRUE, PT:=T#3S);
+		xgv02.OpenWaterValve := TRUE;
+	END_IF;
+	IF ActuatorOverFlower.isCollision AND Watering.Q THEN
+		Watering(IN := FALSE);
+		xgv02.OpenWaterValve:= FALSE;
+		i:= i + 1;	
+	END_IF
+END_IF
+IF i = 59 THEN
+	i := 0;
+END_IF
+
+(* Actual motor movement section *)
+IF xgv02.Remote THEN
+	IF vXCMD &gt; xgv02.PositionX - 2 THEN
+		xgv02.HorizontalLeft := FALSE;
+		xgv02.HorizontalRight := TRUE;
+	ELSIF vXCMD &lt; xgv02.PositionX + 2 THEN
+		xgv02.HorizontalLeft := TRUE;
+		xgv02.HorizontalRight := FALSE;
+	ELSE
+		xgv02.HorizontalLeft := FALSE;
+		xgv02.HorizontalRight := FALSE;
+	END_IF;
+	
+	IF vYCMD &lt; xgv02.PositionY - 2THEN
+		xgv02.VerticalUp := TRUE;
+		xgv02.VerticalDown := FALSE;
+	ELSIF vYCMD &gt; xgv02.PositionY + 2 THEN
+		xgv02.VerticalUp := FALSE;
+		xgv02.VerticalDown := TRUE;
+	ELSE
+		xgv02.VerticalUp := FALSE;
+		xgv02.VerticalDown := FALSE;
+	END_IF;
+END_IF;
+
+	
+</xhtml>
+                  </ST>
+                </body>
+                <addData />
+              </pou>
+            </data>
+            <data name="http://www.3s-software.com/plcopenxml/pou" handleUnknown="implementation">
+              <pou name="xsim02" pouType="program">
+                <interface>
+                  <localVars>
+                    <variable name="CollisionDetector">
+                      <type>
+                        <derived name="CollisionDetection" />
+                      </type>
+                    </variable>
+                    <variable name="FlowerDeathTimer">
+                      <type>
+                        <derived name="TON" />
+                      </type>
+                    </variable>
+                    <variable name="vResetSIM">
+                      <type>
+                        <BOOL />
+                      </type>
+                    </variable>
+                    <variable name="vFlowers">
+                      <type>
+                        <array>
+                          <dimension lower="0" upper="59" />
+                          <baseType>
+                            <DWORD />
+                          </baseType>
+                        </array>
+                      </type>
+                      <initialValue>
+                        <arrayValue>
+                          <value repetitionValue="60">
+                            <simpleValue value="16#FF73B98B" />
+                          </value>
+                        </arrayValue>
+                      </initialValue>
+                    </variable>
+                    <variable name="i">
+                      <type>
+                        <INT />
+                      </type>
+                    </variable>
+                    <variable name="vFlowersXY">
+                      <type>
+                        <array>
+                          <dimension lower="0" upper="59" />
+                          <dimension lower="0" upper="1" />
+                          <baseType>
+                            <INT />
+                          </baseType>
+                        </array>
+                      </type>
+                      <initialValue>
+                        <arrayValue>
+                          <value>
+                            <simpleValue value="276" />
+                          </value>
+                          <value>
+                            <simpleValue value="253" />
+                          </value>
+                          <value>
+                            <simpleValue value="381" />
+                          </value>
+                          <value>
+                            <simpleValue value="253" />
+                          </value>
+                          <value>
+                            <simpleValue value="486" />
+                          </value>
+                          <value>
+                            <simpleValue value="253" />
+                          </value>
+                          <value>
+                            <simpleValue value="591" />
+                          </value>
+                          <value>
+                            <simpleValue value="253" />
+                          </value>
+                          <value>
+                            <simpleValue value="696" />
+                          </value>
+                          <value>
+                            <simpleValue value="253" />
+                          </value>
+                          <value>
+                            <simpleValue value="801" />
+                          </value>
+                          <value>
+                            <simpleValue value="253" />
+                          </value>
+                          <value>
+                            <simpleValue value="906" />
+                          </value>
+                          <value>
+                            <simpleValue value="253" />
+                          </value>
+                          <value>
+                            <simpleValue value="1011" />
+                          </value>
+                          <value>
+                            <simpleValue value="253" />
+                          </value>
+                          <value>
+                            <simpleValue value="1116" />
+                          </value>
+                          <value>
+                            <simpleValue value="253" />
+                          </value>
+                          <value>
+                            <simpleValue value="1221" />
+                          </value>
+                          <value>
+                            <simpleValue value="253" />
+                          </value>
+                          <value>
+                            <simpleValue value="276" />
+                          </value>
+                          <value>
+                            <simpleValue value="354" />
+                          </value>
+                          <value>
+                            <simpleValue value="381" />
+                          </value>
+                          <value>
+                            <simpleValue value="354" />
+                          </value>
+                          <value>
+                            <simpleValue value="486" />
+                          </value>
+                          <value>
+                            <simpleValue value="354" />
+                          </value>
+                          <value>
+                            <simpleValue value="591" />
+                          </value>
+                          <value>
+                            <simpleValue value="354" />
+                          </value>
+                          <value>
+                            <simpleValue value="696" />
+                          </value>
+                          <value>
+                            <simpleValue value="354" />
+                          </value>
+                          <value>
+                            <simpleValue value="801" />
+                          </value>
+                          <value>
+                            <simpleValue value="354" />
+                          </value>
+                          <value>
+                            <simpleValue value="906" />
+                          </value>
+                          <value>
+                            <simpleValue value="354" />
+                          </value>
+                          <value>
+                            <simpleValue value="1011" />
+                          </value>
+                          <value>
+                            <simpleValue value="354" />
+                          </value>
+                          <value>
+                            <simpleValue value="1116" />
+                          </value>
+                          <value>
+                            <simpleValue value="354" />
+                          </value>
+                          <value>
+                            <simpleValue value="1221" />
+                          </value>
+                          <value>
+                            <simpleValue value="354" />
+                          </value>
+                          <value>
+                            <simpleValue value="276" />
+                          </value>
+                          <value>
+                            <simpleValue value="455" />
+                          </value>
+                          <value>
+                            <simpleValue value="381" />
+                          </value>
+                          <value>
+                            <simpleValue value="455" />
+                          </value>
+                          <value>
+                            <simpleValue value="486" />
+                          </value>
+                          <value>
+                            <simpleValue value="455" />
+                          </value>
+                          <value>
+                            <simpleValue value="591" />
+                          </value>
+                          <value>
+                            <simpleValue value="455" />
+                          </value>
+                          <value>
+                            <simpleValue value="696" />
+                          </value>
+                          <value>
+                            <simpleValue value="455" />
+                          </value>
+                          <value>
+                            <simpleValue value="801" />
+                          </value>
+                          <value>
+                            <simpleValue value="455" />
+                          </value>
+                          <value>
+                            <simpleValue value="906" />
+                          </value>
+                          <value>
+                            <simpleValue value="455" />
+                          </value>
+                          <value>
+                            <simpleValue value="1011" />
+                          </value>
+                          <value>
+                            <simpleValue value="455" />
+                          </value>
+                          <value>
+                            <simpleValue value="1116" />
+                          </value>
+                          <value>
+                            <simpleValue value="455" />
+                          </value>
+                          <value>
+                            <simpleValue value="1221" />
+                          </value>
+                          <value>
+                            <simpleValue value="455" />
+                          </value>
+                          <value>
+                            <simpleValue value="276" />
+                          </value>
+                          <value>
+                            <simpleValue value="556" />
+                          </value>
+                          <value>
+                            <simpleValue value="381" />
+                          </value>
+                          <value>
+                            <simpleValue value="556" />
+                          </value>
+                          <value>
+                            <simpleValue value="486" />
+                          </value>
+                          <value>
+                            <simpleValue value="556" />
+                          </value>
+                          <value>
+                            <simpleValue value="591" />
+                          </value>
+                          <value>
+                            <simpleValue value="556" />
+                          </value>
+                          <value>
+                            <simpleValue value="696" />
+                          </value>
+                          <value>
+                            <simpleValue value="556" />
+                          </value>
+                          <value>
+                            <simpleValue value="801" />
+                          </value>
+                          <value>
+                            <simpleValue value="556" />
+                          </value>
+                          <value>
+                            <simpleValue value="906" />
+                          </value>
+                          <value>
+                            <simpleValue value="556" />
+                          </value>
+                          <value>
+                            <simpleValue value="1011" />
+                          </value>
+                          <value>
+                            <simpleValue value="556" />
+                          </value>
+                          <value>
+                            <simpleValue value="1116" />
+                          </value>
+                          <value>
+                            <simpleValue value="556" />
+                          </value>
+                          <value>
+                            <simpleValue value="1221" />
+                          </value>
+                          <value>
+                            <simpleValue value="556" />
+                          </value>
+                          <value>
+                            <simpleValue value="276" />
+                          </value>
+                          <value>
+                            <simpleValue value="667" />
+                          </value>
+                          <value>
+                            <simpleValue value="381" />
+                          </value>
+                          <value>
+                            <simpleValue value="667" />
+                          </value>
+                          <value>
+                            <simpleValue value="486" />
+                          </value>
+                          <value>
+                            <simpleValue value="667" />
+                          </value>
+                          <value>
+                            <simpleValue value="591" />
+                          </value>
+                          <value>
+                            <simpleValue value="667" />
+                          </value>
+                          <value>
+                            <simpleValue value="696" />
+                          </value>
+                          <value>
+                            <simpleValue value="667" />
+                          </value>
+                          <value>
+                            <simpleValue value="801" />
+                          </value>
+                          <value>
+                            <simpleValue value="667" />
+                          </value>
+                          <value>
+                            <simpleValue value="906" />
+                          </value>
+                          <value>
+                            <simpleValue value="667" />
+                          </value>
+                          <value>
+                            <simpleValue value="1011" />
+                          </value>
+                          <value>
+                            <simpleValue value="667" />
+                          </value>
+                          <value>
+                            <simpleValue value="1116" />
+                          </value>
+                          <value>
+                            <simpleValue value="667" />
+                          </value>
+                          <value>
+                            <simpleValue value="1221" />
+                          </value>
+                          <value>
+                            <simpleValue value="667" />
+                          </value>
+                          <value>
+                            <simpleValue value="276" />
+                          </value>
+                          <value>
+                            <simpleValue value="768" />
+                          </value>
+                          <value>
+                            <simpleValue value="381" />
+                          </value>
+                          <value>
+                            <simpleValue value="768" />
+                          </value>
+                          <value>
+                            <simpleValue value="486" />
+                          </value>
+                          <value>
+                            <simpleValue value="768" />
+                          </value>
+                          <value>
+                            <simpleValue value="591" />
+                          </value>
+                          <value>
+                            <simpleValue value="768" />
+                          </value>
+                          <value>
+                            <simpleValue value="696" />
+                          </value>
+                          <value>
+                            <simpleValue value="768" />
+                          </value>
+                          <value>
+                            <simpleValue value="801" />
+                          </value>
+                          <value>
+                            <simpleValue value="768" />
+                          </value>
+                          <value>
+                            <simpleValue value="906" />
+                          </value>
+                          <value>
+                            <simpleValue value="768" />
+                          </value>
+                          <value>
+                            <simpleValue value="1011" />
+                          </value>
+                          <value>
+                            <simpleValue value="768" />
+                          </value>
+                          <value>
+                            <simpleValue value="1116" />
+                          </value>
+                          <value>
+                            <simpleValue value="768" />
+                          </value>
+                          <value>
+                            <simpleValue value="1221" />
+                          </value>
+                          <value>
+                            <simpleValue value="768" />
+                          </value>
+                        </arrayValue>
+                      </initialValue>
+                    </variable>
+                  </localVars>
+                </interface>
+                <body>
+                  <ST>
+                    <xhtml xmlns="http://www.w3.org/1999/xhtml">(* If the plaform covers the flower it will reset its color to initial *)
+FOR i:=0 TO 59 BY 1 DO
+	CollisionDetector(
+		xcor1:= xgv02.PositionX, 
+		ycor1:= xgv02.PositionY, 
+		height1:= 10, 
+		width1:= 10, 
+		xcor2:= vFlowersXY[i,0], 
+		ycor2:= vFlowersXY[i,1], 
+		height2:= 70 , 
+		width2:= 70);
+	IF CollisionDetector.isCollision AND xgv02.OpenWaterValve THEN
+		vFlowers[i] := 16#FF73B98B;
+	END_IF
+END_FOR
+
+FlowerDeathTimer(IN:=TRUE, PT:=T#60S);
+(* Flowers fade its color *)
+IF FlowerDeathTimer.Q THEN
+	FOR i:=0 TO 59 BY 1 DO
+		IF vFlowers[i] &gt; 16#0073B98B THEN
+			vFlowers[i] := vFlowers[i] - 16#01000000;
+		END_IF;
+	END_FOR
+	FlowerDeathTimer.IN := FALSE;
+END_IF;
+
+</xhtml>
+                  </ST>
+                </body>
+                <addData />
+              </pou>
+            </data>
+            <data name="http://www.3s-software.com/plcopenxml/pou" handleUnknown="implementation">
+              <pou name="Servo" pouType="functionBlock">
+                <interface>
+                  <inputVars>
+                    <variable name="CmdFwd">
+                      <type>
+                        <BOOL />
+                      </type>
+                      <initialValue>
+                        <simpleValue value="FALSE" />
+                      </initialValue>
+                    </variable>
+                    <variable name="CmdRev">
+                      <type>
+                        <BOOL />
+                      </type>
+                      <initialValue>
+                        <simpleValue value="FALSE" />
+                      </initialValue>
+                    </variable>
+                    <variable name="PulseWidth">
+                      <type>
+                        <TIME />
+                      </type>
+                      <initialValue>
+                        <simpleValue value="TIME#100ms" />
+                      </initialValue>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml"> Width of a pulse from the hall effect sensor when its above magnetic surface </xhtml>
+                      </documentation>
+                    </variable>
+                  </inputVars>
+                  <outputVars>
+                    <variable name="S1">
+                      <type>
+                        <BOOL />
+                      </type>
+                      <initialValue>
+                        <simpleValue value="FALSE" />
+                      </initialValue>
+                    </variable>
+                    <variable name="S2">
+                      <type>
+                        <BOOL />
+                      </type>
+                      <initialValue>
+                        <simpleValue value="FALSE" />
+                      </initialValue>
+                    </variable>
+                  </outputVars>
+                  <localVars>
+                    <variable name="tofS2">
+                      <type>
+                        <derived name="TOF" />
+                      </type>
+                    </variable>
+                    <variable name="tonS2">
+                      <type>
+                        <derived name="TON" />
+                      </type>
+                    </variable>
+                    <variable name="blink">
+                      <type>
+                        <derived name="BLINK" />
+                      </type>
+                    </variable>
+                    <variable name="blinkOld">
+                      <type>
+                        <BOOL />
+                      </type>
+                    </variable>
+                    <variable name="vStartBlinker">
+                      <type>
+                        <BOOL />
+                      </type>
+                    </variable>
+                  </localVars>
+                </interface>
+                <body>
+                  <ST>
+                    <xhtml xmlns="http://www.w3.org/1999/xhtml">vStartBlinker := (CmdFwd OR CmdRev) AND NOT (CmdFwd AND CmdRev);
+Blink(ENABLE := vStartBlinker, TIMELOW:= PulseWidth, TIMEHIGH := PulseWidth);
+
+tonS2(IN := blink.OUT, PT:=PulseWidth/2);
+tofS2(IN := NOT tonS2.Q AND blinkOld, PT:=PulseWidth/2);
+ 
+blinkOld := tonS2.Q;
+
+IF CmdFwd THEN
+	S1 := blink.OUT;
+	S2 := tonS2.Q OR tofS2.Q;
+ELSIF CmdRev THEN
+	S1 := tonS2.Q OR tofS2.Q;
+	S2 := blink.OUT;
+END_IF</xhtml>
+                  </ST>
+                </body>
+                <addData />
+              </pou>
+            </data>
+            <data name="http://www.3s-software.com/plcopenxml/pou" handleUnknown="implementation">
+              <pou name="xc02_GardenWatering_Encoder" pouType="program">
+                <interface>
+                  <localVars>
+                    <variable name="HorizontalAxis">
+                      <type>
+                        <derived name="Servo" />
+                      </type>
+                    </variable>
+                    <variable name="VerticalAxis">
+                      <type>
+                        <derived name="Servo" />
+                      </type>
+                    </variable>
+                    <variable name="rtHIncrement">
+                      <type>
+                        <derived name="R_TRIG" />
+                      </type>
+                    </variable>
+                    <variable name="rtHDecrement">
+                      <type>
+                        <derived name="R_TRIG" />
+                      </type>
+                    </variable>
+                    <variable name="rtVIncrement">
+                      <type>
+                        <derived name="R_TRIG" />
+                      </type>
+                    </variable>
+                    <variable name="rtVDecrement">
+                      <type>
+                        <derived name="R_TRIG" />
+                      </type>
+                    </variable>
+                    <variable name="vHorizontalS1Old">
+                      <type>
+                        <BOOL />
+                      </type>
+                    </variable>
+                    <variable name="vHorizontalS2Old">
+                      <type>
+                        <BOOL />
+                      </type>
+                    </variable>
+                    <variable name="vVerticalS1Old">
+                      <type>
+                        <BOOL />
+                      </type>
+                    </variable>
+                    <variable name="vVerticalS2Old">
+                      <type>
+                        <BOOL />
+                      </type>
+                    </variable>
+                    <variable name="PositionCounterVerticalAxis">
+                      <type>
+                        <derived name="CTUD" />
+                      </type>
+                    </variable>
+                    <variable name="vHorizontalPos">
+                      <type>
+                        <DINT />
+                      </type>
+                    </variable>
+                    <variable name="PositionCounterHorizontalAxis">
+                      <type>
+                        <derived name="CTUD" />
+                      </type>
+                    </variable>
+                    <variable name="vVerticalPos">
+                      <type>
+                        <WORD />
+                      </type>
+                    </variable>
+                    <variable name="vPositionX">
+                      <type>
+                        <REAL />
+                      </type>
+                    </variable>
+                    <variable name="vPositionY">
+                      <type>
+                        <REAL />
+                      </type>
+                    </variable>
+                    <variable name="vHorizontalLimit">
+                      <type>
+                        <BOOL />
+                      </type>
+                    </variable>
+                    <variable name="vVerticalLimit">
+                      <type>
+                        <BOOL />
+                      </type>
+                    </variable>
+                    <variable name="vPlatformActualPosX">
+                      <type>
+                        <REAL />
+                      </type>
+                    </variable>
+                    <variable name="vPlatformActualPosY">
+                      <type>
+                        <REAL />
+                      </type>
+                    </variable>
+                  </localVars>
+                </interface>
+                <body>
+                  <ST>
+                    <xhtml xmlns="http://www.w3.org/1999/xhtml">(* The actual servos that move the watering equipment *)
+vHorizontalLimit := (vPositionX &gt;= 940 AND NOT xgv02.HorizontalLeft)
+				  OR (vPositionX &lt;= 0 AND NOT xgv02.HorizontalRight);
+vVerticalLimit := (vPositionY &gt;= 500 AND NOT xgv02.VerticalUp)
+			    OR (vPositionY &lt;= 0 AND NOT xgv02.VerticalDown);
+
+(* Maximum range - 940 steps *)
+HorizontalAxis(
+	CmdFwd:= xgv02.HorizontalRight AND NOT vHorizontalLimit, 
+	CmdRev:= xgv02.HorizontalLeft AND NOT vHorizontalLimit, 
+	PulseWidth:= T#0.1S , 
+	S1=&gt; xgv02.HorizontalS1, 
+	S2=&gt; xgv02.HorizontalS2);
+	
+(* Maximum range - 500 steps *)	
+VerticalAxis(
+	CmdFwd:= xgv02.VerticalDown AND NOT vVerticalLimit, 
+	CmdRev:= xgv02.VerticalUp AND NOT vVerticalLimit, 
+	PulseWidth:= T#0.1S , 
+	S1=&gt; xgv02.VerticalS1, 
+	S2=&gt; xgv02.VerticalS2);
+
+IF xgv02.HorizontalS1 &lt;&gt; vHorizontalS1Old THEN
+	IF xgv02.HorizontalS1 &lt;&gt; xgv02.HorizontalS2 THEN
+		rtHIncrement(CLK:=TRUE);
+	ELSE
+		rtHDecrement(CLK:=TRUE);
+	END_IF
+ELSE
+	rtHIncrement(CLK:=FALSE);
+	rtHDecrement(CLK:=FALSE);
+END_IF
+
+IF xgv02.VerticalS1 &lt;&gt; vVerticalS1Old THEN
+	IF xgv02.VerticalS1 &lt;&gt; xgv02.VerticalS2 THEN
+		rtVIncrement(CLK:=TRUE);
+	ELSE
+		rtVDecrement(CLK:=TRUE);
+	END_IF
+ELSE
+	rtVIncrement(CLK:=FALSE);
+	rtVDecrement(CLK:=FALSE);
+END_IF
+
+PositionCounterHorizontalAxis(
+	CU:= rtHIncrement.Q, 
+	CD:= rtHDecrement.Q, 
+	CV=&gt; vHorizontalPos);
+
+PositionCounterVerticalAxis(
+	CU:= rtVIncrement.Q, 
+	CD:= rtVDecrement.Q, 
+	CV=&gt; vVerticalPos);
+	
+(* Position of the system in the graphics*)
+(* For every 1 pulses we move 5 px *)
+vPositionX := (DINT_TO_REAL(vHorizontalPos)/ 1) * 5;
+vPositionY := (DINT_TO_REAL(vVerticalPos)/ 1) * 5;
+	
+vHorizontalS1Old := xgv02.HorizontalS1;
+vVerticalS1Old := xgv02.VerticalS1;
+(* This is to counter the starting offset in the graphics *)
+vPlatformActualPosX := 307 + vPositionX;
+vPlatformActualPosY := 279 + vPositionY;
+
+(* Send the platform position to other programs *)
+xgv02.PositionX := vPlatformActualPosX;
+xgv02.PositionY := vPlatformActualPosY;</xhtml>
+                  </ST>
+                </body>
+                <addData />
+              </pou>
+            </data>
+            <data name="http://www.3s-software.com/plcopenxml/libraries" handleUnknown="implementation">
+              <Libraries>
+                <Library Name="#Standard" Namespace="Standard" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="false" LinkAllContent="false" DefaultResolution="Standard, * (System)" />
+                <Library Name="#System_VisuElems" Namespace="VisuElems" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="VisuElems, 3.5.12.0 (System)" ResolverGuid="2717eb6a-dd07-4c66-8d8d-cacebd7b18ae" />
+                <Library Name="#System_VisuElemMeter" Namespace="VisuElemMeter" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="VisuElemMeter, 3.5.12.0 (System)" ResolverGuid="2717eb6a-dd07-4c66-8d8d-cacebd7b18ae" />
+                <Library Name="#System_VisuElemsSpecialControls" Namespace="VisuElemsSpecialControls" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="VisuElemsSpecialControls, 3.5.11.0 (System)" ResolverGuid="2717eb6a-dd07-4c66-8d8d-cacebd7b18ae" />
+                <Library Name="#System_VisuElemsWinControls" Namespace="VisuElemsWinControls" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="VisuElemsWinControls, 3.5.12.0 (System)" ResolverGuid="2717eb6a-dd07-4c66-8d8d-cacebd7b18ae" />
+                <Library Name="#System_VisuElemTextEditor" Namespace="VisuElemTextEditor" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="VisuElemTextEditor, 3.5.11.0 (System)" ResolverGuid="2717eb6a-dd07-4c66-8d8d-cacebd7b18ae" />
+                <Library Name="#System_VisuElemTrace" Namespace="VisuElemTrace" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="VisuElemTrace, 3.5.12.0 (System)" ResolverGuid="2717eb6a-dd07-4c66-8d8d-cacebd7b18ae" />
+                <Library Name="#System_VisuNativeControl" Namespace="VisuNativeControl" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="VisuNativeControl, 3.5.11.0 (System)" ResolverGuid="2717eb6a-dd07-4c66-8d8d-cacebd7b18ae" />
+                <Library Name="#System_VisuElemsAlarm" Namespace="VisuElemsAlarm" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="VisuElemsAlarm, 3.5.12.0 (System)" ResolverGuid="2717eb6a-dd07-4c66-8d8d-cacebd7b18ae" />
+                <Library Name="#System_VisuElemCamDisplayer" Namespace="VisuElemCamDisplayer" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="VisuElemCamDisplayer, 3.5.12.0 (System)" ResolverGuid="2717eb6a-dd07-4c66-8d8d-cacebd7b18ae">
+                  <Parameters>
+                    <Parameter Name="GC_POINTS_PER_CAM" Value="100" />
+                  </Parameters>
+                </Library>
+                <Library Name="#System_VisuElem3DPath" Namespace="VisuElem3DPath" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="VisuElem3DPath, 3.5.10.0 (System)" ResolverGuid="2717eb6a-dd07-4c66-8d8d-cacebd7b18ae">
+                  <Parameters>
+                    <Parameter Name="GC_POINTS_PER_POLYGON" Value="100" />
+                  </Parameters>
+                </Library>
+                <Library Name="#System_VisuElemsDateTime" Namespace="VisuElemsDateTime" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="VisuElemsDateTime, 3.5.11.0 (System)" ResolverGuid="2717eb6a-dd07-4c66-8d8d-cacebd7b18ae" />
+                <Library Name="#System_VisuElemXYChart" Namespace="VisuElemXYChart" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="VisuElemXYChart, 3.5.12.0 (System)" ResolverGuid="2717eb6a-dd07-4c66-8d8d-cacebd7b18ae" />
+                <Library Name="#system_visuinputs" Namespace="visuinputs" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="visuinputs, 3.5.12.0 (system)" ResolverGuid="2717eb6a-dd07-4c66-8d8d-cacebd7b18ae" />
+                <Library Name="TkAutomationLib, 1.0 (TkAutomation)" Namespace="TkAutomationLib" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="false" LinkAllContent="false" />
+                <Library Name="#Util" Namespace="Util" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="false" LinkAllContent="false" DefaultResolution="Util, * (System)" />
+                <Library Name="#Standard64" Namespace="Standard64" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="false" LinkAllContent="false" DefaultResolution="Standard64, * (System)" />
+                <Library Name="#VisuDialogs" Namespace="VisuDialogs" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="false" LinkAllContent="false" DefaultResolution="VisuDialogs, * (System)" />
+                <Library Name="#IoStandard" Namespace="IoStandard" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="true" DefaultResolution="IoStandard, 3.5.10.0 (System)" />
+                <Library Name="#3SLicense" Namespace="_3S_LICENSE" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="3SLicense, 0.0.0.0 (3S - Smart Software Solutions GmbH)" ResolverGuid="97c3b452-d9fa-4ac2-9d0c-3d420aa6d95b" />
+                <Library Name="#IecVarAccess" Namespace="IecVarAccessLibrary" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="IecVarAccess, 3.3.1.20 (System)" />
+                <addData />
+              </Libraries>
+            </data>
+          </addData>
+        </resource>
+        <addData>
+          <data name="Device" handleUnknown="discard">
+            <Device xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="">
+              <DeviceType>
+                <DeviceIdentification>
+                  <Type>4097</Type>
+                  <Id>0000 000a</Id>
+                  <Version>3.5.14.10</Version>
+                </DeviceIdentification>
+                <Connector moduleType="256" interface="Common.PCI" connectorId="0">
+                  <HostParameterSet />
+                </Connector>
+                <Connector moduleType="769" interface="SafetyInterface" connectorId="1">
+                  <HostParameterSet />
+                </Connector>
+                <DeviceParameterSet />
+              </DeviceType>
+            </Device>
+          </data>
+          <data name="configurations" handleUnknown="discard">
+            <configurations />
+          </data>
+        </addData>
+      </configuration>
+    </configurations>
+  </instances>
+  <addData>
+    <data name="http://www.3s-software.com/plcopenxml/libraries" handleUnknown="implementation">
+      <Libraries>
+        <Library Name="#System_VisuElems" Namespace="VisuElems" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="VisuElems, 3.5.12.0 (System)" ResolverGuid="2717eb6a-dd07-4c66-8d8d-cacebd7b18ae" />
+        <Library Name="#System_VisuElemMeter" Namespace="VisuElemMeter" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="VisuElemMeter, 3.5.12.0 (System)" ResolverGuid="2717eb6a-dd07-4c66-8d8d-cacebd7b18ae" />
+        <Library Name="#System_VisuElemsSpecialControls" Namespace="VisuElemsSpecialControls" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="VisuElemsSpecialControls, 3.5.11.0 (System)" ResolverGuid="2717eb6a-dd07-4c66-8d8d-cacebd7b18ae" />
+        <Library Name="#System_VisuElemsWinControls" Namespace="VisuElemsWinControls" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="VisuElemsWinControls, 3.5.12.0 (System)" ResolverGuid="2717eb6a-dd07-4c66-8d8d-cacebd7b18ae" />
+        <Library Name="#System_VisuElemTextEditor" Namespace="VisuElemTextEditor" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="VisuElemTextEditor, 3.5.11.0 (System)" ResolverGuid="2717eb6a-dd07-4c66-8d8d-cacebd7b18ae" />
+        <Library Name="#System_VisuElemTrace" Namespace="VisuElemTrace" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="VisuElemTrace, 3.5.12.0 (System)" ResolverGuid="2717eb6a-dd07-4c66-8d8d-cacebd7b18ae" />
+        <Library Name="#System_VisuNativeControl" Namespace="VisuNativeControl" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="VisuNativeControl, 3.5.11.0 (System)" ResolverGuid="2717eb6a-dd07-4c66-8d8d-cacebd7b18ae" />
+        <Library Name="#System_VisuElemsAlarm" Namespace="VisuElemsAlarm" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="VisuElemsAlarm, 3.5.12.0 (System)" ResolverGuid="2717eb6a-dd07-4c66-8d8d-cacebd7b18ae" />
+        <Library Name="#System_VisuElemCamDisplayer" Namespace="VisuElemCamDisplayer" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="VisuElemCamDisplayer, 3.5.12.0 (System)" ResolverGuid="2717eb6a-dd07-4c66-8d8d-cacebd7b18ae">
+          <Parameters>
+            <Parameter Name="GC_POINTS_PER_CAM" Value="100" />
+          </Parameters>
+        </Library>
+        <Library Name="#System_VisuElem3DPath" Namespace="VisuElem3DPath" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="VisuElem3DPath, 3.5.10.0 (System)" ResolverGuid="2717eb6a-dd07-4c66-8d8d-cacebd7b18ae">
+          <Parameters>
+            <Parameter Name="GC_POINTS_PER_POLYGON" Value="100" />
+          </Parameters>
+        </Library>
+        <Library Name="#System_VisuElemsDateTime" Namespace="VisuElemsDateTime" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="VisuElemsDateTime, 3.5.11.0 (System)" ResolverGuid="2717eb6a-dd07-4c66-8d8d-cacebd7b18ae" />
+        <Library Name="#System_VisuElemXYChart" Namespace="VisuElemXYChart" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="VisuElemXYChart, 3.5.12.0 (System)" ResolverGuid="2717eb6a-dd07-4c66-8d8d-cacebd7b18ae" />
+        <Library Name="#system_visuinputs" Namespace="visuinputs" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="visuinputs, 3.5.12.0 (system)" ResolverGuid="2717eb6a-dd07-4c66-8d8d-cacebd7b18ae" />
+        <Library Name="VisuSymbols, 3.5.10.0 (System)" Namespace="VisuSymbols" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="false" LinkAllContent="false" />
+        <addData />
+      </Libraries>
+    </data>
+  </addData>
+</project>

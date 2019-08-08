@@ -8,79 +8,79 @@ VAR
 	Watering : TON; (**)
 	ActuatorOverFlower : CollisionDetection; (**)
 END_VAR
-STCODE
-(* Control from the graphics *)
-IF NOT xgv02.Remote THEN
-	xgv02.HorizontalLeft := xgv02.HMIDownLeft OR xgv02.HMILeft OR xgv02.HMIUpLeft;
-	xgv02.HorizontalRight := xgv02.HMIDownRight OR xgv02.HMIRight OR xgv02.HMIUpRight;
-	xgv02.VerticalUp := xgv02.HMIUpLeft OR xgv02.HMIUp OR xgv02.HMIUpRight;
-	xgv02.VerticalDown := xgv02.HMIDownLeft OR xgv02.HMIDown OR xgv02.HMIDownRight;
-	xgv02.OpenWaterValve := xgv02.HMIOpenWater;
-END_IF;
-
-(* Coordinate control *)
-IF xgv02.Remote AND vManual THEN
-	vXCMD := xgv02.HMICoorXCmd;
-	vYCMD := xgv02.HMICoorYCmd;
-ELSE
-	xgv02.HMICoorXCmd := xgv02.PositionX;
-	xgv02.HMICoorYCmd := xgv02.PositionY;
-END_IF
-
-(* Full automatic algorithm *)
-IF xgv02.Remote AND NOT vManual THEN
-	vXCMD := vFlowersXY[i,0]+ 30;
-	vYCMD := vFlowersXY[i,1]+ 30;
-	
-	ActuatorOverFlower(
-		xcor1:= xgv02.PositionX, 
-		ycor1:= xgv02.PositionY, 
-		height1:= 10, 
-		width1:= 10, 
-		xcor2:= vFlowersXY[i,0], 
-		ycor2:= vFlowersXY[i,1], 
-		height2:= 70, 
-		width2:= 70);
-		
-	IF 	ActuatorOverFlower.isCollision THEN
-		Watering(IN:=TRUE, PT:=T#3S);
-		xgv02.OpenWaterValve := TRUE;
+IMPLEMENTATION
+	(* Control from the graphics *)
+	IF NOT xgv02.Remote THEN
+		xgv02.HorizontalLeft := xgv02.HMIDownLeft OR xgv02.HMILeft OR xgv02.HMIUpLeft;
+		xgv02.HorizontalRight := xgv02.HMIDownRight OR xgv02.HMIRight OR xgv02.HMIUpRight;
+		xgv02.VerticalUp := xgv02.HMIUpLeft OR xgv02.HMIUp OR xgv02.HMIUpRight;
+		xgv02.VerticalDown := xgv02.HMIDownLeft OR xgv02.HMIDown OR xgv02.HMIDownRight;
+		xgv02.OpenWaterValve := xgv02.HMIOpenWater;
 	END_IF;
-	IF ActuatorOverFlower.isCollision AND Watering.Q THEN
-		Watering(IN := FALSE);
-		xgv02.OpenWaterValve:= FALSE;
-		i:= i + 1;	
+	
+	(* Coordinate control *)
+	IF xgv02.Remote AND vManual THEN
+		vXCMD := xgv02.HMICoorXCmd;
+		vYCMD := xgv02.HMICoorYCmd;
+	ELSE
+		xgv02.HMICoorXCmd := xgv02.PositionX;
+		xgv02.HMICoorYCmd := xgv02.PositionY;
 	END_IF
-END_IF
-IF i = 59 THEN
-	i := 0;
-END_IF
-
-(* Actual motor movement section *)
-IF xgv02.Remote THEN
-	IF vXCMD > xgv02.PositionX - 2 THEN
-		xgv02.HorizontalLeft := FALSE;
-		xgv02.HorizontalRight := TRUE;
-	ELSIF vXCMD < xgv02.PositionX + 2 THEN
-		xgv02.HorizontalLeft := TRUE;
-		xgv02.HorizontalRight := FALSE;
-	ELSE
-		xgv02.HorizontalLeft := FALSE;
-		xgv02.HorizontalRight := FALSE;
+	
+	(* Full automatic algorithm *)
+	IF xgv02.Remote AND NOT vManual THEN
+		vXCMD := vFlowersXY[i,0]+ 30;
+		vYCMD := vFlowersXY[i,1]+ 30;
+		
+		ActuatorOverFlower(
+			xcor1:= xgv02.PositionX, 
+			ycor1:= xgv02.PositionY, 
+			height1:= 10, 
+			width1:= 10, 
+			xcor2:= vFlowersXY[i,0], 
+			ycor2:= vFlowersXY[i,1], 
+			height2:= 70, 
+			width2:= 70);
+			
+		IF 	ActuatorOverFlower.isCollision THEN
+			Watering(IN:=TRUE, PT:=T#3S);
+			xgv02.OpenWaterValve := TRUE;
+		END_IF;
+		IF ActuatorOverFlower.isCollision AND Watering.Q THEN
+			Watering(IN := FALSE);
+			xgv02.OpenWaterValve:= FALSE;
+			i:= i + 1;	
+		END_IF
+	END_IF
+	IF i = 59 THEN
+		i := 0;
+	END_IF
+	
+	(* Actual motor movement section *)
+	IF xgv02.Remote THEN
+		IF vXCMD > xgv02.PositionX - 2 THEN
+			xgv02.HorizontalLeft := FALSE;
+			xgv02.HorizontalRight := TRUE;
+		ELSIF vXCMD < xgv02.PositionX + 2 THEN
+			xgv02.HorizontalLeft := TRUE;
+			xgv02.HorizontalRight := FALSE;
+		ELSE
+			xgv02.HorizontalLeft := FALSE;
+			xgv02.HorizontalRight := FALSE;
+		END_IF;
+		
+		IF vYCMD < xgv02.PositionY - 2THEN
+			xgv02.VerticalUp := TRUE;
+			xgv02.VerticalDown := FALSE;
+		ELSIF vYCMD > xgv02.PositionY + 2 THEN
+			xgv02.VerticalUp := FALSE;
+			xgv02.VerticalDown := TRUE;
+		ELSE
+			xgv02.VerticalUp := FALSE;
+			xgv02.VerticalDown := FALSE;
+		END_IF;
 	END_IF;
 	
-	IF vYCMD < xgv02.PositionY - 2THEN
-		xgv02.VerticalUp := TRUE;
-		xgv02.VerticalDown := FALSE;
-	ELSIF vYCMD > xgv02.PositionY + 2 THEN
-		xgv02.VerticalUp := FALSE;
-		xgv02.VerticalDown := TRUE;
-	ELSE
-		xgv02.VerticalUp := FALSE;
-		xgv02.VerticalDown := FALSE;
-	END_IF;
-END_IF;
+		
 
-	
-
-END_STCODE
+END_IMPLEMENTATION

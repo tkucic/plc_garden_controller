@@ -7,33 +7,33 @@ VAR
 	i : INT; (**)
 	vFlowersXY : ARRAY [0..59][0..1] OF INT := ['276', '253', '381', '253', '486', '253', '591', '253', '696', '253', '801', '253', '906', '253', '1011', '253', '1116', '253', '1221', '253', '276', '354', '381', '354', '486', '354', '591', '354', '696', '354', '801', '354', '906', '354', '1011', '354', '1116', '354', '1221', '354', '276', '455', '381', '455', '486', '455', '591', '455', '696', '455', '801', '455', '906', '455', '1011', '455', '1116', '455', '1221', '455', '276', '556', '381', '556', '486', '556', '591', '556', '696', '556', '801', '556', '906', '556', '1011', '556', '1116', '556', '1221', '556', '276', '667', '381', '667', '486', '667', '591', '667', '696', '667', '801', '667', '906', '667', '1011', '667', '1116', '667', '1221', '667', '276', '768', '381', '768', '486', '768', '591', '768', '696', '768', '801', '768', '906', '768', '1011', '768', '1116', '768', '1221', '768']; (**)
 END_VAR
-STCODE
-(* If the plaform covers the flower it will reset its color to initial *)
-FOR i:=0 TO 59 BY 1 DO
-	CollisionDetector(
-		xcor1:= xgv02.PositionX, 
-		ycor1:= xgv02.PositionY, 
-		height1:= 10, 
-		width1:= 10, 
-		xcor2:= vFlowersXY[i,0], 
-		ycor2:= vFlowersXY[i,1], 
-		height2:= 70 , 
-		width2:= 70);
-	IF CollisionDetector.isCollision AND xgv02.OpenWaterValve THEN
-		vFlowers[i] := 16#FF73B98B;
-	END_IF
-END_FOR
-
-FlowerDeathTimer(IN:=TRUE, PT:=T#60S);
-(* Flowers fade its color *)
-IF FlowerDeathTimer.Q THEN
+IMPLEMENTATION
+	(* If the plaform covers the flower it will reset its color to initial *)
 	FOR i:=0 TO 59 BY 1 DO
-		IF vFlowers[i] > 16#0073B98B THEN
-			vFlowers[i] := vFlowers[i] - 16#01000000;
-		END_IF;
+		CollisionDetector(
+			xcor1:= xgv02.PositionX, 
+			ycor1:= xgv02.PositionY, 
+			height1:= 10, 
+			width1:= 10, 
+			xcor2:= vFlowersXY[i,0], 
+			ycor2:= vFlowersXY[i,1], 
+			height2:= 70 , 
+			width2:= 70);
+		IF CollisionDetector.isCollision AND xgv02.OpenWaterValve THEN
+			vFlowers[i] := 16#FF73B98B;
+		END_IF
 	END_FOR
-	FlowerDeathTimer.IN := FALSE;
-END_IF;
+	
+	FlowerDeathTimer(IN:=TRUE, PT:=T#60S);
+	(* Flowers fade its color *)
+	IF FlowerDeathTimer.Q THEN
+		FOR i:=0 TO 59 BY 1 DO
+			IF vFlowers[i] > 16#0073B98B THEN
+				vFlowers[i] := vFlowers[i] - 16#01000000;
+			END_IF;
+		END_FOR
+		FlowerDeathTimer.IN := FALSE;
+	END_IF;
+	
 
-
-END_STCODE
+END_IMPLEMENTATION

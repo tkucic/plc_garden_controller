@@ -15,20 +15,21 @@ VAR
 	blinkOld : BOOL; (**)
 	vStartBlinker : BOOL; (**)
 END_VAR
-STCODE
-vStartBlinker := (CmdFwd OR CmdRev) AND NOT (CmdFwd AND CmdRev);
-Blink(ENABLE := vStartBlinker, TIMELOW:= PulseWidth, TIMEHIGH := PulseWidth);
+IMPLEMENTATION
+	vStartBlinker := (CmdFwd OR CmdRev) AND NOT (CmdFwd AND CmdRev);
+	Blink(ENABLE := vStartBlinker, TIMELOW:= PulseWidth, TIMEHIGH := PulseWidth);
+	
+	tonS2(IN := blink.OUT, PT:=PulseWidth/2);
+	tofS2(IN := NOT tonS2.Q AND blinkOld, PT:=PulseWidth/2);
+	 
+	blinkOld := tonS2.Q;
+	
+	IF CmdFwd THEN
+		S1 := blink.OUT;
+		S2 := tonS2.Q OR tofS2.Q;
+	ELSIF CmdRev THEN
+		S1 := tonS2.Q OR tofS2.Q;
+		S2 := blink.OUT;
+	END_IF
 
-tonS2(IN := blink.OUT, PT:=PulseWidth/2);
-tofS2(IN := NOT tonS2.Q AND blinkOld, PT:=PulseWidth/2);
- 
-blinkOld := tonS2.Q;
-
-IF CmdFwd THEN
-	S1 := blink.OUT;
-	S2 := tonS2.Q OR tofS2.Q;
-ELSIF CmdRev THEN
-	S1 := tonS2.Q OR tofS2.Q;
-	S2 := blink.OUT;
-END_IF
-END_STCODE
+END_IMPLEMENTATION

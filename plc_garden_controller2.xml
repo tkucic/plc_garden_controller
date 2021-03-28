@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <project xmlns="http://www.plcopen.org/xml/tc6_0200">
-  <fileHeader companyName="" productName="CODESYS" productVersion="CODESYS V3.5 SP16" creationDateTime="2021-03-28T21:10:31.0673312" />
-  <contentHeader name="plc_garden_controller2.project" modificationDateTime="2021-03-28T21:10:28.3883873">
+  <fileHeader companyName="" productName="CODESYS" productVersion="CODESYS V3.5 SP16" creationDateTime="2021-03-28T22:12:07.3741889" />
+  <contentHeader name="plc_garden_controller2.project" modificationDateTime="2021-03-28T22:12:03.5914449">
     <coordinateInfo>
       <fbd>
         <scaling x="1" y="1" />
@@ -2032,7 +2032,702 @@ pulse := edge.Q;</xhtml>
             </data>
             <data name="http://www.3s-software.com/plcopenxml/pou" handleUnknown="implementation">
               <pou name="main" pouType="program">
-                <interface />
+                <interface>
+                  <localVars>
+                    <variable name="vGarden1_FlowerLocations">
+                      <type>
+                        <array>
+                          <dimension lower="0" upper="24" />
+                          <dimension lower="0" upper="1" />
+                          <baseType>
+                            <INT />
+                          </baseType>
+                        </array>
+                      </type>
+                      <initialValue>
+                        <arrayValue>
+                          <value>
+                            <simpleValue value="365" />
+                          </value>
+                          <value>
+                            <simpleValue value="320" />
+                          </value>
+                          <value>
+                            <simpleValue value="285" />
+                          </value>
+                          <value>
+                            <simpleValue value="320" />
+                          </value>
+                          <value>
+                            <simpleValue value="205" />
+                          </value>
+                          <value>
+                            <simpleValue value="320" />
+                          </value>
+                          <value>
+                            <simpleValue value="125" />
+                          </value>
+                          <value>
+                            <simpleValue value="320" />
+                          </value>
+                          <value>
+                            <simpleValue value="45" />
+                          </value>
+                          <value>
+                            <simpleValue value="320" />
+                          </value>
+                          <value>
+                            <simpleValue value="365" />
+                          </value>
+                          <value>
+                            <simpleValue value="240" />
+                          </value>
+                          <value>
+                            <simpleValue value="285" />
+                          </value>
+                          <value>
+                            <simpleValue value="240" />
+                          </value>
+                          <value>
+                            <simpleValue value="205" />
+                          </value>
+                          <value>
+                            <simpleValue value="240" />
+                          </value>
+                          <value>
+                            <simpleValue value="125" />
+                          </value>
+                          <value>
+                            <simpleValue value="240" />
+                          </value>
+                          <value>
+                            <simpleValue value="45" />
+                          </value>
+                          <value>
+                            <simpleValue value="240" />
+                          </value>
+                          <value>
+                            <simpleValue value="365" />
+                          </value>
+                          <value>
+                            <simpleValue value="160" />
+                          </value>
+                          <value>
+                            <simpleValue value="285" />
+                          </value>
+                          <value>
+                            <simpleValue value="160" />
+                          </value>
+                          <value>
+                            <simpleValue value="205" />
+                          </value>
+                          <value>
+                            <simpleValue value="160" />
+                          </value>
+                          <value>
+                            <simpleValue value="125" />
+                          </value>
+                          <value>
+                            <simpleValue value="160" />
+                          </value>
+                          <value>
+                            <simpleValue value="45" />
+                          </value>
+                          <value>
+                            <simpleValue value="160" />
+                          </value>
+                          <value>
+                            <simpleValue value="365" />
+                          </value>
+                          <value>
+                            <simpleValue value="80" />
+                          </value>
+                          <value>
+                            <simpleValue value="285" />
+                          </value>
+                          <value>
+                            <simpleValue value="80" />
+                          </value>
+                          <value>
+                            <simpleValue value="205" />
+                          </value>
+                          <value>
+                            <simpleValue value="80" />
+                          </value>
+                          <value>
+                            <simpleValue value="125" />
+                          </value>
+                          <value>
+                            <simpleValue value="80" />
+                          </value>
+                          <value>
+                            <simpleValue value="45" />
+                          </value>
+                          <value>
+                            <simpleValue value="80" />
+                          </value>
+                          <value>
+                            <simpleValue value="365" />
+                          </value>
+                          <value>
+                            <simpleValue value="0" />
+                          </value>
+                          <value>
+                            <simpleValue value="285" />
+                          </value>
+                          <value>
+                            <simpleValue value="0" />
+                          </value>
+                          <value>
+                            <simpleValue value="205" />
+                          </value>
+                          <value>
+                            <simpleValue value="0" />
+                          </value>
+                          <value>
+                            <simpleValue value="125" />
+                          </value>
+                          <value>
+                            <simpleValue value="0" />
+                          </value>
+                          <value>
+                            <simpleValue value="45" />
+                          </value>
+                          <value>
+                            <simpleValue value="0" />
+                          </value>
+                        </arrayValue>
+                      </initialValue>
+                    </variable>
+                    <variable name="vGarden2_FlowerLocations">
+                      <type>
+                        <array>
+                          <dimension lower="0" upper="24" />
+                          <dimension lower="0" upper="1" />
+                          <baseType>
+                            <INT />
+                          </baseType>
+                        </array>
+                      </type>
+                      <initialValue>
+                        <arrayValue>
+                          <value>
+                            <simpleValue value="50" />
+                          </value>
+                          <value>
+                            <simpleValue value="320" />
+                          </value>
+                          <value>
+                            <simpleValue value="130" />
+                          </value>
+                          <value>
+                            <simpleValue value="320" />
+                          </value>
+                          <value>
+                            <simpleValue value="210" />
+                          </value>
+                          <value>
+                            <simpleValue value="320" />
+                          </value>
+                          <value>
+                            <simpleValue value="290" />
+                          </value>
+                          <value>
+                            <simpleValue value="320" />
+                          </value>
+                          <value>
+                            <simpleValue value="370" />
+                          </value>
+                          <value>
+                            <simpleValue value="320" />
+                          </value>
+                          <value>
+                            <simpleValue value="50" />
+                          </value>
+                          <value>
+                            <simpleValue value="260" />
+                          </value>
+                          <value>
+                            <simpleValue value="130" />
+                          </value>
+                          <value>
+                            <simpleValue value="260" />
+                          </value>
+                          <value>
+                            <simpleValue value="210" />
+                          </value>
+                          <value>
+                            <simpleValue value="260" />
+                          </value>
+                          <value>
+                            <simpleValue value="290" />
+                          </value>
+                          <value>
+                            <simpleValue value="260" />
+                          </value>
+                          <value>
+                            <simpleValue value="370" />
+                          </value>
+                          <value>
+                            <simpleValue value="260" />
+                          </value>
+                          <value>
+                            <simpleValue value="50" />
+                          </value>
+                          <value>
+                            <simpleValue value="180" />
+                          </value>
+                          <value>
+                            <simpleValue value="130" />
+                          </value>
+                          <value>
+                            <simpleValue value="180" />
+                          </value>
+                          <value>
+                            <simpleValue value="210" />
+                          </value>
+                          <value>
+                            <simpleValue value="180" />
+                          </value>
+                          <value>
+                            <simpleValue value="290" />
+                          </value>
+                          <value>
+                            <simpleValue value="180" />
+                          </value>
+                          <value>
+                            <simpleValue value="370" />
+                          </value>
+                          <value>
+                            <simpleValue value="180" />
+                          </value>
+                          <value>
+                            <simpleValue value="50" />
+                          </value>
+                          <value>
+                            <simpleValue value="100" />
+                          </value>
+                          <value>
+                            <simpleValue value="130" />
+                          </value>
+                          <value>
+                            <simpleValue value="100" />
+                          </value>
+                          <value>
+                            <simpleValue value="210" />
+                          </value>
+                          <value>
+                            <simpleValue value="100" />
+                          </value>
+                          <value>
+                            <simpleValue value="290" />
+                          </value>
+                          <value>
+                            <simpleValue value="100" />
+                          </value>
+                          <value>
+                            <simpleValue value="370" />
+                          </value>
+                          <value>
+                            <simpleValue value="100" />
+                          </value>
+                          <value>
+                            <simpleValue value="50" />
+                          </value>
+                          <value>
+                            <simpleValue value="20" />
+                          </value>
+                          <value>
+                            <simpleValue value="130" />
+                          </value>
+                          <value>
+                            <simpleValue value="20" />
+                          </value>
+                          <value>
+                            <simpleValue value="210" />
+                          </value>
+                          <value>
+                            <simpleValue value="20" />
+                          </value>
+                          <value>
+                            <simpleValue value="290" />
+                          </value>
+                          <value>
+                            <simpleValue value="20" />
+                          </value>
+                          <value>
+                            <simpleValue value="370" />
+                          </value>
+                          <value>
+                            <simpleValue value="20" />
+                          </value>
+                        </arrayValue>
+                      </initialValue>
+                    </variable>
+                    <variable name="vGarden3_FlowerLocations">
+                      <type>
+                        <array>
+                          <dimension lower="0" upper="24" />
+                          <dimension lower="0" upper="1" />
+                          <baseType>
+                            <INT />
+                          </baseType>
+                        </array>
+                      </type>
+                      <initialValue>
+                        <arrayValue>
+                          <value>
+                            <simpleValue value="358" />
+                          </value>
+                          <value>
+                            <simpleValue value="0" />
+                          </value>
+                          <value>
+                            <simpleValue value="278" />
+                          </value>
+                          <value>
+                            <simpleValue value="0" />
+                          </value>
+                          <value>
+                            <simpleValue value="198" />
+                          </value>
+                          <value>
+                            <simpleValue value="0" />
+                          </value>
+                          <value>
+                            <simpleValue value="118" />
+                          </value>
+                          <value>
+                            <simpleValue value="0" />
+                          </value>
+                          <value>
+                            <simpleValue value="38" />
+                          </value>
+                          <value>
+                            <simpleValue value="0" />
+                          </value>
+                          <value>
+                            <simpleValue value="358" />
+                          </value>
+                          <value>
+                            <simpleValue value="80" />
+                          </value>
+                          <value>
+                            <simpleValue value="278" />
+                          </value>
+                          <value>
+                            <simpleValue value="80" />
+                          </value>
+                          <value>
+                            <simpleValue value="198" />
+                          </value>
+                          <value>
+                            <simpleValue value="80" />
+                          </value>
+                          <value>
+                            <simpleValue value="118" />
+                          </value>
+                          <value>
+                            <simpleValue value="80" />
+                          </value>
+                          <value>
+                            <simpleValue value="38" />
+                          </value>
+                          <value>
+                            <simpleValue value="80" />
+                          </value>
+                          <value>
+                            <simpleValue value="358" />
+                          </value>
+                          <value>
+                            <simpleValue value="160" />
+                          </value>
+                          <value>
+                            <simpleValue value="278" />
+                          </value>
+                          <value>
+                            <simpleValue value="160" />
+                          </value>
+                          <value>
+                            <simpleValue value="198" />
+                          </value>
+                          <value>
+                            <simpleValue value="160" />
+                          </value>
+                          <value>
+                            <simpleValue value="118" />
+                          </value>
+                          <value>
+                            <simpleValue value="160" />
+                          </value>
+                          <value>
+                            <simpleValue value="38" />
+                          </value>
+                          <value>
+                            <simpleValue value="160" />
+                          </value>
+                          <value>
+                            <simpleValue value="358" />
+                          </value>
+                          <value>
+                            <simpleValue value="240" />
+                          </value>
+                          <value>
+                            <simpleValue value="278" />
+                          </value>
+                          <value>
+                            <simpleValue value="240" />
+                          </value>
+                          <value>
+                            <simpleValue value="198" />
+                          </value>
+                          <value>
+                            <simpleValue value="240" />
+                          </value>
+                          <value>
+                            <simpleValue value="118" />
+                          </value>
+                          <value>
+                            <simpleValue value="240" />
+                          </value>
+                          <value>
+                            <simpleValue value="38" />
+                          </value>
+                          <value>
+                            <simpleValue value="240" />
+                          </value>
+                          <value>
+                            <simpleValue value="358" />
+                          </value>
+                          <value>
+                            <simpleValue value="320" />
+                          </value>
+                          <value>
+                            <simpleValue value="278" />
+                          </value>
+                          <value>
+                            <simpleValue value="320" />
+                          </value>
+                          <value>
+                            <simpleValue value="198" />
+                          </value>
+                          <value>
+                            <simpleValue value="320" />
+                          </value>
+                          <value>
+                            <simpleValue value="118" />
+                          </value>
+                          <value>
+                            <simpleValue value="320" />
+                          </value>
+                          <value>
+                            <simpleValue value="38" />
+                          </value>
+                          <value>
+                            <simpleValue value="320" />
+                          </value>
+                        </arrayValue>
+                      </initialValue>
+                    </variable>
+                    <variable name="vGarden4_FlowerLocations">
+                      <type>
+                        <array>
+                          <dimension lower="0" upper="24" />
+                          <dimension lower="0" upper="1" />
+                          <baseType>
+                            <INT />
+                          </baseType>
+                        </array>
+                      </type>
+                      <initialValue>
+                        <arrayValue>
+                          <value>
+                            <simpleValue value="40" />
+                          </value>
+                          <value>
+                            <simpleValue value="0" />
+                          </value>
+                          <value>
+                            <simpleValue value="120" />
+                          </value>
+                          <value>
+                            <simpleValue value="0" />
+                          </value>
+                          <value>
+                            <simpleValue value="200" />
+                          </value>
+                          <value>
+                            <simpleValue value="0" />
+                          </value>
+                          <value>
+                            <simpleValue value="280" />
+                          </value>
+                          <value>
+                            <simpleValue value="0" />
+                          </value>
+                          <value>
+                            <simpleValue value="360" />
+                          </value>
+                          <value>
+                            <simpleValue value="0" />
+                          </value>
+                          <value>
+                            <simpleValue value="40" />
+                          </value>
+                          <value>
+                            <simpleValue value="80" />
+                          </value>
+                          <value>
+                            <simpleValue value="120" />
+                          </value>
+                          <value>
+                            <simpleValue value="80" />
+                          </value>
+                          <value>
+                            <simpleValue value="200" />
+                          </value>
+                          <value>
+                            <simpleValue value="80" />
+                          </value>
+                          <value>
+                            <simpleValue value="280" />
+                          </value>
+                          <value>
+                            <simpleValue value="80" />
+                          </value>
+                          <value>
+                            <simpleValue value="360" />
+                          </value>
+                          <value>
+                            <simpleValue value="80" />
+                          </value>
+                          <value>
+                            <simpleValue value="40" />
+                          </value>
+                          <value>
+                            <simpleValue value="160" />
+                          </value>
+                          <value>
+                            <simpleValue value="120" />
+                          </value>
+                          <value>
+                            <simpleValue value="160" />
+                          </value>
+                          <value>
+                            <simpleValue value="200" />
+                          </value>
+                          <value>
+                            <simpleValue value="160" />
+                          </value>
+                          <value>
+                            <simpleValue value="280" />
+                          </value>
+                          <value>
+                            <simpleValue value="160" />
+                          </value>
+                          <value>
+                            <simpleValue value="360" />
+                          </value>
+                          <value>
+                            <simpleValue value="160" />
+                          </value>
+                          <value>
+                            <simpleValue value="40" />
+                          </value>
+                          <value>
+                            <simpleValue value="240" />
+                          </value>
+                          <value>
+                            <simpleValue value="120" />
+                          </value>
+                          <value>
+                            <simpleValue value="240" />
+                          </value>
+                          <value>
+                            <simpleValue value="200" />
+                          </value>
+                          <value>
+                            <simpleValue value="240" />
+                          </value>
+                          <value>
+                            <simpleValue value="280" />
+                          </value>
+                          <value>
+                            <simpleValue value="240" />
+                          </value>
+                          <value>
+                            <simpleValue value="360" />
+                          </value>
+                          <value>
+                            <simpleValue value="240" />
+                          </value>
+                          <value>
+                            <simpleValue value="40" />
+                          </value>
+                          <value>
+                            <simpleValue value="320" />
+                          </value>
+                          <value>
+                            <simpleValue value="120" />
+                          </value>
+                          <value>
+                            <simpleValue value="320" />
+                          </value>
+                          <value>
+                            <simpleValue value="200" />
+                          </value>
+                          <value>
+                            <simpleValue value="320" />
+                          </value>
+                          <value>
+                            <simpleValue value="280" />
+                          </value>
+                          <value>
+                            <simpleValue value="320" />
+                          </value>
+                          <value>
+                            <simpleValue value="360" />
+                          </value>
+                          <value>
+                            <simpleValue value="320" />
+                          </value>
+                        </arrayValue>
+                      </initialValue>
+                    </variable>
+                    <variable name="garden1AutoWater">
+                      <type>
+                        <derived name="AutomaticFlowerWatering" />
+                      </type>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Not optimized, going left to right</xhtml>
+                      </documentation>
+                    </variable>
+                    <variable name="garden2AutoWater">
+                      <type>
+                        <derived name="AutomaticFlowerWatering" />
+                      </type>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Not optimized, going top to bottom</xhtml>
+                      </documentation>
+                    </variable>
+                    <variable name="garden3AutoWater">
+                      <type>
+                        <derived name="AutomaticFlowerWatering" />
+                      </type>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Optimized?</xhtml>
+                      </documentation>
+                    </variable>
+                    <variable name="garden4AutoWater">
+                      <type>
+                        <derived name="AutomaticFlowerWatering" />
+                      </type>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Optimized?</xhtml>
+                      </documentation>
+                    </variable>
+                  </localVars>
+                </interface>
                 <actions>
                   <action name="CONTROL_GARDEN1">
                     <body>
@@ -2048,13 +2743,14 @@ pulse := edge.Q;</xhtml>
 	gIO.Garden1_WaterTankOpenCmd := gIO.Garden1_HMI.OpenWaterValve;
 ELSE
 	(*Automatic control*)
-	gIO.Garden1_ServoX_CW := (gIO.Garden1_ServoX_Offset &lt; 404) AND NOT gIO.Garden1_ServoX_CCW;
-	gIO.Garden1_ServoX_CCW := (gIO.Garden1_ServoX_Offset &gt; 0) AND NOT gIO.Garden1_ServoX_CW;
-	
-	gIO.Garden1_ServoY_CW := (gIO.Garden1_ServoY_Offset &lt; 320) AND NOT gIO.Garden1_ServoY_CCW;
-	gIO.Garden1_ServoY_CCW := (gIO.Garden1_ServoY_Offset &gt; 0) AND NOT gIO.Garden1_ServoY_CW;
-	
-	gIO.Garden1_WaterTankOpenCmd := gIO.Garden1_ServoY_CW;
+	garden1AutoWater(flowerLocations:=vGarden1_FlowerLocations,
+		xAxis := gIO.Garden1_ServoX_Offset,
+		yAxis := gIO.Garden1_ServoY_Offset,
+		servoX_CW =&gt; gIO.Garden1_ServoX_CW,
+		servoX_CCW =&gt; gIO.Garden1_ServoX_CCW,
+		servoY_CW =&gt; gIO.Garden1_ServoY_CW,
+		servoY_CCW =&gt; gIO.Garden1_ServoY_CCW,
+		waterTankOpenCmd =&gt; gIO.Garden1_WaterTankOpenCmd);
 END_IF</xhtml>
                       </ST>
                     </body>
@@ -2079,13 +2775,14 @@ END_IF</xhtml>
 	gIO.Garden2_WaterTankOpenCmd := gIO.Garden2_HMI.OpenWaterValve;
 ELSE
 	(*Automatic control*)
-	gIO.Garden2_ServoX_CW := (gIO.Garden2_ServoX_Offset &lt; 404) AND NOT gIO.Garden2_ServoX_CCW;
-	gIO.Garden2_ServoX_CCW := (gIO.Garden2_ServoX_Offset &gt; 0) AND NOT gIO.Garden2_ServoX_CW;
-	
-	gIO.Garden2_ServoY_CW := (gIO.Garden2_ServoY_Offset &lt; 320) AND NOT gIO.Garden2_ServoY_CCW;
-	gIO.Garden2_ServoY_CCW := (gIO.Garden2_ServoY_Offset &gt; 0) AND NOT gIO.Garden2_ServoY_CW;
-	
-	gIO.Garden2_WaterTankOpenCmd := gIO.Garden2_ServoY_CW;
+	garden2AutoWater(flowerLocations:=vGarden2_FlowerLocations,
+		xAxis := gIO.Garden2_ServoX_Offset,
+		yAxis := gIO.Garden2_ServoY_Offset,
+		servoX_CW =&gt; gIO.Garden2_ServoX_CW,
+		servoX_CCW =&gt; gIO.Garden2_ServoX_CCW,
+		servoY_CW =&gt; gIO.Garden2_ServoY_CW,
+		servoY_CCW =&gt; gIO.Garden2_ServoY_CCW,
+		waterTankOpenCmd =&gt; gIO.Garden2_WaterTankOpenCmd);
 END_IF</xhtml>
                       </ST>
                     </body>
@@ -2108,13 +2805,15 @@ END_IF</xhtml>
 	
 	gIO.Garden3_WaterTankOpenCmd := gIO.Garden3_HMI.OpenWaterValve;
 ELSE
-	gIO.Garden3_ServoX_CW := (gIO.Garden3_ServoX_Offset &lt; 404) AND NOT gIO.Garden3_ServoX_CCW;
-	gIO.Garden3_ServoX_CCW := (gIO.Garden3_ServoX_Offset &gt; 0) AND NOT gIO.Garden3_ServoX_CW;
-	
-	gIO.Garden3_ServoY_CW := (gIO.Garden3_ServoY_Offset &lt; 320) AND NOT gIO.Garden3_ServoY_CCW;
-	gIO.Garden3_ServoY_CCW := (gIO.Garden3_ServoY_Offset &gt; 0) AND NOT gIO.Garden3_ServoY_CW;
-	
-	gIO.Garden3_WaterTankOpenCmd := gIO.Garden3_ServoY_CW;
+	(*Automatic control*)
+	garden3AutoWater(flowerLocations:=vGarden3_FlowerLocations,
+		xAxis := gIO.Garden3_ServoX_Offset,
+		yAxis := gIO.Garden3_ServoY_Offset,
+		servoX_CW =&gt; gIO.Garden3_ServoX_CW,
+		servoX_CCW =&gt; gIO.Garden3_ServoX_CCW,
+		servoY_CW =&gt; gIO.Garden3_ServoY_CW,
+		servoY_CCW =&gt; gIO.Garden3_ServoY_CCW,
+		waterTankOpenCmd =&gt; gIO.Garden3_WaterTankOpenCmd);
 END_IF</xhtml>
                       </ST>
                     </body>
@@ -2138,13 +2837,14 @@ END_IF</xhtml>
 	gIO.Garden4_WaterTankOpenCmd := gIO.Garden4_HMI.OpenWaterValve;
 ELSE
 	(*Automatic control*)
-	gIO.Garden4_ServoX_CCW := (gIO.Garden4_ServoX_Offset &lt; 404) AND NOT gIO.Garden4_ServoX_CCW;
-	gIO.Garden4_ServoX_CW := (gIO.Garden4_ServoX_Offset &gt; 0) AND NOT gIO.Garden4_ServoX_CW;
-	
-	gIO.Garden4_ServoY_CCW := (gIO.Garden4_ServoY_Offset &lt; 320) AND NOT gIO.Garden4_ServoY_CCW;
-	gIO.Garden4_ServoY_CW := (gIO.Garden4_ServoY_Offset &gt; 0) AND NOT gIO.Garden4_ServoY_CW;
-	
-	gIO.Garden4_WaterTankOpenCmd := gIO.Garden4_ServoY_CW;
+	garden4AutoWater(flowerLocations:=vGarden4_FlowerLocations,
+		xAxis := gIO.Garden4_ServoX_Offset,
+		yAxis := gIO.Garden4_ServoY_Offset,
+		servoX_CW =&gt; gIO.Garden4_ServoX_CW,
+		servoX_CCW =&gt; gIO.Garden4_ServoX_CCW,
+		servoY_CW =&gt; gIO.Garden4_ServoY_CW,
+		servoY_CCW =&gt; gIO.Garden4_ServoY_CCW,
+		waterTankOpenCmd =&gt; gIO.Garden4_WaterTankOpenCmd);
 END_IF</xhtml>
                       </ST>
                     </body>
@@ -2260,6 +2960,150 @@ END_IF</xhtml>
                 <addData>
                   <data name="http://www.3s-software.com/plcopenxml/objectid" handleUnknown="discard">
                     <ObjectId>80513472-2e2b-47c5-947d-3c1db2a7aed1</ObjectId>
+                  </data>
+                </addData>
+              </pou>
+            </data>
+            <data name="http://www.3s-software.com/plcopenxml/pou" handleUnknown="implementation">
+              <pou name="AutomaticFlowerWatering" pouType="functionBlock">
+                <interface>
+                  <inputVars>
+                    <variable name="flowerLocations">
+                      <type>
+                        <array>
+                          <dimension lower="0" upper="24" />
+                          <dimension lower="0" upper="1" />
+                          <baseType>
+                            <INT />
+                          </baseType>
+                        </array>
+                      </type>
+                    </variable>
+                    <variable name="xAxis">
+                      <type>
+                        <INT />
+                      </type>
+                    </variable>
+                    <variable name="yAxis">
+                      <type>
+                        <INT />
+                      </type>
+                    </variable>
+                  </inputVars>
+                  <outputVars>
+                    <variable name="servoX_CW">
+                      <type>
+                        <BOOL />
+                      </type>
+                    </variable>
+                    <variable name="servoX_CCW">
+                      <type>
+                        <BOOL />
+                      </type>
+                    </variable>
+                    <variable name="servoY_CW">
+                      <type>
+                        <BOOL />
+                      </type>
+                    </variable>
+                    <variable name="servoY_CCW">
+                      <type>
+                        <BOOL />
+                      </type>
+                    </variable>
+                    <variable name="waterTankOpenCmd">
+                      <type>
+                        <BOOL />
+                      </type>
+                    </variable>
+                  </outputVars>
+                  <localVars>
+                    <variable name="i">
+                      <type>
+                        <UINT />
+                      </type>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Iterator variable</xhtml>
+                      </documentation>
+                    </variable>
+                    <variable name="vXAxisCmd">
+                      <type>
+                        <INT />
+                      </type>
+                    </variable>
+                    <variable name="vYAxisCmd">
+                      <type>
+                        <INT />
+                      </type>
+                    </variable>
+                    <variable name="vPlatformAtTarget">
+                      <type>
+                        <BOOL />
+                      </type>
+                    </variable>
+                    <variable name="WateringTimer">
+                      <type>
+                        <derived name="TON" />
+                      </type>
+                    </variable>
+                  </localVars>
+                </interface>
+                <body>
+                  <ST>
+                    <xhtml xmlns="http://www.w3.org/1999/xhtml">(* Full automatic algorithm *)
+vXAxisCmd := flowerLocations[i,0];
+vYAxisCmd := flowerLocations[i,1];
+	
+(*Check if the platform is above the flower. We can allow +- 5 increments wrong position*)
+vPlatformAtTarget := xAxis = vXAxisCmd AND yAxis = vYAxisCmd;
+
+IF vPlatformAtTarget THEN
+	(*Start watering for 1 second*)
+	WateringTimer(IN:=TRUE, PT:=T#1S);
+	waterTankOpenCmd := TRUE;
+	
+	(*If watering is finished, go to next flower*)
+	IF WateringTimer.Q THEN
+		WateringTimer(IN := FALSE);
+		waterTankOpenCmd:= FALSE;
+		i:= i + 1;
+	END_IF
+END_IF
+
+(*If we went over the array, then start at first flower again*)
+IF i = 25 THEN
+	i := 0;
+END_IF
+
+(* Actual motor movement algorithm *)
+IF vXAxisCmd &gt; xAxis THEN
+	servoX_CCW := FALSE;
+	servoX_CW := TRUE;
+ELSIF vXAxisCmd &lt; xAxis THEN
+	servoX_CCW := TRUE;
+	servoX_CW := FALSE;
+ELSE
+	servoX_CCW := FALSE;
+	servoX_CW := FALSE;
+END_IF
+	
+IF vYAxisCmd &lt; yAxis THEN
+	servoY_CCW := TRUE;
+	servoY_CW := FALSE;
+ELSIF vYAxisCmd &gt; yAxis THEN
+	servoY_CCW := FALSE;
+	servoY_CW := TRUE;
+ELSE
+	servoY_CCW := FALSE;
+	servoY_CW := FALSE;
+END_IF
+
+	</xhtml>
+                  </ST>
+                </body>
+                <addData>
+                  <data name="http://www.3s-software.com/plcopenxml/objectid" handleUnknown="discard">
+                    <ObjectId>25a97d63-9889-42be-88a3-718830d44192</ObjectId>
                   </data>
                 </addData>
               </pou>
@@ -2397,6 +3241,7 @@ END_IF</xhtml>
             </Object>
             <Object Name="checkOverlapRectangle" ObjectId="80513472-2e2b-47c5-947d-3c1db2a7aed1" />
             <Object Name="HMI_Cmds_typ" ObjectId="b09fc8f2-11ab-4966-a1cf-d6b3184cc54d" />
+            <Object Name="AutomaticFlowerWatering" ObjectId="25a97d63-9889-42be-88a3-718830d44192" />
           </Object>
         </Object>
         <Object Name="Library Manager" ObjectId="26c9f932-a6ab-44f1-8d8b-2c4f249808ac" />

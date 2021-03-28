@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <project xmlns="http://www.plcopen.org/xml/tc6_0200">
-  <fileHeader companyName="" productName="CODESYS" productVersion="CODESYS V3.5 SP16" creationDateTime="2021-03-28T19:57:04.8900777" />
-  <contentHeader name="plc_garden_controller2.project" modificationDateTime="2021-03-28T19:57:01.3015443">
+  <fileHeader companyName="" productName="CODESYS" productVersion="CODESYS V3.5 SP16" creationDateTime="2021-03-28T21:10:31.0673312" />
+  <contentHeader name="plc_garden_controller2.project" modificationDateTime="2021-03-28T21:10:28.3883873">
     <coordinateInfo>
       <fbd>
         <scaling x="1" y="1" />
@@ -213,6 +213,29 @@
                 <INT />
               </type>
             </variable>
+            <variable name="Garden1_HMI">
+              <type>
+                <derived name="HMI_Cmds_typ" />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">HMI COMMANDS</xhtml>
+              </documentation>
+            </variable>
+            <variable name="Garden2_HMI">
+              <type>
+                <derived name="HMI_Cmds_typ" />
+              </type>
+            </variable>
+            <variable name="Garden3_HMI">
+              <type>
+                <derived name="HMI_Cmds_typ" />
+              </type>
+            </variable>
+            <variable name="Garden4_HMI">
+              <type>
+                <derived name="HMI_Cmds_typ" />
+              </type>
+            </variable>
             <addData>
               <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
                 <Attributes>
@@ -349,6 +372,72 @@
                 <addData>
                   <data name="http://www.3s-software.com/plcopenxml/objectid" handleUnknown="discard">
                     <ObjectId>308db75e-b8bd-4c00-977b-9be399a92648</ObjectId>
+                  </data>
+                </addData>
+              </dataType>
+            </data>
+            <data name="http://www.3s-software.com/plcopenxml/datatype" handleUnknown="implementation">
+              <dataType name="HMI_Cmds_typ">
+                <baseType>
+                  <struct>
+                    <variable name="CtrlOn">
+                      <type>
+                        <BOOL />
+                      </type>
+                      <initialValue>
+                        <simpleValue value="TRUE" />
+                      </initialValue>
+                    </variable>
+                    <variable name="UpCmd">
+                      <type>
+                        <BOOL />
+                      </type>
+                    </variable>
+                    <variable name="DownCmd">
+                      <type>
+                        <BOOL />
+                      </type>
+                    </variable>
+                    <variable name="LeftCmd">
+                      <type>
+                        <BOOL />
+                      </type>
+                    </variable>
+                    <variable name="RightCmd">
+                      <type>
+                        <BOOL />
+                      </type>
+                    </variable>
+                    <variable name="LeftUpCmd">
+                      <type>
+                        <BOOL />
+                      </type>
+                    </variable>
+                    <variable name="RightUpCmd">
+                      <type>
+                        <BOOL />
+                      </type>
+                    </variable>
+                    <variable name="LeftDownCmd">
+                      <type>
+                        <BOOL />
+                      </type>
+                    </variable>
+                    <variable name="RightDownCmd">
+                      <type>
+                        <BOOL />
+                      </type>
+                    </variable>
+                    <variable name="OpenWaterValve">
+                      <type>
+                        <BOOL />
+                      </type>
+                    </variable>
+                  </struct>
+                </baseType>
+                <addData>
+                  <data name="http://www.3s-software.com/plcopenxml/objectid" handleUnknown="discard">
+                    <ObjectId>b09fc8f2-11ab-4966-a1cf-d6b3184cc54d</ObjectId>
                   </data>
                 </addData>
               </dataType>
@@ -1469,7 +1558,7 @@
                   </localVars>
                 </interface>
                 <actions>
-                  <action name="garden1">
+                  <action name="SIMULATE_GARDEN1">
                     <body>
                       <ST>
                         <xhtml xmlns="http://www.w3.org/1999/xhtml">(*COLOR : 16# XX XX XX XX*)
@@ -1531,7 +1620,7 @@ ELSIF gIO.Garden1_ServoY_CW THEN
 	vGarden1Platform.y := vGarden1Platform.y - 1;
 END_IF
 (*Limit the platforms movement on y axis*)
-vGarden1Platform.y := LIMIT(-320, vGarden1Platform.x, 0);
+vGarden1Platform.y := LIMIT(-320, vGarden1Platform.y, 0);
 
 (*Report the position of the platform*)
 gIO.Garden1_ServoX_Offset := ABS(vGarden1Platform.x);
@@ -1547,7 +1636,7 @@ vGarden1Platform.OpenValveCmd := gIO.Garden1_WaterTankOpenCmd;</xhtml>
                       </data>
                     </addData>
                   </action>
-                  <action name="garden2">
+                  <action name="SIMULATE_GARDEN2">
                     <body>
                       <ST>
                         <xhtml xmlns="http://www.w3.org/1999/xhtml">(*COLOR : 16# XX XX XX XX*)
@@ -1625,7 +1714,7 @@ vGarden2Platform.OpenValveCmd := gIO.Garden2_WaterTankOpenCmd;</xhtml>
                       </data>
                     </addData>
                   </action>
-                  <action name="garden3">
+                  <action name="SIMULATE_GARDEN3">
                     <body>
                       <ST>
                         <xhtml xmlns="http://www.w3.org/1999/xhtml">(*COLOR : 16# XX XX XX XX*)
@@ -1703,7 +1792,7 @@ vGarden3Platform.OpenValveCmd := gIO.Garden3_WaterTankOpenCmd;</xhtml>
                       </data>
                     </addData>
                   </action>
-                  <action name="garden4">
+                  <action name="SIMULATE_GARDEN4">
                     <body>
                       <ST>
                         <xhtml xmlns="http://www.w3.org/1999/xhtml">(*COLOR : 16# XX XX XX XX*)
@@ -1787,10 +1876,10 @@ vGarden4Platform.OpenValveCmd := gIO.Garden4_WaterTankOpenCmd;</xhtml>
                     <xhtml xmlns="http://www.w3.org/1999/xhtml">clock(f:=T#0.01S);
 
 (*Run the garden simulators*)
-garden1();
-garden2();
-garden3();
-garden4();</xhtml>
+SIMULATE_GARDEN1();
+SIMULATE_GARDEN2();
+SIMULATE_GARDEN3();
+SIMULATE_GARDEN4();</xhtml>
                   </ST>
                 </body>
                 <addData>
@@ -1944,40 +2033,135 @@ pulse := edge.Q;</xhtml>
             <data name="http://www.3s-software.com/plcopenxml/pou" handleUnknown="implementation">
               <pou name="main" pouType="program">
                 <interface />
+                <actions>
+                  <action name="CONTROL_GARDEN1">
+                    <body>
+                      <ST>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">IF gIO.Garden1_HMI.CtrlOn THEN
+	(*HMI Control*)
+	gIO.Garden1_ServoX_CW := gIO.Garden1_HMI.LeftCmd OR gIO.Garden1_HMI.LeftDownCmd OR gIO.Garden1_HMI.LeftUpCmd;
+	gIO.Garden1_ServoX_CCW := gIO.Garden1_HMI.RightCmd OR gIO.Garden1_HMI.RightDownCmd OR gIO.Garden1_HMI.RightUpCmd;
+	
+	gIO.Garden1_ServoY_CW := gIO.Garden1_HMI.UpCmd OR gIO.Garden1_HMI.LeftUpCmd OR gIO.Garden1_HMI.RightUpCmd;
+	gIO.Garden1_ServoY_CCW := gIO.Garden1_HMI.DownCmd OR gIO.Garden1_HMI.LeftDownCmd OR gIO.Garden1_HMI.RightDownCmd;
+	
+	gIO.Garden1_WaterTankOpenCmd := gIO.Garden1_HMI.OpenWaterValve;
+ELSE
+	(*Automatic control*)
+	gIO.Garden1_ServoX_CW := (gIO.Garden1_ServoX_Offset &lt; 404) AND NOT gIO.Garden1_ServoX_CCW;
+	gIO.Garden1_ServoX_CCW := (gIO.Garden1_ServoX_Offset &gt; 0) AND NOT gIO.Garden1_ServoX_CW;
+	
+	gIO.Garden1_ServoY_CW := (gIO.Garden1_ServoY_Offset &lt; 320) AND NOT gIO.Garden1_ServoY_CCW;
+	gIO.Garden1_ServoY_CCW := (gIO.Garden1_ServoY_Offset &gt; 0) AND NOT gIO.Garden1_ServoY_CW;
+	
+	gIO.Garden1_WaterTankOpenCmd := gIO.Garden1_ServoY_CW;
+END_IF</xhtml>
+                      </ST>
+                    </body>
+                    <addData>
+                      <data name="http://www.3s-software.com/plcopenxml/objectid" handleUnknown="discard">
+                        <ObjectId>0cf413c1-d021-4423-b387-b667e9d80838</ObjectId>
+                      </data>
+                    </addData>
+                  </action>
+                  <action name="CONTROL_GARDEN2">
+                    <body>
+                      <ST>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">IF gIO.Garden2_HMI.CtrlOn THEN
+	(*HMI Control*)
+	(*X servos are flipped on this garden*)
+	gIO.Garden2_ServoX_CCW := gIO.Garden2_HMI.LeftCmd OR gIO.Garden2_HMI.LeftDownCmd OR gIO.Garden2_HMI.LeftUpCmd;
+	gIO.Garden2_ServoX_CW := gIO.Garden2_HMI.RightCmd OR gIO.Garden2_HMI.RightDownCmd OR gIO.Garden2_HMI.RightUpCmd;
+	
+	gIO.Garden2_ServoY_CW := gIO.Garden2_HMI.UpCmd OR gIO.Garden2_HMI.LeftUpCmd OR gIO.Garden2_HMI.RightUpCmd;
+	gIO.Garden2_ServoY_CCW := gIO.Garden2_HMI.DownCmd OR gIO.Garden2_HMI.LeftDownCmd OR gIO.Garden2_HMI.RightDownCmd;
+	
+	gIO.Garden2_WaterTankOpenCmd := gIO.Garden2_HMI.OpenWaterValve;
+ELSE
+	(*Automatic control*)
+	gIO.Garden2_ServoX_CW := (gIO.Garden2_ServoX_Offset &lt; 404) AND NOT gIO.Garden2_ServoX_CCW;
+	gIO.Garden2_ServoX_CCW := (gIO.Garden2_ServoX_Offset &gt; 0) AND NOT gIO.Garden2_ServoX_CW;
+	
+	gIO.Garden2_ServoY_CW := (gIO.Garden2_ServoY_Offset &lt; 320) AND NOT gIO.Garden2_ServoY_CCW;
+	gIO.Garden2_ServoY_CCW := (gIO.Garden2_ServoY_Offset &gt; 0) AND NOT gIO.Garden2_ServoY_CW;
+	
+	gIO.Garden2_WaterTankOpenCmd := gIO.Garden2_ServoY_CW;
+END_IF</xhtml>
+                      </ST>
+                    </body>
+                    <addData>
+                      <data name="http://www.3s-software.com/plcopenxml/objectid" handleUnknown="discard">
+                        <ObjectId>fb0a337c-b029-4011-a4b7-187d34cbb033</ObjectId>
+                      </data>
+                    </addData>
+                  </action>
+                  <action name="CONTROL_GARDEN3">
+                    <body>
+                      <ST>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">IF gIO.Garden3_HMI.CtrlOn THEN
+	(*HMI Control*)
+	gIO.Garden3_ServoX_CW := gIO.Garden3_HMI.LeftCmd OR gIO.Garden3_HMI.LeftDownCmd OR gIO.Garden3_HMI.LeftUpCmd;
+	gIO.Garden3_ServoX_CCW := gIO.Garden3_HMI.RightCmd OR gIO.Garden3_HMI.RightDownCmd OR gIO.Garden3_HMI.RightUpCmd;
+	
+	gIO.Garden3_ServoY_CCW := gIO.Garden3_HMI.UpCmd OR gIO.Garden3_HMI.LeftUpCmd OR gIO.Garden3_HMI.RightUpCmd;
+	gIO.Garden3_ServoY_CW := gIO.Garden3_HMI.DownCmd OR gIO.Garden3_HMI.LeftDownCmd OR gIO.Garden3_HMI.RightDownCmd;
+	
+	gIO.Garden3_WaterTankOpenCmd := gIO.Garden3_HMI.OpenWaterValve;
+ELSE
+	gIO.Garden3_ServoX_CW := (gIO.Garden3_ServoX_Offset &lt; 404) AND NOT gIO.Garden3_ServoX_CCW;
+	gIO.Garden3_ServoX_CCW := (gIO.Garden3_ServoX_Offset &gt; 0) AND NOT gIO.Garden3_ServoX_CW;
+	
+	gIO.Garden3_ServoY_CW := (gIO.Garden3_ServoY_Offset &lt; 320) AND NOT gIO.Garden3_ServoY_CCW;
+	gIO.Garden3_ServoY_CCW := (gIO.Garden3_ServoY_Offset &gt; 0) AND NOT gIO.Garden3_ServoY_CW;
+	
+	gIO.Garden3_WaterTankOpenCmd := gIO.Garden3_ServoY_CW;
+END_IF</xhtml>
+                      </ST>
+                    </body>
+                    <addData>
+                      <data name="http://www.3s-software.com/plcopenxml/objectid" handleUnknown="discard">
+                        <ObjectId>ff700521-047b-4cba-b94d-78eec777f018</ObjectId>
+                      </data>
+                    </addData>
+                  </action>
+                  <action name="CONTROL_GARDEN4">
+                    <body>
+                      <ST>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">IF gIO.Garden4_HMI.CtrlOn THEN
+	(*HMI Control*)
+	gIO.Garden4_ServoX_CCW := gIO.Garden4_HMI.LeftCmd OR gIO.Garden4_HMI.LeftDownCmd OR gIO.Garden4_HMI.LeftUpCmd;
+	gIO.Garden4_ServoX_CW := gIO.Garden4_HMI.RightCmd OR gIO.Garden4_HMI.RightDownCmd OR gIO.Garden4_HMI.RightUpCmd;
+	
+	gIO.Garden4_ServoY_CCW := gIO.Garden4_HMI.UpCmd OR gIO.Garden4_HMI.LeftUpCmd OR gIO.Garden4_HMI.RightUpCmd;
+	gIO.Garden4_ServoY_CW := gIO.Garden4_HMI.DownCmd OR gIO.Garden4_HMI.LeftDownCmd OR gIO.Garden4_HMI.RightDownCmd;
+	
+	gIO.Garden4_WaterTankOpenCmd := gIO.Garden4_HMI.OpenWaterValve;
+ELSE
+	(*Automatic control*)
+	gIO.Garden4_ServoX_CCW := (gIO.Garden4_ServoX_Offset &lt; 404) AND NOT gIO.Garden4_ServoX_CCW;
+	gIO.Garden4_ServoX_CW := (gIO.Garden4_ServoX_Offset &gt; 0) AND NOT gIO.Garden4_ServoX_CW;
+	
+	gIO.Garden4_ServoY_CCW := (gIO.Garden4_ServoY_Offset &lt; 320) AND NOT gIO.Garden4_ServoY_CCW;
+	gIO.Garden4_ServoY_CW := (gIO.Garden4_ServoY_Offset &gt; 0) AND NOT gIO.Garden4_ServoY_CW;
+	
+	gIO.Garden4_WaterTankOpenCmd := gIO.Garden4_ServoY_CW;
+END_IF</xhtml>
+                      </ST>
+                    </body>
+                    <addData>
+                      <data name="http://www.3s-software.com/plcopenxml/objectid" handleUnknown="discard">
+                        <ObjectId>227cf80f-a470-4896-884d-d047ad602eb1</ObjectId>
+                      </data>
+                    </addData>
+                  </action>
+                </actions>
                 <body>
                   <ST>
-                    <xhtml xmlns="http://www.w3.org/1999/xhtml">gIO.Garden1_ServoX_CW := (gIO.Garden1_ServoX_Offset &lt; 404) AND NOT gIO.Garden1_ServoX_CCW;
-gIO.Garden1_ServoX_CCW := (gIO.Garden1_ServoX_Offset &gt; 0) AND NOT gIO.Garden1_ServoX_CW;
-
-gIO.Garden1_ServoY_CW := (gIO.Garden1_ServoY_Offset &lt; 320) AND NOT gIO.Garden1_ServoY_CCW;
-gIO.Garden1_ServoY_CCW := (gIO.Garden1_ServoY_Offset &gt; 0) AND NOT gIO.Garden1_ServoY_CW;
-
-gIO.Garden1_WaterTankOpenCmd := gIO.Garden1_ServoY_CW;
-	
-
-gIO.Garden2_ServoX_CW := (gIO.Garden2_ServoX_Offset &lt; 404) AND NOT gIO.Garden2_ServoX_CCW;
-gIO.Garden2_ServoX_CCW := (gIO.Garden2_ServoX_Offset &gt; 0) AND NOT gIO.Garden2_ServoX_CW;
-
-gIO.Garden2_ServoY_CW := (gIO.Garden2_ServoY_Offset &lt; 320) AND NOT gIO.Garden2_ServoY_CCW;
-gIO.Garden2_ServoY_CCW := (gIO.Garden2_ServoY_Offset &gt; 0) AND NOT gIO.Garden2_ServoY_CW;
-
-gIO.Garden2_WaterTankOpenCmd := gIO.Garden2_ServoY_CW;
-
-gIO.Garden3_ServoX_CW := (gIO.Garden3_ServoX_Offset &lt; 404) AND NOT gIO.Garden3_ServoX_CCW;
-gIO.Garden3_ServoX_CCW := (gIO.Garden3_ServoX_Offset &gt; 0) AND NOT gIO.Garden3_ServoX_CW;
-
-gIO.Garden3_ServoY_CW := (gIO.Garden3_ServoY_Offset &lt; 320) AND NOT gIO.Garden3_ServoY_CCW;
-gIO.Garden3_ServoY_CCW := (gIO.Garden3_ServoY_Offset &gt; 0) AND NOT gIO.Garden3_ServoY_CW;
-
-gIO.Garden3_WaterTankOpenCmd := gIO.Garden3_ServoY_CW;
-
-gIO.Garden4_ServoX_CW := (gIO.Garden4_ServoX_Offset &lt; 404) AND NOT gIO.Garden4_ServoX_CCW;
-gIO.Garden4_ServoX_CCW := (gIO.Garden4_ServoX_Offset &gt; 0) AND NOT gIO.Garden4_ServoX_CW;
-
-gIO.Garden4_ServoY_CW := (gIO.Garden4_ServoY_Offset &lt; 320) AND NOT gIO.Garden4_ServoY_CCW;
-gIO.Garden4_ServoY_CCW := (gIO.Garden4_ServoY_Offset &gt; 0) AND NOT gIO.Garden4_ServoY_CW;
-
-gIO.Garden4_WaterTankOpenCmd := gIO.Garden4_ServoY_CW;</xhtml>
+                    <xhtml xmlns="http://www.w3.org/1999/xhtml">CONTROL_GARDEN1();
+CONTROL_GARDEN2();
+CONTROL_GARDEN3();
+CONTROL_GARDEN4();
+</xhtml>
                   </ST>
                 </body>
                 <addData>
@@ -2195,18 +2379,24 @@ END_IF</xhtml>
             <Object Name="VISU_TASK" ObjectId="d402c953-2a27-41bc-83af-7e75ffc98c7a" />
             <Object Name="Task" ObjectId="3794f74a-e13c-46f3-8812-e890e1bf1533" />
             <Object Name="simu" ObjectId="9064d327-fea8-462f-bd9b-c1d68ff214d0">
-              <Object Name="garden1" ObjectId="142f3135-cff6-4f73-a4c8-ad53b7fa0362" />
-              <Object Name="garden2" ObjectId="6399399e-f113-4533-bc3f-00c6c183ff63" />
-              <Object Name="garden3" ObjectId="a19fe44e-22d2-4b0f-813c-d386fdecec8a" />
-              <Object Name="garden4" ObjectId="a46b5de3-3880-413e-a3eb-5e161cc01a5d" />
+              <Object Name="SIMULATE_GARDEN1" ObjectId="142f3135-cff6-4f73-a4c8-ad53b7fa0362" />
+              <Object Name="SIMULATE_GARDEN2" ObjectId="6399399e-f113-4533-bc3f-00c6c183ff63" />
+              <Object Name="SIMULATE_GARDEN3" ObjectId="a19fe44e-22d2-4b0f-813c-d386fdecec8a" />
+              <Object Name="SIMULATE_GARDEN4" ObjectId="a46b5de3-3880-413e-a3eb-5e161cc01a5d" />
             </Object>
             <Object Name="Flower_typ" ObjectId="e933bfc8-280c-47ee-8b59-5c19b4c266fa" />
             <Object Name="BYTES_TO_DWORD" ObjectId="874ae8b5-3d57-4ef4-b02b-03062a6a655b" />
             <Object Name="ClockPulse" ObjectId="85d5e9ec-e114-4f45-8e4f-0ffabde5bfd3" />
             <Object Name="Platform_typ" ObjectId="308db75e-b8bd-4c00-977b-9be399a92648" />
             <Object Name="gIO" ObjectId="37b1197c-733f-4f4c-9ae3-3aa6a8367b82" />
-            <Object Name="main" ObjectId="87fe18b6-0e2f-44f0-b1cf-e85db1257ec4" />
+            <Object Name="main" ObjectId="87fe18b6-0e2f-44f0-b1cf-e85db1257ec4">
+              <Object Name="CONTROL_GARDEN1" ObjectId="0cf413c1-d021-4423-b387-b667e9d80838" />
+              <Object Name="CONTROL_GARDEN2" ObjectId="fb0a337c-b029-4011-a4b7-187d34cbb033" />
+              <Object Name="CONTROL_GARDEN3" ObjectId="ff700521-047b-4cba-b94d-78eec777f018" />
+              <Object Name="CONTROL_GARDEN4" ObjectId="227cf80f-a470-4896-884d-d047ad602eb1" />
+            </Object>
             <Object Name="checkOverlapRectangle" ObjectId="80513472-2e2b-47c5-947d-3c1db2a7aed1" />
+            <Object Name="HMI_Cmds_typ" ObjectId="b09fc8f2-11ab-4966-a1cf-d6b3184cc54d" />
           </Object>
         </Object>
         <Object Name="Library Manager" ObjectId="26c9f932-a6ab-44f1-8d8b-2c4f249808ac" />

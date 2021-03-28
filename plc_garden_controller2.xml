@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <project xmlns="http://www.plcopen.org/xml/tc6_0200">
-  <fileHeader companyName="" productName="CODESYS" productVersion="CODESYS V3.5 SP16" creationDateTime="2021-03-27T22:08:24.6065043" />
-  <contentHeader name="plc_garden_controller2.project" modificationDateTime="2021-03-27T22:08:20.960762">
+  <fileHeader companyName="" productName="CODESYS" productVersion="CODESYS V3.5 SP16" creationDateTime="2021-03-28T19:57:04.8900777" />
+  <contentHeader name="plc_garden_controller2.project" modificationDateTime="2021-03-28T19:57:01.3015443">
     <coordinateInfo>
       <fbd>
         <scaling x="1" y="1" />
@@ -370,11 +370,6 @@
                         <UINT />
                       </type>
                     </variable>
-                    <variable name="vTest">
-                      <type>
-                        <BOOL />
-                      </type>
-                    </variable>
                     <variable name="vG1PlantsAlive">
                       <type>
                         <UINT />
@@ -404,6 +399,260 @@
                           </baseType>
                         </array>
                       </type>
+                      <initialValue>
+                        <arrayValue>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="42" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="42" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="122" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="42" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="202" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="42" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="282" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="42" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="362" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="42" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="42" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="122" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="122" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="122" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="202" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="122" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="282" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="122" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="362" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="122" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="42" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="202" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="122" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="202" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="202" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="202" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="282" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="202" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="362" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="202" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="42" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="282" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="122" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="282" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="202" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="282" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="282" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="282" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="362" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="282" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="42" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="362" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="122" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="362" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="202" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="362" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="282" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="362" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="362" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="362" />
+                              </value>
+                            </structValue>
+                          </value>
+                        </arrayValue>
+                      </initialValue>
                     </variable>
                     <variable name="vGarden2">
                       <type>
@@ -414,6 +663,260 @@
                           </baseType>
                         </array>
                       </type>
+                      <initialValue>
+                        <arrayValue>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="642" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="42" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="722" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="42" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="802" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="42" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="882" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="42" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="962" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="42" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="642" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="122" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="722" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="122" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="802" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="122" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="882" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="122" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="962" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="122" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="642" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="202" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="722" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="202" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="802" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="202" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="882" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="202" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="962" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="202" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="642" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="282" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="722" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="282" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="802" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="282" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="882" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="282" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="962" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="282" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="642" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="362" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="722" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="362" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="802" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="362" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="882" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="362" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="962" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="362" />
+                              </value>
+                            </structValue>
+                          </value>
+                        </arrayValue>
+                      </initialValue>
                     </variable>
                     <variable name="vGarden3">
                       <type>
@@ -424,6 +927,260 @@
                           </baseType>
                         </array>
                       </type>
+                      <initialValue>
+                        <arrayValue>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="42" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="642" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="122" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="642" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="202" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="642" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="282" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="642" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="362" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="642" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="42" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="722" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="122" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="722" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="202" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="722" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="282" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="722" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="362" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="722" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="42" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="802" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="122" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="802" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="202" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="802" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="282" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="802" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="362" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="802" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="42" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="882" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="122" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="882" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="202" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="882" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="282" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="882" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="362" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="882" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="42" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="962" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="122" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="962" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="202" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="962" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="282" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="962" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="362" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="962" />
+                              </value>
+                            </structValue>
+                          </value>
+                        </arrayValue>
+                      </initialValue>
                     </variable>
                     <variable name="vGarden4">
                       <type>
@@ -434,6 +1191,260 @@
                           </baseType>
                         </array>
                       </type>
+                      <initialValue>
+                        <arrayValue>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="642" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="642" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="722" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="642" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="802" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="642" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="882" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="642" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="962" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="642" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="642" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="722" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="722" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="722" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="802" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="722" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="882" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="722" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="962" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="722" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="642" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="802" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="722" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="802" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="802" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="802" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="882" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="802" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="962" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="802" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="642" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="882" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="722" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="882" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="802" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="882" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="882" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="882" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="962" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="882" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="642" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="962" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="722" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="962" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="802" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="962" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="882" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="962" />
+                              </value>
+                            </structValue>
+                          </value>
+                          <value>
+                            <structValue>
+                              <value member="x">
+                                <simpleValue value="962" />
+                              </value>
+                              <value member="y">
+                                <simpleValue value="962" />
+                              </value>
+                            </structValue>
+                          </value>
+                        </arrayValue>
+                      </initialValue>
                     </variable>
                     <variable name="vGarden1Platform">
                       <type>
@@ -470,7 +1481,8 @@ FOR i:=0 TO 24 DO
 	vGarden1[i].hum := MAX(0, vGarden1[i].hum - 0.5 * BOOL_TO_REAL(clock.pulse));
 	
 	(*If the watering platform is above the cell, water valve is open and tank has water, increase the humidity*)
-	IF vTest THEN
+	IF checkOverlapRectangle(R1_X:=vGarden1[i].x, R1_Y:=vGarden1[i].y, R1_W:=80, R1_H:=80,
+							R2_X:=406 + vGarden1Platform.x + 45, R2_Y:=361 + vGarden1Platform.y + 45, R2_W:=10, R2_H:=10) AND vGarden1Platform.OpenValveCmd THEN
 		vGarden1[i].hum := vGarden1[i].hum + 2 * BOOL_TO_REAL(clock.pulse);
 	END_IF
 	
@@ -547,7 +1559,8 @@ FOR i:=0 TO 24 DO
 	vGarden2[i].hum := MAX(0, vGarden2[i].hum - 0.5 * BOOL_TO_REAL(clock.pulse));
 	
 	(*If the watering platform is above the cell, water valve is open and tank has water, increase the humidity*)
-	IF vTest THEN
+	IF checkOverlapRectangle(R1_X:=vGarden2[i].x, R1_Y:=vGarden2[i].y, R1_W:=80, R1_H:=80,
+							R2_X:=594 + vGarden2Platform.x + 45, R2_Y:=361 + vGarden2Platform.y + 45, R2_W:=10, R2_H:=10) AND vGarden2Platform.OpenValveCmd THEN
 		vGarden2[i].hum := vGarden2[i].hum + 2 * BOOL_TO_REAL(clock.pulse);
 	END_IF
 	
@@ -624,7 +1637,8 @@ FOR i:=0 TO 24 DO
 	vGarden3[i].hum := MAX(0, vGarden3[i].hum - 0.5 * BOOL_TO_REAL(clock.pulse));
 	
 	(*If the watering platform is above the cell, water valve is open and tank has water, increase the humidity*)
-	IF vTest THEN
+	IF checkOverlapRectangle(R1_X:=vGarden3[i].x, R1_Y:=vGarden3[i].y, R1_W:=80, R1_H:=80,
+							R2_X:=401 + vGarden3Platform.x + 45, R2_Y:=640 + vGarden3Platform.y + 45, R2_W:=10, R2_H:=10) AND vGarden3Platform.OpenValveCmd THEN
 		vGarden3[i].hum := vGarden3[i].hum + 2 * BOOL_TO_REAL(clock.pulse);
 	END_IF
 	
@@ -701,7 +1715,8 @@ FOR i:=0 TO 24 DO
 	vGarden4[i].hum := MAX(0, vGarden4[i].hum - 0.5 * BOOL_TO_REAL(clock.pulse));
 	
 	(*If the watering platform is above the cell, water valve is open and tank has water, increase the humidity*)
-	IF vTest THEN
+	IF checkOverlapRectangle(R1_X:=vGarden4[i].x, R1_Y:=vGarden4[i].y, R1_W:=80, R1_H:=80,
+							R2_X:=600 + vGarden4Platform.x + 45, R2_Y:=642 + vGarden4Platform.y + 45, R2_W:=10, R2_H:=10) AND vGarden4Platform.OpenValveCmd THEN
 		vGarden4[i].hum := vGarden4[i].hum + 2 * BOOL_TO_REAL(clock.pulse);
 	END_IF
 	
@@ -972,6 +1987,99 @@ gIO.Garden4_WaterTankOpenCmd := gIO.Garden4_ServoY_CW;</xhtml>
                 </addData>
               </pou>
             </data>
+            <data name="http://www.3s-software.com/plcopenxml/pou" handleUnknown="implementation">
+              <pou name="checkOverlapRectangle" pouType="function">
+                <interface>
+                  <returnType>
+                    <BOOL />
+                  </returnType>
+                  <inputVars>
+                    <variable name="R1_X">
+                      <type>
+                        <INT />
+                      </type>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Rectangle 1 x position</xhtml>
+                      </documentation>
+                    </variable>
+                    <variable name="R1_Y">
+                      <type>
+                        <INT />
+                      </type>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Rectangle 1 y position</xhtml>
+                      </documentation>
+                    </variable>
+                    <variable name="R1_W">
+                      <type>
+                        <INT />
+                      </type>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Rectangle 1 width</xhtml>
+                      </documentation>
+                    </variable>
+                    <variable name="R1_H">
+                      <type>
+                        <INT />
+                      </type>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Rectangle 1 height</xhtml>
+                      </documentation>
+                    </variable>
+                    <variable name="R2_X">
+                      <type>
+                        <INT />
+                      </type>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Rectangle 2 x position</xhtml>
+                      </documentation>
+                    </variable>
+                    <variable name="R2_Y">
+                      <type>
+                        <INT />
+                      </type>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Rectangle 2 y position</xhtml>
+                      </documentation>
+                    </variable>
+                    <variable name="R2_W">
+                      <type>
+                        <INT />
+                      </type>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Rectangle 2 width</xhtml>
+                      </documentation>
+                    </variable>
+                    <variable name="R2_H">
+                      <type>
+                        <INT />
+                      </type>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Rectangle 2 height</xhtml>
+                      </documentation>
+                    </variable>
+                  </inputVars>
+                </interface>
+                <body>
+                  <ST>
+                    <xhtml xmlns="http://www.w3.org/1999/xhtml">(*Calculate if these two rectangles are overlapping*)
+IF R1_X &lt; (R2_X + R2_W) AND
+   (R1_X + R1_W) &gt; R2_X AND
+   R1_Y &lt; (R2_Y + R2_H) AND
+  (R1_H + R1_Y) &gt; R2_Y THEN
+   checkOverlapRectangle := TRUE;
+ELSE
+	checkOverlapRectangle := FALSE;
+END_IF</xhtml>
+                  </ST>
+                </body>
+                <addData>
+                  <data name="http://www.3s-software.com/plcopenxml/objectid" handleUnknown="discard">
+                    <ObjectId>80513472-2e2b-47c5-947d-3c1db2a7aed1</ObjectId>
+                  </data>
+                </addData>
+              </pou>
+            </data>
             <data name="http://www.3s-software.com/plcopenxml/libraries" handleUnknown="implementation">
               <Libraries>
                 <Library Name="#IoStandard" Namespace="IoStandard" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="true" DefaultResolution="IoStandard, 3.5.16.0 (System)" />
@@ -1098,6 +2206,7 @@ gIO.Garden4_WaterTankOpenCmd := gIO.Garden4_ServoY_CW;</xhtml>
             <Object Name="Platform_typ" ObjectId="308db75e-b8bd-4c00-977b-9be399a92648" />
             <Object Name="gIO" ObjectId="37b1197c-733f-4f4c-9ae3-3aa6a8367b82" />
             <Object Name="main" ObjectId="87fe18b6-0e2f-44f0-b1cf-e85db1257ec4" />
+            <Object Name="checkOverlapRectangle" ObjectId="80513472-2e2b-47c5-947d-3c1db2a7aed1" />
           </Object>
         </Object>
         <Object Name="Library Manager" ObjectId="26c9f932-a6ab-44f1-8d8b-2c4f249808ac" />

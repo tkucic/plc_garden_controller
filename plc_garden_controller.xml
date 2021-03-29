@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <project xmlns="http://www.plcopen.org/xml/tc6_0200">
-  <fileHeader companyName="" productName="CODESYS" productVersion="CODESYS V3.5 SP16" creationDateTime="2021-03-29T20:09:21.8203799" />
-  <contentHeader name="plc_garden_controller.project" modificationDateTime="2021-03-29T20:07:42.2549656">
+  <fileHeader companyName="" productName="CODESYS" productVersion="CODESYS V3.5 SP16" creationDateTime="2021-03-29T22:16:35.9497507" />
+  <contentHeader name="PLC Garden Controller" version="1.0" modificationDateTime="2021-03-29T21:41:22.9745241" organization="TK Automation" author="Toni Kucic">
+    <Comment>Automated gardening at its best. This is a portfolio project that features a simulator and a controller of four gardens holding 25 flowers/plants each. Each garden has a watering platform system moved by servo motors. In this project the user can learn how to control servo motors, optimize instruction/path algorithms and generally learn how to program PLCs.</Comment>
     <coordinateInfo>
       <fbd>
         <scaling x="1" y="1" />
@@ -15,13 +16,387 @@
     </coordinateInfo>
     <addData>
       <data name="http://www.3s-software.com/plcopenxml/projectinformation" handleUnknown="implementation">
-        <ProjectInformation />
+        <ProjectInformation>
+          <property name="Author" type="string">Toni Kucic</property>
+          <property name="Company" type="string">TK Automation</property>
+          <property name="CompiledLibraryCompatibilityVersion" type="string">CODESYS V3.5 SP16</property>
+          <property name="Description" type="string">Automated gardening at its best. This is a portfolio project that features a simulator and a controller of four gardens holding 25 flowers/plants each. Each garden has a watering platform system moved by servo motors. In this project the user can learn how to control servo motors, optimize instruction/path algorithms and generally learn how to program PLCs.</property>
+          <property name="Project" type="string">plc_garden_controller</property>
+          <property name="Title" type="string">PLC Garden Controller</property>
+          <property name="Version" type="version">1.0</property>
+        </ProjectInformation>
       </data>
     </addData>
   </contentHeader>
   <types>
-    <dataTypes />
-    <pous />
+    <dataTypes>
+      <dataType name="Flower_typ">
+        <baseType>
+          <struct>
+            <variable name="x">
+              <type>
+                <INT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">X position of the flower cell in the HMI</xhtml>
+              </documentation>
+            </variable>
+            <variable name="y">
+              <type>
+                <INT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">Y position of the flower cell in the HMI</xhtml>
+              </documentation>
+            </variable>
+            <variable name="alpha">
+              <type>
+                <BYTE />
+              </type>
+              <initialValue>
+                <simpleValue value="255" />
+              </initialValue>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">Alpha channel</xhtml>
+              </documentation>
+            </variable>
+            <variable name="red">
+              <type>
+                <BYTE />
+              </type>
+              <initialValue>
+                <simpleValue value="2" />
+              </initialValue>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">Red color channel</xhtml>
+              </documentation>
+            </variable>
+            <variable name="green">
+              <type>
+                <BYTE />
+              </type>
+              <initialValue>
+                <simpleValue value="253" />
+              </initialValue>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">Green color channel</xhtml>
+              </documentation>
+            </variable>
+            <variable name="blue">
+              <type>
+                <BYTE />
+              </type>
+              <initialValue>
+                <simpleValue value="0" />
+              </initialValue>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">Blue color channel</xhtml>
+              </documentation>
+            </variable>
+            <variable name="color">
+              <type>
+                <DWORD />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">Color variable to be used in the graphics</xhtml>
+              </documentation>
+            </variable>
+            <variable name="hum">
+              <type>
+                <REAL />
+              </type>
+              <initialValue>
+                <simpleValue value="100" />
+              </initialValue>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">Humidity of the flower cell</xhtml>
+              </documentation>
+            </variable>
+            <variable name="alive">
+              <type>
+                <BOOL />
+              </type>
+              <initialValue>
+                <simpleValue value="TRUE" />
+              </initialValue>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">Flower is alive</xhtml>
+              </documentation>
+            </variable>
+          </struct>
+        </baseType>
+        <addData>
+          <data name="http://www.3s-software.com/plcopenxml/objectid" handleUnknown="discard">
+            <ObjectId>e933bfc8-280c-47ee-8b59-5c19b4c266fa</ObjectId>
+          </data>
+        </addData>
+      </dataType>
+      <dataType name="Platform_typ">
+        <baseType>
+          <struct>
+            <variable name="x">
+              <type>
+                <INT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">Position from starting point on X axis</xhtml>
+              </documentation>
+            </variable>
+            <variable name="y">
+              <type>
+                <INT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">Position from starting point on Y axis</xhtml>
+              </documentation>
+            </variable>
+            <variable name="OpenValveCmd">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">Opens the water container valve</xhtml>
+              </documentation>
+            </variable>
+          </struct>
+        </baseType>
+        <addData>
+          <data name="http://www.3s-software.com/plcopenxml/objectid" handleUnknown="discard">
+            <ObjectId>308db75e-b8bd-4c00-977b-9be399a92648</ObjectId>
+          </data>
+        </addData>
+      </dataType>
+    </dataTypes>
+    <pous>
+      <pou name="BYTES_TO_DWORD" pouType="function">
+        <interface>
+          <returnType>
+            <DWORD />
+          </returnType>
+          <inputVars>
+            <variable name="B0">
+              <type>
+                <BYTE />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">Least significant byte</xhtml>
+              </documentation>
+            </variable>
+            <variable name="B1">
+              <type>
+                <BYTE />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">Byte two</xhtml>
+              </documentation>
+            </variable>
+            <variable name="B2">
+              <type>
+                <BYTE />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">Byte three</xhtml>
+              </documentation>
+            </variable>
+            <variable name="B3">
+              <type>
+                <BYTE />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">Highest significant byte</xhtml>
+              </documentation>
+            </variable>
+          </inputVars>
+        </interface>
+        <body>
+          <ST>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml">BYTES_TO_DWORD.0 := B0.0;
+BYTES_TO_DWORD.1 := B0.1;
+BYTES_TO_DWORD.2 := B0.2;
+BYTES_TO_DWORD.3 := B0.3;
+BYTES_TO_DWORD.4 := B0.4;
+BYTES_TO_DWORD.5 := B0.5;
+BYTES_TO_DWORD.6 := B0.6;
+BYTES_TO_DWORD.7 := B0.7;
+
+BYTES_TO_DWORD.8 := B1.0;
+BYTES_TO_DWORD.9 := B1.1;
+BYTES_TO_DWORD.10 := B1.2;
+BYTES_TO_DWORD.11 := B1.3;
+BYTES_TO_DWORD.12 := B1.4;
+BYTES_TO_DWORD.13 := B1.5;
+BYTES_TO_DWORD.14 := B1.6;
+BYTES_TO_DWORD.15 := B1.7;
+
+BYTES_TO_DWORD.16 := B2.0;
+BYTES_TO_DWORD.17 := B2.1;
+BYTES_TO_DWORD.18 := B2.2;
+BYTES_TO_DWORD.19 := B2.3;
+BYTES_TO_DWORD.20 := B2.4;
+BYTES_TO_DWORD.21 := B2.5;
+BYTES_TO_DWORD.22 := B2.6;
+BYTES_TO_DWORD.23 := B2.7;
+
+BYTES_TO_DWORD.24 := B3.0;
+BYTES_TO_DWORD.25 := B3.1;
+BYTES_TO_DWORD.26 := B3.2;
+BYTES_TO_DWORD.27 := B3.3;
+BYTES_TO_DWORD.28 := B3.4;
+BYTES_TO_DWORD.29 := B3.5;
+BYTES_TO_DWORD.30 := B3.6;
+BYTES_TO_DWORD.31 := B3.7;
+RETURN;</xhtml>
+          </ST>
+        </body>
+        <addData>
+          <data name="http://www.3s-software.com/plcopenxml/objectid" handleUnknown="discard">
+            <ObjectId>874ae8b5-3d57-4ef4-b02b-03062a6a655b</ObjectId>
+          </data>
+        </addData>
+      </pou>
+      <pou name="ClockPulse" pouType="functionBlock">
+        <interface>
+          <inputVars>
+            <variable name="f">
+              <type>
+                <TIME />
+              </type>
+              <initialValue>
+                <simpleValue value="TIME#500ms" />
+              </initialValue>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">Oscillate once per f</xhtml>
+              </documentation>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="pulse">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">Pulse for use. One cycle</xhtml>
+              </documentation>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="edge">
+              <type>
+                <derived name="R_TRIG" />
+              </type>
+            </variable>
+            <variable name="clock">
+              <type>
+                <derived name="BLINK" />
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml">clock(ENABLE:=TRUE, TIMELOW:=f, TIMEHIGH:=f);
+edge(CLK:=clock.OUT);
+pulse := edge.Q;</xhtml>
+          </ST>
+        </body>
+        <addData>
+          <data name="http://www.3s-software.com/plcopenxml/objectid" handleUnknown="discard">
+            <ObjectId>85d5e9ec-e114-4f45-8e4f-0ffabde5bfd3</ObjectId>
+          </data>
+        </addData>
+      </pou>
+      <pou name="checkOverlapRectangle" pouType="function">
+        <interface>
+          <returnType>
+            <BOOL />
+          </returnType>
+          <inputVars>
+            <variable name="R1_X">
+              <type>
+                <INT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">Rectangle 1 x position</xhtml>
+              </documentation>
+            </variable>
+            <variable name="R1_Y">
+              <type>
+                <INT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">Rectangle 1 y position</xhtml>
+              </documentation>
+            </variable>
+            <variable name="R1_W">
+              <type>
+                <INT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">Rectangle 1 width</xhtml>
+              </documentation>
+            </variable>
+            <variable name="R1_H">
+              <type>
+                <INT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">Rectangle 1 height</xhtml>
+              </documentation>
+            </variable>
+            <variable name="R2_X">
+              <type>
+                <INT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">Rectangle 2 x position</xhtml>
+              </documentation>
+            </variable>
+            <variable name="R2_Y">
+              <type>
+                <INT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">Rectangle 2 y position</xhtml>
+              </documentation>
+            </variable>
+            <variable name="R2_W">
+              <type>
+                <INT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">Rectangle 2 width</xhtml>
+              </documentation>
+            </variable>
+            <variable name="R2_H">
+              <type>
+                <INT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">Rectangle 2 height</xhtml>
+              </documentation>
+            </variable>
+          </inputVars>
+        </interface>
+        <body>
+          <ST>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml">(*Calculate if these two rectangles are overlapping*)
+IF R1_X &lt; (R2_X + R2_W) AND
+   (R1_X + R1_W) &gt; R2_X AND
+   R1_Y &lt; (R2_Y + R2_H) AND
+  (R1_H + R1_Y) &gt; R2_Y THEN
+   checkOverlapRectangle := TRUE;
+ELSE
+	checkOverlapRectangle := FALSE;
+END_IF</xhtml>
+          </ST>
+        </body>
+        <addData>
+          <data name="http://www.3s-software.com/plcopenxml/objectid" handleUnknown="discard">
+            <ObjectId>80513472-2e2b-47c5-947d-3c1db2a7aed1</ObjectId>
+          </data>
+        </addData>
+      </pou>
+    </pous>
   </types>
   <instances>
     <configurations>
@@ -72,169 +447,256 @@
                 <BOOL />
               </type>
               <documentation>
-                <xhtml xmlns="http://www.w3.org/1999/xhtml">Outputs from main prg</xhtml>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">DO: Garden 1 servo X clock wise turn command</xhtml>
               </documentation>
             </variable>
             <variable name="Garden1_ServoX_CCW">
               <type>
                 <BOOL />
               </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">DO: Garden 1 servo X counter clock wise turn command</xhtml>
+              </documentation>
             </variable>
             <variable name="Garden1_ServoY_CW">
               <type>
                 <BOOL />
               </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">DO: Garden 1 servo Y clock wise turn command</xhtml>
+              </documentation>
             </variable>
             <variable name="Garden1_ServoY_CCW">
               <type>
                 <BOOL />
               </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">DO: Garden 1 servo Y counter clock wise turn command</xhtml>
+              </documentation>
             </variable>
             <variable name="Garden1_WaterTankOpenCmd">
               <type>
                 <BOOL />
               </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">DO: Garden 1 water valve open command</xhtml>
+              </documentation>
             </variable>
             <variable name="Garden2_ServoX_CW">
               <type>
                 <BOOL />
               </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">DO: Garden 2 servo X clock wise turn command</xhtml>
+              </documentation>
             </variable>
             <variable name="Garden2_ServoX_CCW">
               <type>
                 <BOOL />
               </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">DO: Garden 2 servo X counter clock wise turn command</xhtml>
+              </documentation>
             </variable>
             <variable name="Garden2_ServoY_CW">
               <type>
                 <BOOL />
               </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">DO: Garden 2 servo Y clock wise turn command</xhtml>
+              </documentation>
             </variable>
             <variable name="Garden2_ServoY_CCW">
               <type>
                 <BOOL />
               </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">DO: Garden 2 servo Y counter clock wise turn command</xhtml>
+              </documentation>
             </variable>
             <variable name="Garden2_WaterTankOpenCmd">
               <type>
                 <BOOL />
               </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">DO: Garden 2 water valve open command</xhtml>
+              </documentation>
             </variable>
             <variable name="Garden3_ServoX_CW">
               <type>
                 <BOOL />
               </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">DO: Garden 3 servo X clock wise turn command</xhtml>
+              </documentation>
             </variable>
             <variable name="Garden3_ServoX_CCW">
               <type>
                 <BOOL />
               </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">DO: Garden 3 servo X counter clock wise turn command</xhtml>
+              </documentation>
             </variable>
             <variable name="Garden3_ServoY_CW">
               <type>
                 <BOOL />
               </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">DO: Garden 3 servo Y clock wise turn command</xhtml>
+              </documentation>
             </variable>
             <variable name="Garden3_ServoY_CCW">
               <type>
                 <BOOL />
               </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">DO: Garden 3 servo Y counter clock wise turn command</xhtml>
+              </documentation>
             </variable>
             <variable name="Garden3_WaterTankOpenCmd">
               <type>
                 <BOOL />
               </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">DO: Garden 3 water valve open command</xhtml>
+              </documentation>
             </variable>
             <variable name="Garden4_ServoX_CW">
               <type>
                 <BOOL />
               </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">DO: Garden 4 servo X clock wise turn command</xhtml>
+              </documentation>
             </variable>
             <variable name="Garden4_ServoX_CCW">
               <type>
                 <BOOL />
               </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">DO: Garden 4 servo X counter clock wise turn command</xhtml>
+              </documentation>
             </variable>
             <variable name="Garden4_ServoY_CW">
               <type>
                 <BOOL />
               </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">DO: Garden 4 servo Y clock wise turn command</xhtml>
+              </documentation>
             </variable>
             <variable name="Garden4_ServoY_CCW">
               <type>
                 <BOOL />
               </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">DO: Garden 4 servo Y counter clock wise turn command</xhtml>
+              </documentation>
             </variable>
             <variable name="Garden4_WaterTankOpenCmd">
               <type>
                 <BOOL />
               </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">DO: Garden 4 water valve open command</xhtml>
+              </documentation>
             </variable>
             <variable name="Garden1_ServoX_Offset">
               <type>
                 <INT />
               </type>
               <documentation>
-                <xhtml xmlns="http://www.w3.org/1999/xhtml">Inputs to the main prg</xhtml>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">AI: Garden 1 servo X offset from starting position</xhtml>
               </documentation>
             </variable>
             <variable name="Garden1_ServoY_Offset">
               <type>
                 <INT />
               </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">AI: Garden 1 servo Y offset from starting position</xhtml>
+              </documentation>
             </variable>
             <variable name="Garden2_ServoX_Offset">
               <type>
                 <INT />
               </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">AI: Garden 2 servo X offset from starting position</xhtml>
+              </documentation>
             </variable>
             <variable name="Garden2_ServoY_Offset">
               <type>
                 <INT />
               </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">AI: Garden 2 servo Y offset from starting position</xhtml>
+              </documentation>
             </variable>
             <variable name="Garden3_ServoX_Offset">
               <type>
                 <INT />
               </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">AI: Garden 3 servo X offset from starting position</xhtml>
+              </documentation>
             </variable>
             <variable name="Garden3_ServoY_Offset">
               <type>
                 <INT />
               </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">AI: Garden 3 servo Y offset from starting position</xhtml>
+              </documentation>
             </variable>
             <variable name="Garden4_ServoX_Offset">
               <type>
                 <INT />
               </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">AI: Garden 4 servo X offset from starting position</xhtml>
+              </documentation>
             </variable>
             <variable name="Garden4_ServoY_Offset">
               <type>
                 <INT />
               </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">AI: Garden 4 servo Y offset from starting position</xhtml>
+              </documentation>
             </variable>
             <variable name="Garden1_HMI">
               <type>
                 <derived name="HMI_Cmds_typ" />
               </type>
               <documentation>
-                <xhtml xmlns="http://www.w3.org/1999/xhtml">HMI COMMANDS</xhtml>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">DI: Garden 1 HMI commands to main program</xhtml>
               </documentation>
             </variable>
             <variable name="Garden2_HMI">
               <type>
                 <derived name="HMI_Cmds_typ" />
               </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">DI: Garden 2 HMI commands to main program</xhtml>
+              </documentation>
             </variable>
             <variable name="Garden3_HMI">
               <type>
                 <derived name="HMI_Cmds_typ" />
               </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">DI: Garden 3 HMI commands to main program</xhtml>
+              </documentation>
             </variable>
             <variable name="Garden4_HMI">
               <type>
                 <derived name="HMI_Cmds_typ" />
               </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">DI: Garden 4 HMI commands to main program</xhtml>
+              </documentation>
             </variable>
             <addData>
               <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
@@ -249,134 +711,6 @@
           </globalVars>
           <addData>
             <data name="http://www.3s-software.com/plcopenxml/datatype" handleUnknown="implementation">
-              <dataType name="Flower_typ">
-                <baseType>
-                  <struct>
-                    <variable name="x">
-                      <type>
-                        <INT />
-                      </type>
-                    </variable>
-                    <variable name="y">
-                      <type>
-                        <INT />
-                      </type>
-                    </variable>
-                    <variable name="alpha">
-                      <type>
-                        <BYTE />
-                      </type>
-                      <initialValue>
-                        <simpleValue value="255" />
-                      </initialValue>
-                      <documentation>
-                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Alpha channel</xhtml>
-                      </documentation>
-                    </variable>
-                    <variable name="red">
-                      <type>
-                        <BYTE />
-                      </type>
-                      <initialValue>
-                        <simpleValue value="2" />
-                      </initialValue>
-                      <documentation>
-                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Red color channel</xhtml>
-                      </documentation>
-                    </variable>
-                    <variable name="green">
-                      <type>
-                        <BYTE />
-                      </type>
-                      <initialValue>
-                        <simpleValue value="253" />
-                      </initialValue>
-                      <documentation>
-                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Green color channel</xhtml>
-                      </documentation>
-                    </variable>
-                    <variable name="blue">
-                      <type>
-                        <BYTE />
-                      </type>
-                      <initialValue>
-                        <simpleValue value="0" />
-                      </initialValue>
-                      <documentation>
-                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Blue color channel</xhtml>
-                      </documentation>
-                    </variable>
-                    <variable name="color">
-                      <type>
-                        <DWORD />
-                      </type>
-                      <documentation>
-                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Color variable to be used in the graphics</xhtml>
-                      </documentation>
-                    </variable>
-                    <variable name="hum">
-                      <type>
-                        <REAL />
-                      </type>
-                      <initialValue>
-                        <simpleValue value="100" />
-                      </initialValue>
-                    </variable>
-                    <variable name="alive">
-                      <type>
-                        <BOOL />
-                      </type>
-                      <initialValue>
-                        <simpleValue value="TRUE" />
-                      </initialValue>
-                    </variable>
-                  </struct>
-                </baseType>
-                <addData>
-                  <data name="http://www.3s-software.com/plcopenxml/objectid" handleUnknown="discard">
-                    <ObjectId>e933bfc8-280c-47ee-8b59-5c19b4c266fa</ObjectId>
-                  </data>
-                </addData>
-              </dataType>
-            </data>
-            <data name="http://www.3s-software.com/plcopenxml/datatype" handleUnknown="implementation">
-              <dataType name="Platform_typ">
-                <baseType>
-                  <struct>
-                    <variable name="x">
-                      <type>
-                        <INT />
-                      </type>
-                      <documentation>
-                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Position from starting point on X axis</xhtml>
-                      </documentation>
-                    </variable>
-                    <variable name="y">
-                      <type>
-                        <INT />
-                      </type>
-                      <documentation>
-                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Position from starting point on Y axis</xhtml>
-                      </documentation>
-                    </variable>
-                    <variable name="OpenValveCmd">
-                      <type>
-                        <BOOL />
-                      </type>
-                      <documentation>
-                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Opens the water container valve</xhtml>
-                      </documentation>
-                    </variable>
-                  </struct>
-                </baseType>
-                <addData>
-                  <data name="http://www.3s-software.com/plcopenxml/objectid" handleUnknown="discard">
-                    <ObjectId>308db75e-b8bd-4c00-977b-9be399a92648</ObjectId>
-                  </data>
-                </addData>
-              </dataType>
-            </data>
-            <data name="http://www.3s-software.com/plcopenxml/datatype" handleUnknown="implementation">
               <dataType name="HMI_Cmds_typ">
                 <baseType>
                   <struct>
@@ -387,51 +721,81 @@
                       <initialValue>
                         <simpleValue value="TRUE" />
                       </initialValue>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Control is activated</xhtml>
+                      </documentation>
                     </variable>
                     <variable name="UpCmd">
                       <type>
                         <BOOL />
                       </type>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Command for platform UP</xhtml>
+                      </documentation>
                     </variable>
                     <variable name="DownCmd">
                       <type>
                         <BOOL />
                       </type>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Command for platform DOWN</xhtml>
+                      </documentation>
                     </variable>
                     <variable name="LeftCmd">
                       <type>
                         <BOOL />
                       </type>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Command for platform LEFT</xhtml>
+                      </documentation>
                     </variable>
                     <variable name="RightCmd">
                       <type>
                         <BOOL />
                       </type>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Command for platform RIGHT</xhtml>
+                      </documentation>
                     </variable>
                     <variable name="LeftUpCmd">
                       <type>
                         <BOOL />
                       </type>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Command for platform LEFT AND UP</xhtml>
+                      </documentation>
                     </variable>
                     <variable name="RightUpCmd">
                       <type>
                         <BOOL />
                       </type>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Command for platform RIGHT AND UP</xhtml>
+                      </documentation>
                     </variable>
                     <variable name="LeftDownCmd">
                       <type>
                         <BOOL />
                       </type>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Command for platform LEFT AND DOWN</xhtml>
+                      </documentation>
                     </variable>
                     <variable name="RightDownCmd">
                       <type>
                         <BOOL />
                       </type>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Command for platform RIGHT AND DOWN</xhtml>
+                      </documentation>
                     </variable>
                     <variable name="OpenWaterValve">
                       <type>
                         <BOOL />
                       </type>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Command to open the water valve</xhtml>
+                      </documentation>
                     </variable>
                   </struct>
                 </baseType>
@@ -458,26 +822,41 @@
                       <type>
                         <UINT />
                       </type>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Iterator variable</xhtml>
+                      </documentation>
                     </variable>
                     <variable name="vG1PlantsAlive">
                       <type>
                         <UINT />
                       </type>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Number of plants alive in garden 1</xhtml>
+                      </documentation>
                     </variable>
                     <variable name="vG2PlantsAlive">
                       <type>
                         <UINT />
                       </type>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Number of plants alive in garden 2</xhtml>
+                      </documentation>
                     </variable>
                     <variable name="vG3PlantsAlive">
                       <type>
                         <UINT />
                       </type>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Number of plants alive in garden 3</xhtml>
+                      </documentation>
                     </variable>
                     <variable name="vG4PlantsAlive">
                       <type>
                         <UINT />
                       </type>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Number of plants alive in garden 4</xhtml>
+                      </documentation>
                     </variable>
                     <variable name="vGarden1">
                       <type>
@@ -742,6 +1121,9 @@
                           </value>
                         </arrayValue>
                       </initialValue>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Locations of plant cells in the HMI for the garden 1. Not to be mistaken with servo offset</xhtml>
+                      </documentation>
                     </variable>
                     <variable name="vGarden2">
                       <type>
@@ -1006,6 +1388,9 @@
                           </value>
                         </arrayValue>
                       </initialValue>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Locations of plant cells in the HMI for the garden 2. Not to be mistaken with servo offset</xhtml>
+                      </documentation>
                     </variable>
                     <variable name="vGarden3">
                       <type>
@@ -1270,6 +1655,9 @@
                           </value>
                         </arrayValue>
                       </initialValue>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Locations of plant cells in the HMI for the garden 3. Not to be mistaken with servo offset</xhtml>
+                      </documentation>
                     </variable>
                     <variable name="vGarden4">
                       <type>
@@ -1534,26 +1922,41 @@
                           </value>
                         </arrayValue>
                       </initialValue>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Locations of plant cells in the HMI for the garden 4. Not to be mistaken with servo offset</xhtml>
+                      </documentation>
                     </variable>
                     <variable name="vGarden1Platform">
                       <type>
                         <derived name="Platform_typ" />
                       </type>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Platform 1 properties like x,y, water valve open etc</xhtml>
+                      </documentation>
                     </variable>
                     <variable name="vGarden2Platform">
                       <type>
                         <derived name="Platform_typ" />
                       </type>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Platform 2 properties like x,y, water valve open etc</xhtml>
+                      </documentation>
                     </variable>
                     <variable name="vGarden3Platform">
                       <type>
                         <derived name="Platform_typ" />
                       </type>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Platform 3 properties like x,y, water valve open etc</xhtml>
+                      </documentation>
                     </variable>
                     <variable name="vGarden4Platform">
                       <type>
                         <derived name="Platform_typ" />
                       </type>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Platform 4 properties like x,y, water valve open etc</xhtml>
+                      </documentation>
                     </variable>
                   </localVars>
                 </interface>
@@ -1567,12 +1970,12 @@ vG1PlantsAlive := 0;
 FOR i:=0 TO 24 DO
 	(*Simulate the humidity of one flower cell*)
 	(*If not being watered, it slowly looses humidity*)
-	vGarden1[i].hum := MAX(0, vGarden1[i].hum - 0.5 * BOOL_TO_REAL(clock.pulse));
+	vGarden1[i].hum := MAX(0, vGarden1[i].hum - 0.07 * BOOL_TO_REAL(clock.pulse));
 	
 	(*If the watering platform is above the cell, water valve is open and tank has water, increase the humidity*)
 	IF checkOverlapRectangle(R1_X:=vGarden1[i].x, R1_Y:=vGarden1[i].y, R1_W:=80, R1_H:=80,
 							R2_X:=406 + vGarden1Platform.x + 45, R2_Y:=361 + vGarden1Platform.y + 45, R2_W:=10, R2_H:=10) AND vGarden1Platform.OpenValveCmd THEN
-		vGarden1[i].hum := vGarden1[i].hum + 2 * BOOL_TO_REAL(clock.pulse);
+		vGarden1[i].hum := vGarden1[i].hum + 4 * BOOL_TO_REAL(clock.pulse);
 	END_IF
 	
 	(*Simulate flowers response to the humidity of the cell*)
@@ -1645,12 +2048,12 @@ vG2PlantsAlive := 0;
 FOR i:=0 TO 24 DO
 	(*Simulate the humidity of one flower cell*)
 	(*If not being watered, it slowly looses humidity*)
-	vGarden2[i].hum := MAX(0, vGarden2[i].hum - 0.5 * BOOL_TO_REAL(clock.pulse));
+	vGarden2[i].hum := MAX(0, vGarden2[i].hum - 0.07 * BOOL_TO_REAL(clock.pulse));
 	
 	(*If the watering platform is above the cell, water valve is open and tank has water, increase the humidity*)
 	IF checkOverlapRectangle(R1_X:=vGarden2[i].x, R1_Y:=vGarden2[i].y, R1_W:=80, R1_H:=80,
 							R2_X:=594 + vGarden2Platform.x + 45, R2_Y:=361 + vGarden2Platform.y + 45, R2_W:=10, R2_H:=10) AND vGarden2Platform.OpenValveCmd THEN
-		vGarden2[i].hum := vGarden2[i].hum + 2 * BOOL_TO_REAL(clock.pulse);
+		vGarden2[i].hum := vGarden2[i].hum + 4 * BOOL_TO_REAL(clock.pulse);
 	END_IF
 	
 	(*Simulate flowers response to the humidity of the cell*)
@@ -1723,12 +2126,12 @@ vG3PlantsAlive := 0;
 FOR i:=0 TO 24 DO
 	(*Simulate the humidity of one flower cell*)
 	(*If not being watered, it slowly looses humidity*)
-	vGarden3[i].hum := MAX(0, vGarden3[i].hum - 0.5 * BOOL_TO_REAL(clock.pulse));
+	vGarden3[i].hum := MAX(0, vGarden3[i].hum - 0.07 * BOOL_TO_REAL(clock.pulse));
 	
 	(*If the watering platform is above the cell, water valve is open and tank has water, increase the humidity*)
 	IF checkOverlapRectangle(R1_X:=vGarden3[i].x, R1_Y:=vGarden3[i].y, R1_W:=80, R1_H:=80,
 							R2_X:=401 + vGarden3Platform.x + 45, R2_Y:=640 + vGarden3Platform.y + 45, R2_W:=10, R2_H:=10) AND vGarden3Platform.OpenValveCmd THEN
-		vGarden3[i].hum := vGarden3[i].hum + 2 * BOOL_TO_REAL(clock.pulse);
+		vGarden3[i].hum := vGarden3[i].hum + 4 * BOOL_TO_REAL(clock.pulse);
 	END_IF
 	
 	(*Simulate flowers response to the humidity of the cell*)
@@ -1801,12 +2204,12 @@ vG4PlantsAlive := 0;
 FOR i:=0 TO 24 DO
 	(*Simulate the humidity of one flower cell*)
 	(*If not being watered, it slowly looses humidity*)
-	vGarden4[i].hum := MAX(0, vGarden4[i].hum - 0.5 * BOOL_TO_REAL(clock.pulse));
+	vGarden4[i].hum := MAX(0, vGarden4[i].hum - 0.07 * BOOL_TO_REAL(clock.pulse));
 	
 	(*If the watering platform is above the cell, water valve is open and tank has water, increase the humidity*)
 	IF checkOverlapRectangle(R1_X:=vGarden4[i].x, R1_Y:=vGarden4[i].y, R1_W:=80, R1_H:=80,
 							R2_X:=600 + vGarden4Platform.x + 45, R2_Y:=642 + vGarden4Platform.y + 45, R2_W:=10, R2_H:=10) AND vGarden4Platform.OpenValveCmd THEN
-		vGarden4[i].hum := vGarden4[i].hum + 2 * BOOL_TO_REAL(clock.pulse);
+		vGarden4[i].hum := vGarden4[i].hum + 4 * BOOL_TO_REAL(clock.pulse);
 	END_IF
 	
 	(*Simulate flowers response to the humidity of the cell*)
@@ -1873,7 +2276,37 @@ vGarden4Platform.OpenValveCmd := gIO.Garden4_WaterTankOpenCmd;</xhtml>
                 </actions>
                 <body>
                   <ST>
-                    <xhtml xmlns="http://www.w3.org/1999/xhtml">clock(f:=T#0.01S);
+                    <xhtml xmlns="http://www.w3.org/1999/xhtml">(* SIMULATOR FUNCTIONAL DESCRIPTION
+FLOWERS SIMULATION:
+- there are 25 flowers in each garden
+- each flower consumes humidity for life, this is represented as a number, this draw is constant
+- each flower, if it has no humidity, it start decaying, decaying is represented with color
+if color is red, the flower dies, if its green or yellow it is still alive
+- if the flower gets too much water (&gt;200%) this has same effect as it being too dry so the 
+platform controller must maintain a proper level of humidity.
+- there are no humidity sensors deployed to the gIO structure but if the user wants to, it is very easy
+
+PLATFORM SIMULATION:
+- platforms consist out of one Y Axis servo and two X axis servos
+- X axis servos are electrically connected so they move as one for simplicity
+- each servo motor is reporting its offset from the beggining of the servo
+- for simplicity, each servo starts at 0 offset. If necessary, these starting points can be initialized
+- commands CW increase the axis while CCW decrease the axis
+- servo motors are identical but they are  flipped horizontally or verticaly, depending on the garden
+but they always follow CW and CCW commands respectively
+- upon command the open water valve releases the onboard stored water. For simplicity, the platform has 
+unlimited supply of water
+
+PLATFORM/FLOWER INTERACTION SIMULATION:
+- if the nozzle (not the whole platform) of the platform is above a flower cell (80x80 pixels)
+and the water valve is open, the flowers humidity increases
+- the flower cells are divided by 1 px width and the nozzle is 10px wide so it is possible to
+water multiple cells at once
+
+COUNTING OF ALIVE FLOWERS:
+- for each garden a counting of alive plants is done and it is displayed in the HMI*)
+
+clock(f:=T#20MS);
 
 (*Run the garden simulators*)
 SIMULATE_GARDEN1();
@@ -1885,147 +2318,6 @@ SIMULATE_GARDEN4();</xhtml>
                 <addData>
                   <data name="http://www.3s-software.com/plcopenxml/objectid" handleUnknown="discard">
                     <ObjectId>9064d327-fea8-462f-bd9b-c1d68ff214d0</ObjectId>
-                  </data>
-                </addData>
-              </pou>
-            </data>
-            <data name="http://www.3s-software.com/plcopenxml/pou" handleUnknown="implementation">
-              <pou name="BYTES_TO_DWORD" pouType="function">
-                <interface>
-                  <returnType>
-                    <DWORD />
-                  </returnType>
-                  <inputVars>
-                    <variable name="B0">
-                      <type>
-                        <BYTE />
-                      </type>
-                      <documentation>
-                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Least significant byte</xhtml>
-                      </documentation>
-                    </variable>
-                    <variable name="B1">
-                      <type>
-                        <BYTE />
-                      </type>
-                      <documentation>
-                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Byte two</xhtml>
-                      </documentation>
-                    </variable>
-                    <variable name="B2">
-                      <type>
-                        <BYTE />
-                      </type>
-                      <documentation>
-                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Byte three</xhtml>
-                      </documentation>
-                    </variable>
-                    <variable name="B3">
-                      <type>
-                        <BYTE />
-                      </type>
-                      <documentation>
-                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Highest significant byte</xhtml>
-                      </documentation>
-                    </variable>
-                  </inputVars>
-                </interface>
-                <body>
-                  <ST>
-                    <xhtml xmlns="http://www.w3.org/1999/xhtml">BYTES_TO_DWORD.0 := B0.0;
-BYTES_TO_DWORD.1 := B0.1;
-BYTES_TO_DWORD.2 := B0.2;
-BYTES_TO_DWORD.3 := B0.3;
-BYTES_TO_DWORD.4 := B0.4;
-BYTES_TO_DWORD.5 := B0.5;
-BYTES_TO_DWORD.6 := B0.6;
-BYTES_TO_DWORD.7 := B0.7;
-
-BYTES_TO_DWORD.8 := B1.0;
-BYTES_TO_DWORD.9 := B1.1;
-BYTES_TO_DWORD.10 := B1.2;
-BYTES_TO_DWORD.11 := B1.3;
-BYTES_TO_DWORD.12 := B1.4;
-BYTES_TO_DWORD.13 := B1.5;
-BYTES_TO_DWORD.14 := B1.6;
-BYTES_TO_DWORD.15 := B1.7;
-
-BYTES_TO_DWORD.16 := B2.0;
-BYTES_TO_DWORD.17 := B2.1;
-BYTES_TO_DWORD.18 := B2.2;
-BYTES_TO_DWORD.19 := B2.3;
-BYTES_TO_DWORD.20 := B2.4;
-BYTES_TO_DWORD.21 := B2.5;
-BYTES_TO_DWORD.22 := B2.6;
-BYTES_TO_DWORD.23 := B2.7;
-
-BYTES_TO_DWORD.24 := B3.0;
-BYTES_TO_DWORD.25 := B3.1;
-BYTES_TO_DWORD.26 := B3.2;
-BYTES_TO_DWORD.27 := B3.3;
-BYTES_TO_DWORD.28 := B3.4;
-BYTES_TO_DWORD.29 := B3.5;
-BYTES_TO_DWORD.30 := B3.6;
-BYTES_TO_DWORD.31 := B3.7;
-RETURN;</xhtml>
-                  </ST>
-                </body>
-                <addData>
-                  <data name="http://www.3s-software.com/plcopenxml/objectid" handleUnknown="discard">
-                    <ObjectId>874ae8b5-3d57-4ef4-b02b-03062a6a655b</ObjectId>
-                  </data>
-                </addData>
-              </pou>
-            </data>
-            <data name="http://www.3s-software.com/plcopenxml/pou" handleUnknown="implementation">
-              <pou name="ClockPulse" pouType="functionBlock">
-                <interface>
-                  <inputVars>
-                    <variable name="f">
-                      <type>
-                        <TIME />
-                      </type>
-                      <initialValue>
-                        <simpleValue value="TIME#500ms" />
-                      </initialValue>
-                      <documentation>
-                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Oscillate once per f</xhtml>
-                      </documentation>
-                    </variable>
-                  </inputVars>
-                  <outputVars>
-                    <variable name="pulse">
-                      <type>
-                        <BOOL />
-                      </type>
-                      <documentation>
-                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Pulse for use. One cycle</xhtml>
-                      </documentation>
-                    </variable>
-                  </outputVars>
-                  <localVars>
-                    <variable name="edge">
-                      <type>
-                        <derived name="R_TRIG" />
-                      </type>
-                    </variable>
-                    <variable name="clock">
-                      <type>
-                        <derived name="BLINK" />
-                      </type>
-                    </variable>
-                  </localVars>
-                </interface>
-                <body>
-                  <ST>
-                    <xhtml xmlns="http://www.w3.org/1999/xhtml">clock(ENABLE:=TRUE, TIMELOW:=f, TIMEHIGH:=f);
-edge(CLK:=clock.OUT);
-pulse := edge.Q;</xhtml>
-                  </ST>
-                </body>
-                <addData>
-                  <data name="http://www.3s-software.com/plcopenxml/objectid" handleUnknown="discard">
-                    <ObjectId>85d5e9ec-e114-4f45-8e4f-0ffabde5bfd3</ObjectId>
                   </data>
                 </addData>
               </pou>
@@ -2198,6 +2490,9 @@ pulse := edge.Q;</xhtml>
                           </value>
                         </arrayValue>
                       </initialValue>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Instructions for platform servos in garden 1</xhtml>
+                      </documentation>
                     </variable>
                     <variable name="vG2Platform_Instructions">
                       <type>
@@ -2363,6 +2658,9 @@ pulse := edge.Q;</xhtml>
                           </value>
                         </arrayValue>
                       </initialValue>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Instructions for platform servos in garden 2</xhtml>
+                      </documentation>
                     </variable>
                     <variable name="vG3Platform_Instructions">
                       <type>
@@ -2528,6 +2826,9 @@ pulse := edge.Q;</xhtml>
                           </value>
                         </arrayValue>
                       </initialValue>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Instructions for platform servos in garden 3</xhtml>
+                      </documentation>
                     </variable>
                     <variable name="vG4Platform_Instructions">
                       <type>
@@ -2693,13 +2994,16 @@ pulse := edge.Q;</xhtml>
                           </value>
                         </arrayValue>
                       </initialValue>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Instructions for platform servos in garden 4</xhtml>
+                      </documentation>
                     </variable>
                     <variable name="garden1AutoWater">
                       <type>
                         <derived name="AutomaticFlowerWatering" />
                       </type>
                       <documentation>
-                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Left to right in a smart way</xhtml>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Automatic watering logic: Left to right in a smart way</xhtml>
                       </documentation>
                     </variable>
                     <variable name="garden2AutoWater">
@@ -2707,7 +3011,7 @@ pulse := edge.Q;</xhtml>
                         <derived name="AutomaticFlowerWatering" />
                       </type>
                       <documentation>
-                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Going top to bottom in a smart way</xhtml>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Automatic watering logic: Going top to bottom in a smart way</xhtml>
                       </documentation>
                     </variable>
                     <variable name="garden3AutoWater">
@@ -2715,7 +3019,7 @@ pulse := edge.Q;</xhtml>
                         <derived name="AutomaticFlowerWatering" />
                       </type>
                       <documentation>
-                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Going side ways from the top to bottom</xhtml>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Automatic watering logic: Going side ways from the top to bottom</xhtml>
                       </documentation>
                     </variable>
                     <variable name="garden4AutoWater">
@@ -2723,7 +3027,7 @@ pulse := edge.Q;</xhtml>
                         <derived name="AutomaticFlowerWatering" />
                       </type>
                       <documentation>
-                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Goign from the middle out</xhtml>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Automatic watering logic: Goign from the middle out</xhtml>
                       </documentation>
                     </variable>
                   </localVars>
@@ -2743,7 +3047,7 @@ pulse := edge.Q;</xhtml>
 	gIO.Garden1_WaterTankOpenCmd := gIO.Garden1_HMI.OpenWaterValve;
 ELSE
 	(*Automatic control*)
-	garden1AutoWater(flowerLocations:=vG1Platform_Instructions,
+	garden1AutoWater(instructions:=vG1Platform_Instructions,
 		xAxis := gIO.Garden1_ServoX_Offset,
 		yAxis := gIO.Garden1_ServoY_Offset,
 		servoX_CW =&gt; gIO.Garden1_ServoX_CW,
@@ -2775,7 +3079,7 @@ END_IF</xhtml>
 	gIO.Garden2_WaterTankOpenCmd := gIO.Garden2_HMI.OpenWaterValve;
 ELSE
 	(*Automatic control*)
-	garden2AutoWater(flowerLocations:=vG2Platform_Instructions,
+	garden2AutoWater(instructions:=vG2Platform_Instructions,
 		xAxis := gIO.Garden2_ServoX_Offset,
 		yAxis := gIO.Garden2_ServoY_Offset,
 		servoX_CW =&gt; gIO.Garden2_ServoX_CW,
@@ -2806,7 +3110,7 @@ END_IF</xhtml>
 	gIO.Garden3_WaterTankOpenCmd := gIO.Garden3_HMI.OpenWaterValve;
 ELSE
 	(*Automatic control*)
-	garden3AutoWater(flowerLocations:=vG3Platform_Instructions,
+	garden3AutoWater(instructions:=vG3Platform_Instructions,
 		xAxis := gIO.Garden3_ServoX_Offset,
 		yAxis := gIO.Garden3_ServoY_Offset,
 		servoX_CW =&gt; gIO.Garden3_ServoX_CW,
@@ -2837,7 +3141,7 @@ END_IF</xhtml>
 	gIO.Garden4_WaterTankOpenCmd := gIO.Garden4_HMI.OpenWaterValve;
 ELSE
 	(*Automatic control*)
-	garden4AutoWater(flowerLocations:=vG4Platform_Instructions,
+	garden4AutoWater(instructions:=vG4Platform_Instructions,
 		xAxis := gIO.Garden4_ServoX_Offset,
 		yAxis := gIO.Garden4_ServoY_Offset,
 		servoX_CW =&gt; gIO.Garden4_ServoX_CW,
@@ -2857,7 +3161,19 @@ END_IF</xhtml>
                 </actions>
                 <body>
                   <ST>
-                    <xhtml xmlns="http://www.w3.org/1999/xhtml">CONTROL_GARDEN1();
+                    <xhtml xmlns="http://www.w3.org/1999/xhtml">(*FUNCTIONAL DESCRIPTION:
+- there are four gardens holding 25 flowers each
+- the flowers need to be watered on a regular basis in order to keep their humidity in correct levels
+- correct humidity is 0 &gt; x &lt; 200 %, if the humidity is not in those limits, the flower starts dying
+- the watering is done by means of a watering platform, moved by x a y servos
+- the job of this program is to move the platform of each garden and water the plants in an optimized way
+- program should strive to keep all plants alive (easier said than done)
+- the platforms move quite slowly as the water tank might spill so it is a given that 25 flower can be 
+watered in 25 seconds
+- on top of each platform there is a water tank with a valve that can be open remotely by the main program
+- the program also needs to implement manual control from the HMI with the prepared variables in gIO structure
+*)
+CONTROL_GARDEN1();
 CONTROL_GARDEN2();
 CONTROL_GARDEN3();
 CONTROL_GARDEN4();
@@ -2872,103 +3188,10 @@ CONTROL_GARDEN4();
               </pou>
             </data>
             <data name="http://www.3s-software.com/plcopenxml/pou" handleUnknown="implementation">
-              <pou name="checkOverlapRectangle" pouType="function">
-                <interface>
-                  <returnType>
-                    <BOOL />
-                  </returnType>
-                  <inputVars>
-                    <variable name="R1_X">
-                      <type>
-                        <INT />
-                      </type>
-                      <documentation>
-                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Rectangle 1 x position</xhtml>
-                      </documentation>
-                    </variable>
-                    <variable name="R1_Y">
-                      <type>
-                        <INT />
-                      </type>
-                      <documentation>
-                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Rectangle 1 y position</xhtml>
-                      </documentation>
-                    </variable>
-                    <variable name="R1_W">
-                      <type>
-                        <INT />
-                      </type>
-                      <documentation>
-                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Rectangle 1 width</xhtml>
-                      </documentation>
-                    </variable>
-                    <variable name="R1_H">
-                      <type>
-                        <INT />
-                      </type>
-                      <documentation>
-                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Rectangle 1 height</xhtml>
-                      </documentation>
-                    </variable>
-                    <variable name="R2_X">
-                      <type>
-                        <INT />
-                      </type>
-                      <documentation>
-                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Rectangle 2 x position</xhtml>
-                      </documentation>
-                    </variable>
-                    <variable name="R2_Y">
-                      <type>
-                        <INT />
-                      </type>
-                      <documentation>
-                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Rectangle 2 y position</xhtml>
-                      </documentation>
-                    </variable>
-                    <variable name="R2_W">
-                      <type>
-                        <INT />
-                      </type>
-                      <documentation>
-                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Rectangle 2 width</xhtml>
-                      </documentation>
-                    </variable>
-                    <variable name="R2_H">
-                      <type>
-                        <INT />
-                      </type>
-                      <documentation>
-                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Rectangle 2 height</xhtml>
-                      </documentation>
-                    </variable>
-                  </inputVars>
-                </interface>
-                <body>
-                  <ST>
-                    <xhtml xmlns="http://www.w3.org/1999/xhtml">(*Calculate if these two rectangles are overlapping*)
-IF R1_X &lt; (R2_X + R2_W) AND
-   (R1_X + R1_W) &gt; R2_X AND
-   R1_Y &lt; (R2_Y + R2_H) AND
-  (R1_H + R1_Y) &gt; R2_Y THEN
-   checkOverlapRectangle := TRUE;
-ELSE
-	checkOverlapRectangle := FALSE;
-END_IF</xhtml>
-                  </ST>
-                </body>
-                <addData>
-                  <data name="http://www.3s-software.com/plcopenxml/objectid" handleUnknown="discard">
-                    <ObjectId>80513472-2e2b-47c5-947d-3c1db2a7aed1</ObjectId>
-                  </data>
-                </addData>
-              </pou>
-            </data>
-            <data name="http://www.3s-software.com/plcopenxml/pou" handleUnknown="implementation">
               <pou name="AutomaticFlowerWatering" pouType="functionBlock">
                 <interface>
                   <inputVars>
-                    <variable name="flowerLocations">
+                    <variable name="instructions">
                       <type>
                         <array>
                           <dimension lower="0" upper="24" />
@@ -2978,16 +3201,25 @@ END_IF</xhtml>
                           </baseType>
                         </array>
                       </type>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Instructions to follow</xhtml>
+                      </documentation>
                     </variable>
                     <variable name="xAxis">
                       <type>
                         <INT />
                       </type>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Actual position of the X axis servo</xhtml>
+                      </documentation>
                     </variable>
                     <variable name="yAxis">
                       <type>
                         <INT />
                       </type>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Actual position of the Y axis servo</xhtml>
+                      </documentation>
                     </variable>
                   </inputVars>
                   <outputVars>
@@ -2995,26 +3227,41 @@ END_IF</xhtml>
                       <type>
                         <BOOL />
                       </type>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Command to turn X axis servo clock wise</xhtml>
+                      </documentation>
                     </variable>
                     <variable name="servoX_CCW">
                       <type>
                         <BOOL />
                       </type>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Command to turn X axis servo counter clock wise</xhtml>
+                      </documentation>
                     </variable>
                     <variable name="servoY_CW">
                       <type>
                         <BOOL />
                       </type>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Command to turn Y axis servo clock wise</xhtml>
+                      </documentation>
                     </variable>
                     <variable name="servoY_CCW">
                       <type>
                         <BOOL />
                       </type>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Command to turn Y axis servo counter clock wise</xhtml>
+                      </documentation>
                     </variable>
                     <variable name="waterTankOpenCmd">
                       <type>
                         <BOOL />
                       </type>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Command to the platform to open the water valve</xhtml>
+                      </documentation>
                     </variable>
                   </outputVars>
                   <localVars>
@@ -3030,31 +3277,43 @@ END_IF</xhtml>
                       <type>
                         <INT />
                       </type>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Next X axis target</xhtml>
+                      </documentation>
                     </variable>
                     <variable name="vYAxisCmd">
                       <type>
                         <INT />
                       </type>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Next Y axis target</xhtml>
+                      </documentation>
                     </variable>
                     <variable name="vPlatformAtTarget">
                       <type>
                         <BOOL />
                       </type>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Flag for reaching the target</xhtml>
+                      </documentation>
                     </variable>
                     <variable name="WateringTimer">
                       <type>
                         <derived name="TON" />
                       </type>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Timer for controlling the valve being open</xhtml>
+                      </documentation>
                     </variable>
                   </localVars>
                 </interface>
                 <body>
                   <ST>
-                    <xhtml xmlns="http://www.w3.org/1999/xhtml">(* Full automatic algorithm *)
-vXAxisCmd := flowerLocations[i,0];
-vYAxisCmd := flowerLocations[i,1];
+                    <xhtml xmlns="http://www.w3.org/1999/xhtml">(* Parse the instruction to get new x and y targets *)
+vXAxisCmd := instructions[i,0];
+vYAxisCmd := instructions[i,1];
 	
-(*Check if the platform is above the flower. We can allow +- 5 increments wrong position*)
+(*Check if the platform is at the target*)
 vPlatformAtTarget := xAxis = vXAxisCmd AND yAxis = vYAxisCmd;
 
 IF vPlatformAtTarget THEN
@@ -3062,7 +3321,7 @@ IF vPlatformAtTarget THEN
 	WateringTimer(IN:=TRUE, PT:=T#1S);
 	waterTankOpenCmd := TRUE;
 	
-	(*If watering is finished, go to next flower*)
+	(*If watering is finished, close valve and go to next flower*)
 	IF WateringTimer.Q THEN
 		WateringTimer(IN := FALSE);
 		waterTankOpenCmd:= FALSE;
@@ -3070,7 +3329,7 @@ IF vPlatformAtTarget THEN
 	END_IF
 END_IF
 
-(*If we went over the array, then start at first flower again*)
+(*If we traversed all instructions, go to first instruction*)
 IF i = 25 THEN
 	i := 0;
 END_IF
@@ -3159,8 +3418,8 @@ END_IF
             <Device xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="">
               <DeviceType>
                 <DeviceIdentification>
-                  <Type>4097</Type>
-                  <Id>0000 000a</Id>
+                  <Type>4096</Type>
+                  <Id>0000 0004</Id>
                   <Version>3.5.16.0</Version>
                 </DeviceIdentification>
                 <Connector moduleType="256" interface="Common.PCI" connectorId="0">
@@ -3228,10 +3487,6 @@ END_IF
               <Object Name="SIMULATE_GARDEN3" ObjectId="a19fe44e-22d2-4b0f-813c-d386fdecec8a" />
               <Object Name="SIMULATE_GARDEN4" ObjectId="a46b5de3-3880-413e-a3eb-5e161cc01a5d" />
             </Object>
-            <Object Name="Flower_typ" ObjectId="e933bfc8-280c-47ee-8b59-5c19b4c266fa" />
-            <Object Name="BYTES_TO_DWORD" ObjectId="874ae8b5-3d57-4ef4-b02b-03062a6a655b" />
-            <Object Name="ClockPulse" ObjectId="85d5e9ec-e114-4f45-8e4f-0ffabde5bfd3" />
-            <Object Name="Platform_typ" ObjectId="308db75e-b8bd-4c00-977b-9be399a92648" />
             <Object Name="gIO" ObjectId="37b1197c-733f-4f4c-9ae3-3aa6a8367b82" />
             <Object Name="main" ObjectId="87fe18b6-0e2f-44f0-b1cf-e85db1257ec4">
               <Object Name="CONTROL_GARDEN1" ObjectId="0cf413c1-d021-4423-b387-b667e9d80838" />
@@ -3239,12 +3494,17 @@ END_IF
               <Object Name="CONTROL_GARDEN3" ObjectId="ff700521-047b-4cba-b94d-78eec777f018" />
               <Object Name="CONTROL_GARDEN4" ObjectId="227cf80f-a470-4896-884d-d047ad602eb1" />
             </Object>
-            <Object Name="checkOverlapRectangle" ObjectId="80513472-2e2b-47c5-947d-3c1db2a7aed1" />
             <Object Name="HMI_Cmds_typ" ObjectId="b09fc8f2-11ab-4966-a1cf-d6b3184cc54d" />
             <Object Name="AutomaticFlowerWatering" ObjectId="25a97d63-9889-42be-88a3-718830d44192" />
           </Object>
         </Object>
         <Object Name="Library Manager" ObjectId="26c9f932-a6ab-44f1-8d8b-2c4f249808ac" />
+        <Object Name="Flower_typ" ObjectId="e933bfc8-280c-47ee-8b59-5c19b4c266fa" />
+        <Object Name="BYTES_TO_DWORD" ObjectId="874ae8b5-3d57-4ef4-b02b-03062a6a655b" />
+        <Object Name="ClockPulse" ObjectId="85d5e9ec-e114-4f45-8e4f-0ffabde5bfd3" />
+        <Object Name="Platform_typ" ObjectId="308db75e-b8bd-4c00-977b-9be399a92648" />
+        <Object Name="checkOverlapRectangle" ObjectId="80513472-2e2b-47c5-947d-3c1db2a7aed1" />
+        <Object Name="Project Information" ObjectId="11c0fc3a-9bcf-4dd8-ac38-efb93363e521" />
       </ProjectStructure>
     </data>
   </addData>

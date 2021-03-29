@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <project xmlns="http://www.plcopen.org/xml/tc6_0200">
-  <fileHeader companyName="" productName="CODESYS" productVersion="CODESYS V3.5 SP16" creationDateTime="2021-03-29T19:44:05.3605287" />
-  <contentHeader name="plc_garden_controller.project" modificationDateTime="2021-03-29T19:43:55.0448853">
+  <fileHeader companyName="" productName="CODESYS" productVersion="CODESYS V3.5 SP16" creationDateTime="2021-03-29T19:53:34.0657427" />
+  <contentHeader name="plc_garden_controller.project" modificationDateTime="2021-03-29T19:53:32.3258161">
     <coordinateInfo>
       <fbd>
         <scaling x="1" y="1" />
@@ -2218,6 +2218,54 @@ pulse := edge.Q;</xhtml>
                             <simpleValue value="320" />
                           </value>
                           <value>
+                            <simpleValue value="50" />
+                          </value>
+                          <value>
+                            <simpleValue value="240" />
+                          </value>
+                          <value>
+                            <simpleValue value="50" />
+                          </value>
+                          <value>
+                            <simpleValue value="160" />
+                          </value>
+                          <value>
+                            <simpleValue value="50" />
+                          </value>
+                          <value>
+                            <simpleValue value="80" />
+                          </value>
+                          <value>
+                            <simpleValue value="50" />
+                          </value>
+                          <value>
+                            <simpleValue value="0" />
+                          </value>
+                          <value>
+                            <simpleValue value="130" />
+                          </value>
+                          <value>
+                            <simpleValue value="0" />
+                          </value>
+                          <value>
+                            <simpleValue value="130" />
+                          </value>
+                          <value>
+                            <simpleValue value="80" />
+                          </value>
+                          <value>
+                            <simpleValue value="130" />
+                          </value>
+                          <value>
+                            <simpleValue value="160" />
+                          </value>
+                          <value>
+                            <simpleValue value="130" />
+                          </value>
+                          <value>
+                            <simpleValue value="240" />
+                          </value>
+                          <value>
                             <simpleValue value="130" />
                           </value>
                           <value>
@@ -2230,6 +2278,54 @@ pulse := edge.Q;</xhtml>
                             <simpleValue value="320" />
                           </value>
                           <value>
+                            <simpleValue value="210" />
+                          </value>
+                          <value>
+                            <simpleValue value="240" />
+                          </value>
+                          <value>
+                            <simpleValue value="210" />
+                          </value>
+                          <value>
+                            <simpleValue value="160" />
+                          </value>
+                          <value>
+                            <simpleValue value="210" />
+                          </value>
+                          <value>
+                            <simpleValue value="80" />
+                          </value>
+                          <value>
+                            <simpleValue value="210" />
+                          </value>
+                          <value>
+                            <simpleValue value="0" />
+                          </value>
+                          <value>
+                            <simpleValue value="290" />
+                          </value>
+                          <value>
+                            <simpleValue value="0" />
+                          </value>
+                          <value>
+                            <simpleValue value="290" />
+                          </value>
+                          <value>
+                            <simpleValue value="80" />
+                          </value>
+                          <value>
+                            <simpleValue value="290" />
+                          </value>
+                          <value>
+                            <simpleValue value="160" />
+                          </value>
+                          <value>
+                            <simpleValue value="290" />
+                          </value>
+                          <value>
+                            <simpleValue value="240" />
+                          </value>
+                          <value>
                             <simpleValue value="290" />
                           </value>
                           <value>
@@ -2242,124 +2338,28 @@ pulse := edge.Q;</xhtml>
                             <simpleValue value="320" />
                           </value>
                           <value>
-                            <simpleValue value="50" />
+                            <simpleValue value="370" />
                           </value>
                           <value>
-                            <simpleValue value="260" />
-                          </value>
-                          <value>
-                            <simpleValue value="130" />
-                          </value>
-                          <value>
-                            <simpleValue value="260" />
-                          </value>
-                          <value>
-                            <simpleValue value="210" />
-                          </value>
-                          <value>
-                            <simpleValue value="260" />
-                          </value>
-                          <value>
-                            <simpleValue value="290" />
-                          </value>
-                          <value>
-                            <simpleValue value="260" />
+                            <simpleValue value="240" />
                           </value>
                           <value>
                             <simpleValue value="370" />
                           </value>
                           <value>
-                            <simpleValue value="260" />
-                          </value>
-                          <value>
-                            <simpleValue value="50" />
-                          </value>
-                          <value>
-                            <simpleValue value="180" />
-                          </value>
-                          <value>
-                            <simpleValue value="130" />
-                          </value>
-                          <value>
-                            <simpleValue value="180" />
-                          </value>
-                          <value>
-                            <simpleValue value="210" />
-                          </value>
-                          <value>
-                            <simpleValue value="180" />
-                          </value>
-                          <value>
-                            <simpleValue value="290" />
-                          </value>
-                          <value>
-                            <simpleValue value="180" />
+                            <simpleValue value="160" />
                           </value>
                           <value>
                             <simpleValue value="370" />
                           </value>
                           <value>
-                            <simpleValue value="180" />
-                          </value>
-                          <value>
-                            <simpleValue value="50" />
-                          </value>
-                          <value>
-                            <simpleValue value="100" />
-                          </value>
-                          <value>
-                            <simpleValue value="130" />
-                          </value>
-                          <value>
-                            <simpleValue value="100" />
-                          </value>
-                          <value>
-                            <simpleValue value="210" />
-                          </value>
-                          <value>
-                            <simpleValue value="100" />
-                          </value>
-                          <value>
-                            <simpleValue value="290" />
-                          </value>
-                          <value>
-                            <simpleValue value="100" />
+                            <simpleValue value="80" />
                           </value>
                           <value>
                             <simpleValue value="370" />
                           </value>
                           <value>
-                            <simpleValue value="100" />
-                          </value>
-                          <value>
-                            <simpleValue value="50" />
-                          </value>
-                          <value>
-                            <simpleValue value="20" />
-                          </value>
-                          <value>
-                            <simpleValue value="130" />
-                          </value>
-                          <value>
-                            <simpleValue value="20" />
-                          </value>
-                          <value>
-                            <simpleValue value="210" />
-                          </value>
-                          <value>
-                            <simpleValue value="20" />
-                          </value>
-                          <value>
-                            <simpleValue value="290" />
-                          </value>
-                          <value>
-                            <simpleValue value="20" />
-                          </value>
-                          <value>
-                            <simpleValue value="370" />
-                          </value>
-                          <value>
-                            <simpleValue value="20" />
+                            <simpleValue value="0" />
                           </value>
                         </arrayValue>
                       </initialValue>

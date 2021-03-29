@@ -1,4 +1,4 @@
-# Garden Watering | [MAIN] | [NAMESPACES] | [METRICS]  
+# PLC Garden Controller | [MAIN] | [NAMESPACES] | [METRICS]  
 
 ## Namespaces  
 

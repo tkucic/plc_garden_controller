@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <project xmlns="http://www.plcopen.org/xml/tc6_0200">
-  <fileHeader companyName="" productName="CODESYS" productVersion="CODESYS V3.5 SP16" creationDateTime="2021-03-28T22:25:57.1514907" />
-  <contentHeader name="plc_garden_controller.project" modificationDateTime="2021-03-28T22:13:56.8310002">
+  <fileHeader companyName="" productName="CODESYS" productVersion="CODESYS V3.5 SP16" creationDateTime="2021-03-29T19:44:05.3605287" />
+  <contentHeader name="plc_garden_controller.project" modificationDateTime="2021-03-29T19:43:55.0448853">
     <coordinateInfo>
       <fbd>
         <scaling x="1" y="1" />
@@ -2034,7 +2034,7 @@ pulse := edge.Q;</xhtml>
               <pou name="main" pouType="program">
                 <interface>
                   <localVars>
-                    <variable name="vGarden1_FlowerLocations">
+                    <variable name="vG1Platform_Instructions">
                       <type>
                         <array>
                           <dimension lower="0" upper="24" />
@@ -2077,19 +2077,7 @@ pulse := edge.Q;</xhtml>
                             <simpleValue value="320" />
                           </value>
                           <value>
-                            <simpleValue value="365" />
-                          </value>
-                          <value>
-                            <simpleValue value="240" />
-                          </value>
-                          <value>
-                            <simpleValue value="285" />
-                          </value>
-                          <value>
-                            <simpleValue value="240" />
-                          </value>
-                          <value>
-                            <simpleValue value="205" />
+                            <simpleValue value="45" />
                           </value>
                           <value>
                             <simpleValue value="240" />
@@ -2101,7 +2089,19 @@ pulse := edge.Q;</xhtml>
                             <simpleValue value="240" />
                           </value>
                           <value>
-                            <simpleValue value="45" />
+                            <simpleValue value="205" />
+                          </value>
+                          <value>
+                            <simpleValue value="240" />
+                          </value>
+                          <value>
+                            <simpleValue value="285" />
+                          </value>
+                          <value>
+                            <simpleValue value="240" />
+                          </value>
+                          <value>
+                            <simpleValue value="365" />
                           </value>
                           <value>
                             <simpleValue value="240" />
@@ -2137,19 +2137,7 @@ pulse := edge.Q;</xhtml>
                             <simpleValue value="160" />
                           </value>
                           <value>
-                            <simpleValue value="365" />
-                          </value>
-                          <value>
-                            <simpleValue value="80" />
-                          </value>
-                          <value>
-                            <simpleValue value="285" />
-                          </value>
-                          <value>
-                            <simpleValue value="80" />
-                          </value>
-                          <value>
-                            <simpleValue value="205" />
+                            <simpleValue value="45" />
                           </value>
                           <value>
                             <simpleValue value="80" />
@@ -2161,7 +2149,19 @@ pulse := edge.Q;</xhtml>
                             <simpleValue value="80" />
                           </value>
                           <value>
-                            <simpleValue value="45" />
+                            <simpleValue value="205" />
+                          </value>
+                          <value>
+                            <simpleValue value="80" />
+                          </value>
+                          <value>
+                            <simpleValue value="285" />
+                          </value>
+                          <value>
+                            <simpleValue value="80" />
+                          </value>
+                          <value>
+                            <simpleValue value="365" />
                           </value>
                           <value>
                             <simpleValue value="80" />
@@ -2199,7 +2199,7 @@ pulse := edge.Q;</xhtml>
                         </arrayValue>
                       </initialValue>
                     </variable>
-                    <variable name="vGarden2_FlowerLocations">
+                    <variable name="vG2Platform_Instructions">
                       <type>
                         <array>
                           <dimension lower="0" upper="24" />
@@ -2364,7 +2364,7 @@ pulse := edge.Q;</xhtml>
                         </arrayValue>
                       </initialValue>
                     </variable>
-                    <variable name="vGarden3_FlowerLocations">
+                    <variable name="vG3Platform_Instructions">
                       <type>
                         <array>
                           <dimension lower="0" upper="24" />
@@ -2529,7 +2529,7 @@ pulse := edge.Q;</xhtml>
                         </arrayValue>
                       </initialValue>
                     </variable>
-                    <variable name="vGarden4_FlowerLocations">
+                    <variable name="vG4Platform_Instructions">
                       <type>
                         <array>
                           <dimension lower="0" upper="24" />
@@ -2699,7 +2699,7 @@ pulse := edge.Q;</xhtml>
                         <derived name="AutomaticFlowerWatering" />
                       </type>
                       <documentation>
-                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Not optimized, going left to right</xhtml>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Left to right in a smart way</xhtml>
                       </documentation>
                     </variable>
                     <variable name="garden2AutoWater">
@@ -2707,7 +2707,7 @@ pulse := edge.Q;</xhtml>
                         <derived name="AutomaticFlowerWatering" />
                       </type>
                       <documentation>
-                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Not optimized, going top to bottom</xhtml>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Going top to bottom in a smart way</xhtml>
                       </documentation>
                     </variable>
                     <variable name="garden3AutoWater">
@@ -2715,7 +2715,7 @@ pulse := edge.Q;</xhtml>
                         <derived name="AutomaticFlowerWatering" />
                       </type>
                       <documentation>
-                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Optimized?</xhtml>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">Going side ways from the top to bottom</xhtml>
                       </documentation>
                     </variable>
                     <variable name="garden4AutoWater">
@@ -2743,7 +2743,7 @@ pulse := edge.Q;</xhtml>
 	gIO.Garden1_WaterTankOpenCmd := gIO.Garden1_HMI.OpenWaterValve;
 ELSE
 	(*Automatic control*)
-	garden1AutoWater(flowerLocations:=vGarden1_FlowerLocations,
+	garden1AutoWater(flowerLocations:=vG1Platform_Instructions,
 		xAxis := gIO.Garden1_ServoX_Offset,
 		yAxis := gIO.Garden1_ServoY_Offset,
 		servoX_CW =&gt; gIO.Garden1_ServoX_CW,
@@ -2775,7 +2775,7 @@ END_IF</xhtml>
 	gIO.Garden2_WaterTankOpenCmd := gIO.Garden2_HMI.OpenWaterValve;
 ELSE
 	(*Automatic control*)
-	garden2AutoWater(flowerLocations:=vGarden2_FlowerLocations,
+	garden2AutoWater(flowerLocations:=vG2Platform_Instructions,
 		xAxis := gIO.Garden2_ServoX_Offset,
 		yAxis := gIO.Garden2_ServoY_Offset,
 		servoX_CW =&gt; gIO.Garden2_ServoX_CW,
@@ -2806,7 +2806,7 @@ END_IF</xhtml>
 	gIO.Garden3_WaterTankOpenCmd := gIO.Garden3_HMI.OpenWaterValve;
 ELSE
 	(*Automatic control*)
-	garden3AutoWater(flowerLocations:=vGarden3_FlowerLocations,
+	garden3AutoWater(flowerLocations:=vG3Platform_Instructions,
 		xAxis := gIO.Garden3_ServoX_Offset,
 		yAxis := gIO.Garden3_ServoY_Offset,
 		servoX_CW =&gt; gIO.Garden3_ServoX_CW,
@@ -2837,7 +2837,7 @@ END_IF</xhtml>
 	gIO.Garden4_WaterTankOpenCmd := gIO.Garden4_HMI.OpenWaterValve;
 ELSE
 	(*Automatic control*)
-	garden4AutoWater(flowerLocations:=vGarden4_FlowerLocations,
+	garden4AutoWater(flowerLocations:=vG4Platform_Instructions,
 		xAxis := gIO.Garden4_ServoX_Offset,
 		yAxis := gIO.Garden4_ServoY_Offset,
 		servoX_CW =&gt; gIO.Garden4_ServoX_CW,

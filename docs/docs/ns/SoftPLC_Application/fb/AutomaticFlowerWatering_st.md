@@ -26,54 +26,54 @@ INTERFACE
 END_INTERFACE
 FUNCTION_BLOCK AutomaticFlowerWatering:
     (* Parse the instruction to get new x and y targets *)
-vXAxisCmd := instructions[i,0];
-vYAxisCmd := instructions[i,1];
-	
-(*Check if the platform is at the target*)
-vPlatformAtTarget := xAxis = vXAxisCmd AND yAxis = vYAxisCmd;
+    vXAxisCmd := instructions[i,0];
+    vYAxisCmd := instructions[i,1];
+    	
+    (*Check if the platform is at the target*)
+    vPlatformAtTarget := xAxis = vXAxisCmd AND yAxis = vYAxisCmd;
 
-IF vPlatformAtTarget THEN
-	(*Start watering for 1 second*)
-	WateringTimer(IN:=TRUE, PT:=T#1S);
-	waterTankOpenCmd := TRUE;
-	
-	(*If watering is finished, close valve and go to next flower*)
-	IF WateringTimer.Q THEN
-		WateringTimer(IN := FALSE);
-		waterTankOpenCmd:= FALSE;
-		i:= i + 1;
-	END_IF
-END_IF
+    IF vPlatformAtTarget THEN
+    	(*Start watering for 1 second*)
+    	WateringTimer(IN:=TRUE, PT:=T#1S);
+    	waterTankOpenCmd := TRUE;
+    	
+    	(*If watering is finished, close valve and go to next flower*)
+    	IF WateringTimer.Q THEN
+    		WateringTimer(IN := FALSE);
+    		waterTankOpenCmd:= FALSE;
+    		i:= i + 1;
+    	END_IF
+    END_IF
 
-(*If we traversed all instructions, go to first instruction*)
-IF i = 25 THEN
-	i := 0;
-END_IF
+    (*If we traversed all instructions, go to first instruction*)
+    IF i = 25 THEN
+    	i := 0;
+    END_IF
 
-(* Actual motor movement algorithm *)
-IF vXAxisCmd > xAxis THEN
-	servoX_CCW := FALSE;
-	servoX_CW := TRUE;
-ELSIF vXAxisCmd < xAxis THEN
-	servoX_CCW := TRUE;
-	servoX_CW := FALSE;
-ELSE
-	servoX_CCW := FALSE;
-	servoX_CW := FALSE;
-END_IF
-	
-IF vYAxisCmd < yAxis THEN
-	servoY_CCW := TRUE;
-	servoY_CW := FALSE;
-ELSIF vYAxisCmd > yAxis THEN
-	servoY_CCW := FALSE;
-	servoY_CW := TRUE;
-ELSE
-	servoY_CCW := FALSE;
-	servoY_CW := FALSE;
-END_IF
+    (* Actual motor movement algorithm *)
+    IF vXAxisCmd > xAxis THEN
+    	servoX_CCW := FALSE;
+    	servoX_CW := TRUE;
+    ELSIF vXAxisCmd < xAxis THEN
+    	servoX_CCW := TRUE;
+    	servoX_CW := FALSE;
+    ELSE
+    	servoX_CCW := FALSE;
+    	servoX_CW := FALSE;
+    END_IF
+    	
+    IF vYAxisCmd < yAxis THEN
+    	servoY_CCW := TRUE;
+    	servoY_CW := FALSE;
+    ELSIF vYAxisCmd > yAxis THEN
+    	servoY_CCW := FALSE;
+    	servoY_CW := TRUE;
+    ELSE
+    	servoY_CCW := FALSE;
+    	servoY_CW := FALSE;
+    END_IF
 
-	
+    	
 END_FUNCTION_BLOCK
 ```
 

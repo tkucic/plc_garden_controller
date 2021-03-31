@@ -17,14 +17,14 @@ INTERFACE
 END_INTERFACE
 FUNCTION checkOverlapRectangle :
     (*Calculate if these two rectangles are overlapping*)
-IF R1_X < (R2_X + R2_W) AND
-   (R1_X + R1_W) > R2_X AND
-   R1_Y < (R2_Y + R2_H) AND
-  (R1_H + R1_Y) > R2_Y THEN
-   checkOverlapRectangle := TRUE;
-ELSE
-	checkOverlapRectangle := FALSE;
-END_IF
+    IF R1_X < (R2_X + R2_W) AND
+       (R1_X + R1_W) > R2_X AND
+       R1_Y < (R2_Y + R2_H) AND
+      (R1_H + R1_Y) > R2_Y THEN
+       checkOverlapRectangle := TRUE;
+    ELSE
+    	checkOverlapRectangle := FALSE;
+    END_IF
 END_FUNCTION
 ```
 

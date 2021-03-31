@@ -17,8 +17,8 @@ INTERFACE
 END_INTERFACE
 FUNCTION_BLOCK ClockPulse:
     clock(ENABLE:=TRUE, TIMELOW:=f, TIMEHIGH:=f);
-edge(CLK:=clock.OUT);
-pulse := edge.Q;
+    edge(CLK:=clock.OUT);
+    pulse := edge.Q;
 END_FUNCTION_BLOCK
 ```
 

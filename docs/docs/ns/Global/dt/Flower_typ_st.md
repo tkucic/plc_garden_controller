@@ -4,15 +4,15 @@
 
 ```pascal
 STRUCT Flower_typ:
-    x : INT := Struct initialization unsupported; (*X position of the flower cell in the HMI*)
-    y : INT := Struct initialization unsupported; (*Y position of the flower cell in the HMI*)
-    alpha : BYTE := Struct initialization unsupported; (*Alpha channel*)
-    red : BYTE := Struct initialization unsupported; (*Red color channel*)
-    green : BYTE := Struct initialization unsupported; (*Green color channel*)
-    blue : BYTE := Struct initialization unsupported; (*Blue color channel*)
-    color : DWORD := Struct initialization unsupported; (*Color variable to be used in the graphics*)
-    hum : REAL := Struct initialization unsupported; (*Humidity of the flower cell*)
-    alive : BOOL := Struct initialization unsupported; (*Flower is alive*)
+    x : INT; (*X position of the flower cell in the HMI*)
+    y : INT; (*Y position of the flower cell in the HMI*)
+    alpha : BYTE := 255; (*Alpha channel*)
+    red : BYTE := 2; (*Red color channel*)
+    green : BYTE := 253; (*Green color channel*)
+    blue : BYTE := 0; (*Blue color channel*)
+    color : DWORD; (*Color variable to be used in the graphics*)
+    hum : REAL := 100; (*Humidity of the flower cell*)
+    alive : BOOL := TRUE; (*Flower is alive*)
   
 END_STRUCT
 ```

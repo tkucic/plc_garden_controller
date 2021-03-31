@@ -4,9 +4,9 @@
 
 ```pascal
 STRUCT Platform_typ:
-    x : INT := Struct initialization unsupported; (*Position from starting point on X axis*)
-    y : INT := Struct initialization unsupported; (*Position from starting point on Y axis*)
-    OpenValveCmd : BOOL := Struct initialization unsupported; (*Opens the water container valve*)
+    x : INT; (*Position from starting point on X axis*)
+    y : INT; (*Position from starting point on Y axis*)
+    OpenValveCmd : BOOL; (*Opens the water container valve*)
   
 END_STRUCT
 ```

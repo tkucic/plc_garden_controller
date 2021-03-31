@@ -4,16 +4,16 @@
 
 ```pascal
 STRUCT HMI_Cmds_typ:
-    CtrlOn : BOOL := Struct initialization unsupported; (*Control is activated*)
-    UpCmd : BOOL := Struct initialization unsupported; (*Command for platform UP*)
-    DownCmd : BOOL := Struct initialization unsupported; (*Command for platform DOWN*)
-    LeftCmd : BOOL := Struct initialization unsupported; (*Command for platform LEFT*)
-    RightCmd : BOOL := Struct initialization unsupported; (*Command for platform RIGHT*)
-    LeftUpCmd : BOOL := Struct initialization unsupported; (*Command for platform LEFT AND UP*)
-    RightUpCmd : BOOL := Struct initialization unsupported; (*Command for platform RIGHT AND UP*)
-    LeftDownCmd : BOOL := Struct initialization unsupported; (*Command for platform LEFT AND DOWN*)
-    RightDownCmd : BOOL := Struct initialization unsupported; (*Command for platform RIGHT AND DOWN*)
-    OpenWaterValve : BOOL := Struct initialization unsupported; (*Command to open the water valve*)
+    CtrlOn : BOOL := TRUE; (*Control is activated*)
+    UpCmd : BOOL; (*Command for platform UP*)
+    DownCmd : BOOL; (*Command for platform DOWN*)
+    LeftCmd : BOOL; (*Command for platform LEFT*)
+    RightCmd : BOOL; (*Command for platform RIGHT*)
+    LeftUpCmd : BOOL; (*Command for platform LEFT AND UP*)
+    RightUpCmd : BOOL; (*Command for platform RIGHT AND UP*)
+    LeftDownCmd : BOOL; (*Command for platform LEFT AND DOWN*)
+    RightDownCmd : BOOL; (*Command for platform RIGHT AND DOWN*)
+    OpenWaterValve : BOOL; (*Command to open the water valve*)
   
 END_STRUCT
 ```

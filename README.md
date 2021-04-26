@@ -2,7 +2,7 @@
 
 Automated gardening at its best. This is a portfolio project that features a simulator and a controller of four gardens holding 25 flowers/plants each. Each garden has a watering platform system moved by servo motors. In this project the user can learn how to control servo motors, optimize instruction/path algorithms and generally learn how to program PLCs. It is published under MIT license. Written in CODESYS 3.5 and in structured text language.
 
-![Screenshot of the programs HMI](screenshot.png)
+![Screenshot of the programs HMI](screenshot.gif)
 
 ## USAGE
 

@@ -4,19 +4,19 @@
 
 ```pascal
 INTERFACE
-    VAR_INPUT
+    VAR_INPUT 
         instructions : ARRAY[0..24, 0..1] OF INT; (*Instructions to follow*)
         xAxis : INT; (*Actual position of the X axis servo*)
         yAxis : INT; (*Actual position of the Y axis servo*)
     END_VAR
-    VAR_OUTPUT
+    VAR_OUTPUT 
         servoX_CW : BOOL; (*Command to turn X axis servo clock wise*)
         servoX_CCW : BOOL; (*Command to turn X axis servo counter clock wise*)
         servoY_CW : BOOL; (*Command to turn Y axis servo clock wise*)
         servoY_CCW : BOOL; (*Command to turn Y axis servo counter clock wise*)
         waterTankOpenCmd : BOOL; (*Command to the platform to open the water valve*)
     END_VAR
-    VAR
+    VAR 
         i : UINT; (*Iterator variable*)
         vXAxisCmd : INT; (*Next X axis target*)
         vYAxisCmd : INT; (*Next Y axis target*)
@@ -79,9 +79,9 @@ END_FUNCTION_BLOCK
 
 ## Metrics  
 
-| VAR_IN | VAR_OUT | VAR_IN_OUT | VAR_LOCAL | VAR_EXTERNAL | VAR_TEMP |
-| ------ | ------- | ---------- | --------- | ------------ | -------- |
-| 3 | 5 | 0 | 5 | 0 | 0 |
+- VAR_INPUT : 3
+- VAR_OUTPUT : 5
+- VAR : 5
 
 | Actions | Lines of code | Maintainable size |
 | ------- | ------------- | ----------------- |

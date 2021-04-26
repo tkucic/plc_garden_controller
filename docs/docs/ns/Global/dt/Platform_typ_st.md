@@ -7,7 +7,6 @@ STRUCT Platform_typ:
     x : INT; (*Position from starting point on X axis*)
     y : INT; (*Position from starting point on Y axis*)
     OpenValveCmd : BOOL; (*Opens the water container valve*)
-  
 END_STRUCT
 ```
 

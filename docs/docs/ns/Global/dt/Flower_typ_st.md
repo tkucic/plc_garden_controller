@@ -13,7 +13,6 @@ STRUCT Flower_typ:
     color : DWORD; (*Color variable to be used in the graphics*)
     hum : REAL := 100; (*Humidity of the flower cell*)
     alive : BOOL := TRUE; (*Flower is alive*)
-  
 END_STRUCT
 ```
 

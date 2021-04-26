@@ -4,7 +4,7 @@
 
 ```pascal
 INTERFACE
-    VAR_INPUT
+    VAR_INPUT 
         B0 : BYTE; (*Least significant byte*)
         B1 : BYTE; (*Byte two*)
         B2 : BYTE; (*Byte three*)
@@ -53,9 +53,7 @@ END_FUNCTION
 
 ## Metrics  
 
-| VAR_IN | VAR_OUT | VAR_IN_OUT | VAR_TEMP | VAR_LOCAL |
-| ------ | ------- | ---------- | --------- | -------- |
-| 4 | 0 | 0 | 0 | 0 |  
+- VAR_INPUT : 4
 
 | Lines of code | Maintainable size |
 | ------------- | ----------------- |

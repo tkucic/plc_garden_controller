@@ -14,7 +14,6 @@ STRUCT HMI_Cmds_typ:
     LeftDownCmd : BOOL; (*Command for platform LEFT AND DOWN*)
     RightDownCmd : BOOL; (*Command for platform RIGHT AND DOWN*)
     OpenWaterValve : BOOL; (*Command to open the water valve*)
-  
 END_STRUCT
 ```
 

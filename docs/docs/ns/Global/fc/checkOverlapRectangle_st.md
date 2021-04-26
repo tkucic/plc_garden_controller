@@ -4,7 +4,7 @@
 
 ```pascal
 INTERFACE
-    VAR_INPUT
+    VAR_INPUT 
         R1_X : INT; (*Rectangle 1 x position*)
         R1_Y : INT; (*Rectangle 1 y position*)
         R1_W : INT; (*Rectangle 1 width*)
@@ -30,9 +30,7 @@ END_FUNCTION
 
 ## Metrics  
 
-| VAR_IN | VAR_OUT | VAR_IN_OUT | VAR_TEMP | VAR_LOCAL |
-| ------ | ------- | ---------- | --------- | -------- |
-| 8 | 0 | 0 | 0 | 0 |  
+- VAR_INPUT : 8
 
 | Lines of code | Maintainable size |
 | ------------- | ----------------- |

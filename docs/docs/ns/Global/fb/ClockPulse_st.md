@@ -4,15 +4,15 @@
 
 ```pascal
 INTERFACE
-    VAR_INPUT
+    VAR_INPUT 
         f : TIME := TIME#500ms; (*Oscillate once per f*)
     END_VAR
-    VAR_OUTPUT
+    VAR_OUTPUT 
         pulse : BOOL; (*Pulse for use. One cycle*)
     END_VAR
-    VAR
-        edge : R_TRIG; (**)
-        clock : BLINK; (**)
+    VAR 
+        edge : R_TRIG;
+        clock : BLINK;
     END_VAR
 END_INTERFACE
 FUNCTION_BLOCK ClockPulse:
@@ -24,9 +24,9 @@ END_FUNCTION_BLOCK
 
 ## Metrics  
 
-| VAR_IN | VAR_OUT | VAR_IN_OUT | VAR_LOCAL | VAR_EXTERNAL | VAR_TEMP |
-| ------ | ------- | ---------- | --------- | ------------ | -------- |
-| 1 | 1 | 0 | 2 | 0 | 0 |
+- VAR_INPUT : 1
+- VAR_OUTPUT : 1
+- VAR : 2
 
 | Actions | Lines of code | Maintainable size |
 | ------- | ------------- | ----------------- |

@@ -4,7 +4,7 @@
 
 ```pascal
 INTERFACE
-    VAR
+    VAR 
         clock : ClockPulse; (*Clock pulse for the program*)
         i : UINT; (*Iterator variable*)
         vG1PlantsAlive : UINT; (*Number of plants alive in garden 1*)
@@ -340,9 +340,7 @@ END_ACTION
 
 ## Metrics  
 
-| VAR_IN | VAR_OUT | VAR_IN_OUT | VAR_LOCAL | VAR_EXTERNAL | VAR_GLOBAL | VAR_ACCESS | VAR_TEMP |
-| ------ | ------- | ---------- | --------- | ------------ | ---------- | ---------- | -------- |
-| 0 | 0 | 0 | 14 | 0 | 0 | 0 | 0 |
+- VAR : 14
 
 | Actions | Lines of code | Maintainable size |
 | ------- | ------------- | ----------------- |
